@@ -1,0 +1,70 @@
+@charset "UTF-8";
+body {
+	margin: 0;
+	
+}
+
+.main-menu {
+	border: 1px solid #000e98;
+	width: 100%;
+	height: 50px;
+	background: #000e98;
+	
+}
+a {
+text-decoration: none;
+color:white;
+display:inline-block;
+float: right;
+margin: 10px;
+}
+a:link,a:visited {
+	color:white;
+	text-decoration: none;
+}
+a:hover,a:active {
+	color:red;
+	text-decoration: none;
+}
+
+.background {
+	
+	width: 100%;
+    height: 300px;
+    background:#e0e0e0a1;
+    
+}
+.floatRigth {
+	float:right;
+	color:white;
+}
+
+.text-wrap {
+	width: 30%;
+    margin: 10px;
+	
+	
+}
+
+.view-text {
+	width: 15%;
+    height: 25px;
+    overflow: hidden;
+	
+}
+
+
+.changer {
+	width:50px;
+	font-size: 20px;
+}
+
+.underground {
+	background:white;
+	width:100%;
+	height:100px;
+	
+}
+
+
+

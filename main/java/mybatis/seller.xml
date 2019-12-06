@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="seller.model.Seller">
+  <insert id="insertData">
+  	insert into sellers values(seller_seq.nextval, #{email}, #{password}, #{phone}, #{name}, #{comnumber})
+  </insert>
+  
+  <select id="getDetail" resultType="MySeller">
+  	select * from sellers where email like #{email} and password like #{password}
+  </select>
+  
+  
+  <update id="infoUpdate">
+  	update sellers set password=#{password}, phone=#{phone}, name=#{name}, comnumber=#{comnumber} where num like #{num}
+  
+  </update>
+  <delete id="deleteThis">
+  	delete from sellers where num = #{num}
+  </delete>
+  
+  
+  </mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="member.model.Member">
+  	<select id="login" resultType="MyMember">
+		select * from members
+		where m_email = #{m_email} and m_password=#{m_password}
+	</select>
+	
+	<select id="info" resultType="MyMember">
+		select * from members
+		where m_email = #{m_email}
+	</select>
+
+	<insert id="registerMem">
+		insert into members values
+		(member_seq.nextval, #{m_email}, #{m_password}, #{m_nickname}, #{m_name}, #{m_phone})
+	</insert>
+	
+	<delete id="delete">
+		delete members
+		where m_email = #{m_email}
+	</delete>
+	
+	<update id="update">
+		update members set m_email=#{m_email}, m_password=#{m_password}, m_nickname=#{m_nickname}, m_name=#{m_name}, m_phone=#{m_phone}
+		where m_email=#{m_email}
+	</update>
+  
+  </mapper>

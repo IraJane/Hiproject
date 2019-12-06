@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean class="org.apache.commons.dbcp.BasicDataSource"
+      id="dataSource">
+      <property name="driverClassName"
+         value="oracle.jdbc.driver.OracleDriver" />
+      <property name="url"
+         value="jdbc:oracle:thin:@Localhost:1521:xe" />
+      <property name="username" value="jspid" />
+      <property name="password" value="jsppw" />
+   </bean>
+   
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+
+      <property name="dataSource" ref="dataSource" />
+      <property name="configLocation"  value="classpath:/mybatis/SqlMapConfig.xml" />
+   </bean>
+
+   <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
+      <constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
+   </bean>
+</beans>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="hotel.model.Hotel">
+  	<insert id="insertHotel">
+		insert into hotel
+		values(hotel_seq.nextval,#{selNum},#{h_name},#{h_nation},#{h_address1},
+		#{h_address2},#{h_type},#{h_phone},#{h_room_num},#{h_facilities},#{h_internet},
+		#{h_animal},#{h_parking},#{h_smoke},#{h_language},#{h_image},
+		#{h_hotel_url},#{h_comment})  
+	</insert>
+	
+	
+	<select id="getHotelList" resultType="MyHotel">
+		select * from hotel
+		where h_nation like #{area}
+		
+		
+	</select>
+	
+	<select id="detailData" resultType="MyHotel">
+		select * from hotel where h_name like #{h_name}
+	</select>
+	
+	<select id="getThisList" resultType="MyHotel">
+		select * from hotel 
+		where selnum = #{num}
+	
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from hotel
+	
+	</select>
+	
+	<select id="getHotelOne" resultType="MyHotel">
+		select * from hotel where num=#{num}
+	</select>
+	
+  
+  </mapper>

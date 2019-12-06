@@ -1,0 +1,35 @@
+@charset "UTF-8";
+body {
+	margin:0;
+	padding:0;
+	
+}
+
+
+.listTable {
+	width: 100%;
+    border: 2px solid #b5b4b4;
+    border-radius: 5px;
+}
+.listOrders {
+	margin: 10px 0;
+	border:1px solid red;
+}
+
+.total-wrapper {
+	width: 80%;
+	margin:auto;
+}
+
+.h_nameDetail {
+	font-size:30px;
+	color:blue;
+	width:40px;
+	
+}
+.h_typeDetail {
+	border-radius: 5px;
+    background: orange;
+    font-size: 20px;
+    padding: 5px;
+}
