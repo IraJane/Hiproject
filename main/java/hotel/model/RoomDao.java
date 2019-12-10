@@ -24,6 +24,12 @@ public class RoomDao {
 		List<Room> roomList=sst.selectList(namespace+".getRoomList",hotel);
 		return roomList;
 	}
+
+	public List<Room> getRoomOrder(int num) {
+		// TODO Auto-generated method stub
+		List<Room> roomlist = sst.selectList(namespace+".getRoomOrder",num);
+		return roomlist;
+	}
 	
 	
 	

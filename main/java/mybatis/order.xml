@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order.model.Order">
+	<insert id="insertOrder"> 
+	
+	insert into orderlist 
+	values(o_seq.nextval,#{oemail},#{oname}, #{hname},sysdate,#{checkin},#{checkout},#{people},#{roomtype},#{totalprice},#{comments},'0')
+	
+	</insert>
+	
+	<select id="getorderlist" resultType="MyOrder">
+		select * from orderlist
+		where oemail = #{oemail}
+	</select>
+
+
+</mapper>

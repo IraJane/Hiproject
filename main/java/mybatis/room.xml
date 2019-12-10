@@ -4,15 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="hotel.model.Room">
-	<insert id="insertRoom">
-		insert into rooms values(room_seq.nextval,#{type},#{price},#{hname},#{person},#{breakfast},#{stock})
-	</insert>
 	
+	<insert id="insertRoom">
+		insert into rooms values(room_seq.nextval,#{selnum},#{r_type},#{r_price},#{hname},#{r_person},#{r_breakfast},#{r_stock})
+	</insert>
 	
 	<select id="getRoomList" resultType="MyRoom">
 		select r_type, r_person, r_price, r_breakfast, r_stock
 		from rooms where hname=#{h_name}
 	</select>
+	
+	<select id="getRoomOrder" resultType="MyRoom">
+		select * from rooms
+		where selnum = #{num}
+	
+	</select>
+	
+	
+
 	
 	
 	

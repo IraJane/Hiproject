@@ -129,6 +129,8 @@
 		
 		
 		
+		
+		
 			//********DATE********************************************************************
 		 $.datepicker.setDefaults({
 			 dateFormat: 'yy-mm-dd',
@@ -147,13 +149,64 @@
 		 $("#datepicker2").datepicker();
 		 
 		 
-		//********select 하면 select한 값이 span 에 들어가게 하기********************************************
-		$('.selectroom').change(function(){
+		//********Room price picker *****************************************************************
+		
+		
+	
+		
+		
+		$('select.selectroom').change(function(){
+			var sum=0;
+			var alltype='';	
+			var roomname = $('.rtypehidden').val();
 			
-			var roonprice = $('.selectroom option:selected').val();
-			alert($('.totalprice').text());
+			var price = $('select.selectroom option:selected').val();
+
+			$('select.selectroom').each(function(index) {
+				
+				var tempAmt= $(this).val();
+				
+				price = parseInt(tempAmt);
+				sum = sum + price;
+				
+				
+					
+			});
+				
+			var total = sum;
+			$('.totalprice1').empty();
 			
-			$('.totalprice').append(roonprice);
+			
+			alltype = alltype + roomname;
+			
+			$('input.totalprice').attr('value',total);
+			$('.totalprice1').append(
+					'<div class="totalreservate">'+total+'원'+
+					'<br><a>세금 및 기타 요금 포함</a>'+
+					'<ul><li>즉시 예약 확정</li><li>가입이 필요 없습니다</li><li>예약 수수료, 신용카드 수수료 없음!</li></ul>'+
+					'<button onclick="javascript:reservate()" >예약하기</button></div>');
+			
+		//******************************예약하기 창으로 방 이름  넘기기********************************************
+			
+			var originVal = $('.rtypename').text();
+			$('.rtypename').attr('value',alltype);
+			//alert('origin:'+originVal); 
+			
+			//$('.rtypename').append(roomname);
+			//alert(alltype);
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 		});
@@ -161,8 +214,21 @@
 		
 		
 		
+		
+	
+		
+	
+		
 
 	});
+</script>
+<script type="text/javascript">
+
+		function reservate(){
+			$('form[name=roomreservate]').submit();
+			
+		}	
+
 </script>
 <style>
 	.hoteltype{
@@ -280,6 +346,48 @@ h4 {
 	border:none;
 }
 
+/******register table   부터 **********************************************/
+table {
+    width: 100%;
+}
+.rtype {
+	width: 30%;
+    
+}
+.rperson {
+	width: 10%;
+	
+}
+
+.rprice, .rselect,.rtotal{
+	width:20%;
+	
+}
+.rtr {
+	background: #2b76ffe0;
+    color: white;
+}
+.someitems {
+	display:block;
+	font-size:10px;
+	color:green;
+}
+
+
+.totalreservate {
+	position: relative;
+    background: #90bcff96;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+
+
+
+
+
+
 
 
 	
@@ -288,6 +396,7 @@ h4 {
 <body>
 <div class="rightbar">
 <div>
+	<input type="hidden" name="num" value="${hotel.num }">
 	<div id="hotelname"><h2><span class="hoteltype">${hotel.h_type }&nbsp;&nbsp;&nbsp;</span>${hotel.h_name }</h2></div>
 	<div id="hoteladdress"><p>${hotel.h_address2 } , ${hotel.h_address1 }, ${hotel.h_nation }</p></div>
 	<div id="imageArea">  
@@ -332,26 +441,61 @@ h4 {
 	
 		
 		</table>
-		
+		<!--  ****************************************************************************************************************    ******-->
+	<form action="reservate.ho" method="post" class="roomreservate" name="roomreservate">
+				
+				
+				<input type="hidden" name="area" class="area" value="${param.area }">
+				<input type="hidden" name="checkin" class="adult" value="${param.checkin }">
+				<input type="hidden" name="checkout" class="adult" value="${param.checkout }">
+				<input type="hidden" name="adult" class="adult" value="${param.adult }">
+				<input type="hidden" name="child" class="child" value="${param.child }">
+				<input type="hidden" name="room" class="room" value="0">
 		<table>
 		
 		
-			<tr>
+			<tr class="rtr">
 				<td>객실 유형</td>
 				<td>정원</td>
 				<td>가격</td>
 				<td>객실 선택</td>
-				<td>dsfsdsd</td>
+				<td></td>
 			
 			</tr>
-			<c:forEach items="${rooms }" var="room" varStatus="i"> 
+			<c:forEach items="${rooms }" var="room" varStatus="r"> 
 				<tr>
-				<td>${room.r_type }</td>
-				<td>${room.r_person }</td>
-				<td>${room.r_price }</td>
-				<td>
+				<td class="rtype"><input type="hidden" class="rtypehidden" value="${room.r_type }">${room.r_type }
+					<ul class="someitems">
+					<c:if test="${fn:contains(room.r_type, '디럭스')}">
+						<li>샤워기</li>
+						<li>전용 욕실</li>
+						<li>방음 시설</li>
+						<li>침대 옆 콘센트</li>
+						<li>엘리베이터로 위층 이동 가능</li>
+					</c:if>
+					<c:if test="${fn:contains(room.r_type, '패밀리')}">
+						<li>가족 객실</li>
+						<li>도시 전망</li>
+						<li>방음 시설</li>
+						<li>침대 옆 콘센트</li>
+						<li>엘리베이터로 위층 이동 가능</li>
+					</c:if>
+						<li>무료 Wi-Fi</li>
+						<li>화장실</li>
+						<li> TV</li>
+						<li>헤어드라이어</li>
+						<li>냉장고</li>
+						<li>난방 시설</li>
+						<li>에어컨</li>
+						<li>타월</li>
+						<li>슬리퍼</li>
+						</ul>
+				</td>
+				<td class="rperson">${room.r_person }</td>
+				<td class="rprice"><input type="hidden" name="r_price" value="${room.r_price }">${room.r_price }</td>
+				<td class="rselect">
 					<select class="selectroom">
-						<option selected>0
+						<option selected value="0">0
 					<c:forEach begin="0" end="${room.r_stock }" varStatus="i"> 
 						
 						<c:set var="price" value="${room.r_price }" />
@@ -359,13 +503,14 @@ h4 {
 						<c:set var="namy" value="${i.count }" />
 						<fmt:formatNumber value="${namy}" type="number" var="numberType" />
 					
-					
-						<option>${i.count }&nbsp;(${price * namy })
+						<option value="${price * namy }">${i.count }&nbsp;(${price * namy })
 					</c:forEach>
 					</select>
 				</td>
-				<td colspan="i">
-					<span class="totalprice"></span>
+				<td class="rtotal">
+					
+					<span class="totalprice${r.count }"></span>
+					
 					
 				</td>
 				
@@ -379,7 +524,10 @@ h4 {
 		
 		
 		</table>
-	
+		<input type="hidden" name="hname" value="${hotel.h_name }">
+		<input class="rtypename" type="hidden" name="r_type" >
+		<input class="totalprice" type="hidden" name="totalprice" >
+	</form>	
 	</div>
 	
 		

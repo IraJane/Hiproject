@@ -208,9 +208,9 @@ $(function(){
 
 			
 				<div id="person" class="searcharea-p">&nbsp;<i class="material-icons">face</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;성인&nbsp;:&nbsp;<span class="adult">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아동&nbsp;:&nbsp;<span class="child">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;객실&nbsp;:&nbsp;<span class="room" >0</span>&nbsp;</div>
-				<input type="hidden" name="adult" class="adult">
-				<input type="hidden" name="child" class="child">
-				<input type="hidden" name="room" class="room">
+				<input type="hidden" name="adult" class="adult" value="0">
+				<input type="hidden" name="child" class="child" value="0">
+				<input type="hidden" name="room" class="room" value="0">
 				
 				
 				

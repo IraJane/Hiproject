@@ -25,12 +25,7 @@ public class HotelDao {
 		return totalCount;
 	}
 	
-	
-	/*public List<Hotel> getHotelList() {
-		List<Hotel> hotelList=sqlSessionTemplate.selectList(namespace+".getHotelList"); 
-		return hotelList;
-	}*/
-	
+
 	
 	
 	
@@ -63,6 +58,9 @@ public class HotelDao {
 		Hotel hotel=sqlSessionTemplate.selectOne(namespace+".getHotelOne",num);
 		return hotel;
 	}
+	
+	
+	
 	
 	
 	

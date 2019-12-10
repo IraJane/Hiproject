@@ -72,7 +72,47 @@
 
 <div class="listOrders">
 
+
 이 호텔의 예약 내역은 일로 들어옴 
+<c:forEach items="${thisRoom }" var="room">
+<table>
+		<c:if test="${room.hname == hotel.h_name}">
+			<tr>
+				<td>
+					고객 이메일: ${room.oemail }
+				</td>
+				<td>
+					예약 일자: ${room.checkin }~${room.checkout }
+				</td>
+			</tr>
+			<tr>
+				<td>
+					인원: ${room.people }
+				</td>
+			</tr>
+			<tr>
+				<td>
+					고객 이메일: ${room.roomtype }
+				</td>
+			</tr>
+			<tr>
+				<td>
+					결제 금액: ${room.totalprice }
+				</td>
+			</tr>
+			<tr>
+				<td>
+					요구사항: ${room.comments }
+				</td>
+			</tr>
+			
+			<tr>
+			<button>예약확인</button>
+			</tr>
+		</c:if>
+
+</table>
+</c:forEach>
 
 </div>
 

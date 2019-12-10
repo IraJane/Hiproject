@@ -33,6 +33,7 @@ public class Hotel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 
 	public int getNum() {

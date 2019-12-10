@@ -28,8 +28,8 @@ import seller.model.Seller;
 @Controller
 public class HotelInsertController {
 	
-	private final String command="/insert.ho";
-	private final String getPage="hotelInsert";
+	private final String command="hotelInsert.ho";
+	private final String getPage="hotelInsertForm";
 	private final String gotoPage="redirect:/selMain.sel";
 	
 	@Autowired
@@ -64,7 +64,7 @@ public class HotelInsertController {
 			String breakfast=rooms.getBreakfast()[i];
 			String hname=hotel.getH_name();
 			
-			Room room=new Room(type,price,person,stock,breakfast,hname);
+			Room room=new Room(type,price,person,stock,breakfast,hname,num);
 			roomcnt+=roomDao.insertRoom(room);
 		}
 		System.out.println("객실 등록:" +roomcnt);

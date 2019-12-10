@@ -9,13 +9,41 @@ public class Room {
 	private String[] breakfast;
 	private int[] person;
 	private int[] stock;
-	
+	private int selnum;
+
+
 	private String r_type;
 	private int r_price;
 	private int r_person;
 	private int r_stock;
 	private String r_breakfast;
 	private String hname;
+	
+	
+	
+	
+	public Room(String[] type, int[] price, String[] breakfast, int[] person, int[] stock, int selnum, String r_type,
+			int r_price, int r_person, int r_stock, String r_breakfast, String hname) {
+		super();
+		this.type = type;
+		this.price = price;
+		this.breakfast = breakfast;
+		this.person = person;
+		this.stock = stock;
+		this.selnum = selnum;
+		this.r_type = r_type;
+		this.r_price = r_price;
+		this.r_person = r_person;
+		this.r_stock = r_stock;
+		this.r_breakfast = r_breakfast;
+		this.hname = hname;
+	}
+	public int getSelnum() {
+		return selnum;
+	}
+	public void setSelnum(int selnum) {
+		this.selnum = selnum;
+	}
 	public String[] getType() {
 		return type;
 	}
@@ -109,7 +137,7 @@ public class Room {
 	}
 	
 	
-	public Room(String r_type, int r_price, int r_person, int r_stock, String r_breakfast, String hname) {
+	public Room(String r_type, int r_price, int r_person, int r_stock, String r_breakfast, String hname,int selnum) {
 		super();
 		this.r_type = r_type;
 		this.r_price = r_price;
@@ -117,6 +145,7 @@ public class Room {
 		this.r_stock = r_stock;
 		this.r_breakfast = r_breakfast;
 		this.hname = hname;
+		this.selnum = selnum;
 	}
 	
 	
