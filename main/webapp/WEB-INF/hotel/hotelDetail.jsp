@@ -184,7 +184,7 @@
 					'<div class="totalreservate">'+total+'원'+
 					'<br><a>세금 및 기타 요금 포함</a>'+
 					'<ul><li>즉시 예약 확정</li><li>가입이 필요 없습니다</li><li>예약 수수료, 신용카드 수수료 없음!</li></ul>'+
-					'<button onclick="javascript:reservate()" >예약하기</button></div>');
+					'<button class="reservatebtn" onclick="javascript:reservate()" >예약하기</button></div>');
 			
 		//******************************예약하기 창으로 방 이름  넘기기********************************************
 			
@@ -279,7 +279,7 @@ h1{
 		padding:15px;
 	}
 	#hotelcomment{
-		background-color: #4587ffb0;
+		/* background-color: #4587ffb0; */
 		width: 95%;
 		padding: 10px;
 		margin:20px;
@@ -369,7 +369,8 @@ h4 {
     width:33.33333%;
 }
 .register-check-last {
-	border:none;
+	border-right: none !important;
+	
 }
 
 /******register table   부터 **********************************************/
@@ -377,7 +378,7 @@ table {
     width: 100%;
 }
 .rtype {
-	width: 30%;
+	width: 25%;
     
 }
 .rperson {
@@ -385,9 +386,12 @@ table {
 	
 }
 
-.rprice, .rselect,.rtotal{
+.rprice, .rselect{
 	width:20%;
 	
+}
+.rtotal{
+	width: 25%;
 }
 .rtr {
 	background: #2b76ffe0;
@@ -408,9 +412,29 @@ table {
 }
 
 .hotelComment-area{
-	margin:10px;
+    color: #ff6a00;
+    font-weight: 900;
+}
+.reservatebtn {
+	    border: none;
+    background: #0000ca;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
 }
 
+
+/************************detail    wrapper   **********************************/
+.detail-wrapper{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+.famous-wrapper {
+    width: 32.3333333333%;
+    
+}
 
 
 
@@ -435,7 +459,9 @@ table {
 	</div>
 	<hr>
 	<div id="hotelcomment">
-		<a class="hotelComment-area">${hotel.h_comment }</a> 
+		<c:if test="${hotel.h_nation == 'Korea' }"><a class="hotelComment-area">대한민국 추천 숙소</a></c:if><br>
+		<a>세련되고 현대적인 모든 객실에 에어컨, 40인치 평면 TV, 책상, 전용 금고, 무료 생수가 구비되어 있습니다. 일부 객실은 공항 활주로의 전망을 자랑합니다. 실내 욕실에는 온수 샤워 시설과 무료 세면도구가 완비되어 있습니다.</a>
+		<a>${hotel.h_comment }</a> 
 	</div>	
 	<hr>
 	<div id="hoteloptions">
@@ -509,7 +535,7 @@ table {
 						<li>침대 옆 콘센트</li>
 						<li>엘리베이터로 위층 이동 가능</li>
 					</c:if>
-						<li>무료 Wi-Fi</li>
+						<li>${hotel.h_internet }</li>
 						<li>화장실</li>
 						<li> TV</li>
 						<li>헤어드라이어</li>
@@ -538,7 +564,7 @@ table {
 				</td>
 				<td class="rtotal">
 					
-					<span class="totalprice${r.count }"></span>
+					<span class="totalprice${r.count }"></span> <!-- 여기에 나중에 크기 조절 하기  -->
 					
 					
 				</td>
@@ -558,6 +584,164 @@ table {
 		<input class="totalprice" type="hidden" name="totalprice" >
 	</form>	
 	</div>
+	
+	
+	
+	
+	<div class="detail-wrapper">
+	<h3>최고 인기 시설</h3>
+		<table>
+			<tr>
+			<td class="famous-wrapper">
+			<ul>
+				<li>욕실</li>
+				<li>화장지</li>
+				<li>린넨</li>
+				<li>타월</li>
+				<li>비데</li>
+				<li>욕조 또는 샤워기</li>
+				<li>슬리퍼</li>
+				<li>객실 내 전용 욕실</li>
+				<li>화장실</li>
+				<li>무료 세면도구</li>
+				<li>목욕 가운</li>
+				<li>헤어드라이어</li>
+				<li>욕조</li>
+				<li>샤워</li>
+			</ul>
+			
+			<ul>
+				<li>침실</li>
+				<li>옷장</li>
+				<li>긴 침대(2m 이상)</li>
+			</ul>
+			<ul>
+				<li>반려동물</li>
+				<li>애완동물 동반이 ${hotel.h_animal }합니다.</li>
+			</ul>
+		</td>
+			
+			
+			
+			
+		<td class="famous-wrapper">
+			<ul>
+				<li>미디어/테크놀로지</li>
+				<li>평면 TV</li>
+				<li>케이블 채널</li>
+				<li>위성 채널</li>
+				<li>전화기</li>
+				<li>TV</li>
+			</ul>
+			
+			<ul>
+				<li>식음료</li>
+				<li>생수</li>
+			</ul>
+			<ul>
+				<li>인터넷</li>
+				<li>
+					<c:if test="${fn:contains(hotel.h_internet,'무료') }">
+					 Wi-Fi(은)는 호텔 전 구역에서 무료입니다
+					</c:if>
+					
+					
+				</li>
+			</ul>
+			<ul>
+				<li>인터넷</li>
+				<li>비상 알람이 설치된 화장실</li>
+				<li>유닛 전역에서 휠체어 사용 가능</li>
+				<li>엘리베이터로 위층 이동 가능</li>
+				<li>지상층 전체 유닛</li>
+			</ul>
+			<ul>
+				<li>주차</li>
+				<li>
+					<c:if test="${fn:contains(hotel.h_parking,'무료') }">
+					호텔 내 (사전 예약 불필요) 전용 주차장이 무료로 이용 가능합니다.
+					</c:if>
+					<c:if test="${fn:contains(hotel.h_parking,'유료') }">
+					호텔 내 (사전 예약 필요) 전용 주차장이 유료로 이용 가능합니다.
+					</c:if>
+				
+				</li>
+			</ul>
+			<ul>
+				<li>리셉션 서비스</li>
+				<li>전용 체크인/체크아웃</li>
+				<li>수하물 보관소</li>
+				<li>환전</li>
+				<li>24시간 프런트 데스크</li>
+			</ul>
+			
+			
+			
+			</td>
+		
+		<td class="famous-wrapper">
+			
+			<ul>
+				<li>청소 서비스</li>
+				<li>하우스키핑 (매일)</li>
+				<li>다림질 서비스</li>
+				<li>드라이클리닝 </li>
+				<li>세탁 </li>
+			</ul>
+			<ul>
+				<li>비즈니스 시설</li>
+				<li>팩스/복사</li>
+				<li>비즈니스 센터</li>
+				<li>회의/연회 시설 </li>
+			</ul>
+			<ul>
+				<li>보안 시설</li>
+				<li>소화기</li>
+				<li>숙소 외부 CCTV</li>
+				<li>공용 공간 CCTV</li>
+				<li>화염 경보</li>
+				<li>보안 알람</li>
+				<li>24시간 보안</li>
+			</ul>
+			<ul>
+				<li>일반</li>
+				<li>에어컨</li>
+				<li>모닝콜 서비스</li>
+				<li>금연 객실</li>
+				<li>세탁 </li>
+			</ul>
+			
+		</td>
+
+		
+		</tr>	
+	
+	
+	</table>
+	
+	
+	
+	
+	
+	
+	
+	
+	</div>
+	
+	
+	<h3>이용 후기</h3>
+	<div>
+		<form>
+			<p><textarea placeholder="후기 입력"></textarea></p>
+			<input type="submit" value="등록">
+		
+		</form>
+	</div>
+	
+	<div>
+		후기들 여기에 들어옴 
+	</div>
+	
 	
 		
 </div>

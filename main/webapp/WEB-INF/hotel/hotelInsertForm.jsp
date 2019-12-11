@@ -30,6 +30,11 @@
 	});
 </script>
 <style type="text/css">
+body{
+	background:#e6e6e6cc;
+	margin:0;
+
+}
 
 input{
 	padding: 5px;
@@ -43,10 +48,11 @@ width: 100%;
 }
 
 .name-wrapper{
-	    width: 80%;
+    width: 80%;
     margin: 30px auto;
-    background: #e7f4ff;
+    background: #ffffff;
     text-align: center;
+    box-shadow: 0px 2px 5px 3px #bfbfbf;
 }
 .name-wrapper p {
 	padding:5px;
@@ -60,6 +66,7 @@ width: 100%;
     border-radius: 10px;
     color: white;
     width:25%;
+    margin: 15px;
 }
 
 .addbtn {
@@ -72,7 +79,6 @@ width: 100%;
 .submit-wrapper {
 
 width: 100%;
-    margin: 10px auto;
     text-align: center;
 }
 .text-wrapper{
