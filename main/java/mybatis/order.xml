@@ -12,8 +12,14 @@
 	
 	<select id="getorderlist" resultType="MyOrder">
 		select * from orderlist
-		where oemail = #{oemail}
+		
 	</select>
+	
+	<update id="changeChecking">
+		update orderlist 
+		set checker = 1
+		where onum = #{onum}
+	</update>
 
 
 </mapper>

@@ -187,7 +187,7 @@ header를 이곳에 추가
 			
 			
 			<c:forEach items="${hotelList  }" var="hotel" varStatus="rr">
-				<table>
+				<table class="tablelist">
 					<tr class="tablerow">
 						<td>
 							
@@ -195,8 +195,10 @@ header를 이곳에 추가
 									
 									<div class="img-only-wrap">
 									<c:forEach items="${hotel.images }" var="image" varStatus="i">
-										<img class="hotelimage hi-${i.count }"
-											src="<%=request.getContextPath() %>/resources/${hotel.h_name }/${image }">
+										<img  class="hotelimage hi-${i.count }"
+											src="<%=request.getContextPath() %>/resources/Hotelimages/${hotel.h_name }/${image }">
+											
+											
 										
 									</c:forEach>
 									</div>

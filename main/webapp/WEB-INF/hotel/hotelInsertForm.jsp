@@ -29,12 +29,78 @@
 		
 	});
 </script>
+<style type="text/css">
+
+input{
+	padding: 5px;
+}
+
+.total-wrapper {
+width: 100%;
+
+
+
+}
+
+.name-wrapper{
+	    width: 80%;
+    margin: 30px auto;
+    background: #e7f4ff;
+    text-align: center;
+}
+.name-wrapper p {
+	padding:5px;
+}
+
+
+.btn{
+	    border: none;
+    background: #001080;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    width:25%;
+}
+
+.addbtn {
+	background: #002bc7;
+    border: none;
+    color: white;
+    padding: 2px;
+}
+
+.submit-wrapper {
+
+width: 100%;
+    margin: 10px auto;
+    text-align: center;
+}
+.text-wrapper{
+	width: 80%;
+	margin:auto;
+}
+
+#roomtable {
+	margin: auto;
+}
+
+</style>
 </head>
 <body>
+
+<div class="total-wrapper">
 	<form action="hotelInsert.ho" method="post" enctype="multipart/form-data" id="hotelInsertForm"> 
+	<div class="name-wrapper">
 	<p>
 		<label for="h_name">호텔이름</label>
 		<input type="text" name="h_name">	
+	</p>
+	<p>
+		<label for="h_type">호텔유형</label>
+		<input type="radio" name="h_type" value="호텔" checked>호텔	
+		<input type="radio" name="h_type" value="아파트">아파트	
+		<input type="radio" name="h_type" value="모텔">모텔	
+		<input type="radio" name="h_type" value="게스트하우스">게스트하우스	
 	</p>
 	<p>
 		<label for="h_nation">국가</label>
@@ -49,18 +115,11 @@
 		<input type="text" name="h_address2">	
 	</p>
 	<p>
-		<label for="h_type">호텔유형</label>
-		<input type="radio" name="h_type" value="호텔" checked>호텔	
-		<input type="radio" name="h_type" value="아파트">아파트	
-		<input type="radio" name="h_type" value="모텔">모텔	
-		<input type="radio" name="h_type" value="게스트하우스">게스트하우스	
-	</p>
-	<p>
 		<label for="h_phone">호텔 전화번호</label>
 		<input type="text" name="h_phone" placeholder="02-123-1234">	
 	</p>
-	<p>
-		<label for="h_facilities">편의 시설</label>
+	<p class="facilities">
+		<label for="h_facilities">편의 시설</label><br>
 		<input type="checkbox" name="h_facilities" value="피트니스센터">피트니스센터	
 		<input type="checkbox" name="h_facilities" value="수영장">수영장
 		<input type="checkbox" name="h_facilities" value="카페">카페
@@ -68,7 +127,7 @@
 		<input type="checkbox" name="h_facilities" value="오락시설">오락시설
 		<input type="checkbox" name="h_facilities" value="사우나">사우나
 		<input type="checkbox" name="h_facilities" value="비즈니스센터">비즈니스센터
-		<input type="checkbox" name="h_facilities" value="물품보관소">물품보관소
+		<input type="checkbox" name="h_facilities" value="물품보관소">물품보관소<br>
 		<input type="checkbox" name="h_facilities" value="기념품가게">기념품가게
 		<input type="checkbox" name="h_facilities" value="안전금고">안전금고
 		<input type="checkbox" name="h_facilities" value="세탁실">세탁실
@@ -111,11 +170,14 @@
 		<label for="file">호텔 이미지</label>
 		<input multiple="multiple" type="file" name="file">
 	</p>
-	<textarea rows="7" cols="60" name="h_comment" form="hotelInsertForm" placeholder="추가설명"></textarea>
-	<p>
-		<label for="h_room_num">총 객실 수</label>
-		<input type="text" name="h_room_num" placeholder="10">
-	</p>
+	<div class="text-wrapper">
+		<textarea rows="7" cols="60" name="h_comment" form="hotelInsertForm" placeholder="추가설명"></textarea>
+		
+		<p>
+			<label for="h_room_num">총 객실 수</label>
+			<input type="text" name="h_room_num" placeholder="10">
+		</p>
+	</div>
 	<table id="roomtable">
 		<tr>
 			<th>객실 유형</th>
@@ -137,12 +199,16 @@
 			</select>
 			</td>
 			<td>
-				<button type="button" class="addbtn">객실추가</button>		
+				<button class="addbtn" type="button" class="addbtn">객실추가</button>		
 			</td>
 		</tr>
 	</table>
-	<input type="submit" value="호텔등록">
-	</form>
+	<div class="submit-wrapper">
+		<input class="btn" type="submit" value="호텔등록">
 	
+	</div>
+	</div>
+	</form>
+</div>
 </body>
 </html>

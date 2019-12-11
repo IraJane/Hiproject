@@ -20,10 +20,16 @@ public class OrderDao {
 		return cnt;
 	}
 
-	public List<Order> getOrderList(String oemail) {
+	public List<Order> getOrderList() {
 		// TODO Auto-generated method stub
-		List <Order> orderlist = sqlSessionTemplate.selectList(namespace+".getorderlist",oemail);
+		List <Order> orderlist = sqlSessionTemplate.selectList(namespace+".getorderlist");
 		return orderlist;
+	}
+
+	public int changeChecking(int onum) {
+		// TODO Auto-generated method stub
+		int cnt = sqlSessionTemplate.update(namespace + ".changeChecking",onum);
+		return cnt;
 	}
 	
 

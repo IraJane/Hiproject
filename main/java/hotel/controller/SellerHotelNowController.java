@@ -39,7 +39,7 @@ public class SellerHotelNowController {
 		List<Hotel> hodetail = hoDao.getList(num);
 		System.out.println(num +"," +email);
 		
-		List<Order> thisRoom = orderDao.getOrderList(email);
+		List<Order> thisRoom = orderDao.getOrderList();
 			
 		
 		

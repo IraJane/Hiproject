@@ -197,8 +197,7 @@
 
 			
 			
-			
-			
+		
 			
 			
 			
@@ -228,15 +227,42 @@
 			$('form[name=roomreservate]').submit();
 			
 		}	
+		
+		
+		
+		function clickRoomTypeinfo(){
+			
+			$("<div>").css({
+			  	"border": "1px solid #CCC",
+			    "width": "50%",
+			    height: "400px",
+			    position: "absolute",
+			    left: "100px",
+			    top: "50px",
+			    background: "#FFF",
+			    margin:'auto'
+			  }).html('<h1>fdfdf</h1>').appendTo(document.body);
+			
+		}
 
 </script>
 <style>
+body {
+	margin:0;
+}
+
+h1{
+	display: inline-block;
+}
 	.hoteltype{
-		font-size: 70%;
 		font-weight: lighter;
+    background: #bfbfbf;
+    color: white;
+    margin: 0;
+    border-radius: 5px;
 	}
 	#imageArea{
-		background-color: #D4F4FA;
+		background-color: #4587ffb0;
 		width: 95%;
 		
 		margin:20px;
@@ -253,9 +279,9 @@
 		padding:15px;
 	}
 	#hotelcomment{
-		background-color: #D4F4FA;
+		background-color: #4587ffb0;
 		width: 95%;
-		
+		padding: 10px;
 		margin:20px;
 		
 	}#hoteloptions{
@@ -311,7 +337,7 @@
 	
 	background: #ffa114ad;
     border-radius: 5px;
-    margin: 5px;
+    margin: 15px;
 	
 }
 
@@ -381,6 +407,9 @@ table {
     margin: 10px;
 }
 
+.hotelComment-area{
+	margin:10px;
+}
 
 
 
@@ -397,7 +426,7 @@ table {
 <div class="rightbar">
 <div>
 	<input type="hidden" name="num" value="${hotel.num }">
-	<div id="hotelname"><h2><span class="hoteltype">${hotel.h_type }&nbsp;&nbsp;&nbsp;</span>${hotel.h_name }</h2></div>
+	<div id="hotelname"><span class="hoteltype">${hotel.h_type }</span>&nbsp;&nbsp;<h1>${hotel.h_name }</h1></div>
 	<div id="hoteladdress"><p>${hotel.h_address2 } , ${hotel.h_address1 }, ${hotel.h_nation }</p></div>
 	<div id="imageArea">  
 		<c:forEach items="${hotel.images }" var="image">
@@ -406,11 +435,11 @@ table {
 	</div>
 	<hr>
 	<div id="hotelcomment">
-		${hotel.h_comment } 
+		<a class="hotelComment-area">${hotel.h_comment }</a> 
 	</div>	
 	<hr>
 	<div id="hoteloptions">
-		<h2 style="background-color: #EAEAEA">호텔 시설</h2>
+		<h2>호텔 시설</h2>
 		<p class="facilities"><span style="font-weight: bold">편의시설&nbsp;</span>${hotel.h_facilities}</p><hr style="margin:0; width: 95%;">
 		<p class="internet"><span style="font-weight: bold">인터넷&nbsp;&nbsp;&nbsp;&nbsp;</span>${hotel.h_internet}</p><hr style="margin:0;">
 		<p class="animal"><span style="font-weight: bold" >반려동물&nbsp;&nbsp;&nbsp;&nbsp;</span>${hotel.h_animal}</p><hr style="margin:0; ">
@@ -464,7 +493,7 @@ table {
 			</tr>
 			<c:forEach items="${rooms }" var="room" varStatus="r"> 
 				<tr>
-				<td class="rtype"><input type="hidden" class="rtypehidden" value="${room.r_type }">${room.r_type }
+				<td class="rtype"><input type="hidden" class="rtypehidden" value="${room.r_type }"><div onclick="clickRoomTypeinfo()">${room.r_type }</div>
 					<ul class="someitems">
 					<c:if test="${fn:contains(room.r_type, '디럭스')}">
 						<li>샤워기</li>
