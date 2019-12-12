@@ -4,20 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="seller.model.Seller">
   <insert id="insertData">
-  	insert into sellers values(seller_seq.nextval, #{email}, #{password}, #{phone}, #{name}, #{comnumber})
+  	insert into sellers values(seller_seq.nextval, #{s_email}, #{s_password}, #{s_phone}, #{s_name}, #{s_comnumber})
   </insert>
   
   <select id="getDetail" resultType="MySeller">
-  	select * from sellers where email like #{email} and password like #{password}
+  	select * from sellers where s_email like #{s_email} and s_password like #{s_password}
   </select>
   
   
   <update id="infoUpdate">
-  	update sellers set password=#{password}, phone=#{phone}, name=#{name}, comnumber=#{comnumber} where num like #{num}
+  	update sellers set s_password=#{s_password}, s_phone=#{s_phone}, s_name=#{s_name}, s_comnumber=#{s_comnumber} where s_num like #{s_num}
   
   </update>
   <delete id="deleteThis">
-  	delete from sellers where num = #{num}
+  	delete from sellers where s_num = #{s_num}
   </delete>
   
   

@@ -22,10 +22,10 @@ public class SellerDao {
 		return cnt;
 	}
 
-	public Seller getDetails(String email, String password) {
+	public Seller getDetails(String s_email, String s_password) {
 		Seller seller = new Seller();
-		seller.setEmail(email);
-		seller.setPassword(password);
+		seller.setS_email(s_email);
+		seller.setS_password(s_password);
 		// TODO Auto-generated method stub
 		Seller bean = sqlSessionTemplate.selectOne(namespace + ".getDetail", seller);
 		return bean;
@@ -37,9 +37,9 @@ public class SellerDao {
 		return cnt;
 	}
 
-	public int deleteThis(int num) {
+	public int deleteThis(int s_num) {
 		// TODO Auto-generated method stub
-		int cnt = sqlSessionTemplate.delete(namespace + ".deleteThis",num);
+		int cnt = sqlSessionTemplate.delete(namespace + ".deleteThis",s_num);
 		return cnt;
 	}
 	

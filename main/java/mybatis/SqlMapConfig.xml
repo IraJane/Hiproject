@@ -9,7 +9,8 @@
        <typeAlias type="hotel.model.Hotel" alias="MyHotel"/>
        <typeAlias type="admin.model.Admin" alias="MyAdmin"/>
        <typeAlias type="hotel.model.Room" alias="MyRoom"/>
-       <typeAlias type="order.model.Order" alias="MyOrder"/>
+       <typeAlias type="order.model.MainOrder" alias="MyMainOrder"/>
+       <typeAlias type="order.model.OrderDetail" alias="MyOrderDetail"/>
     </typeAliases>
       
    <mappers>
@@ -18,7 +19,8 @@
       <mapper resource="mybatis/admin.xml"></mapper>
       <mapper resource="mybatis/hotel.xml"></mapper>
       <mapper resource="mybatis/room.xml"/>
-      <mapper resource="mybatis/order.xml"/>
+      <mapper resource="mybatis/mainorder.xml"/>
+      <mapper resource="mybatis/orderdetail.xml"/>
    </mappers>
  
  </configuration>

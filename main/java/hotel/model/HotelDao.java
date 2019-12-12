@@ -19,24 +19,20 @@ public class HotelDao {
 	}
 	
 	
-	
 	public int getTotalCount() {
 		int totalCount=sqlSessionTemplate.selectOne(namespace+".getTotalCount");
 		return totalCount;
 	}
 	
-
 	
+	/*public List<Hotel> getHotelList() {
+		List<Hotel> hotelList=sqlSessionTemplate.selectList(namespace+".getHotelList"); 
+		return hotelList;
+	}*/
 	
-	
-	
-	
-	
-
-	public List<Hotel> selectAll(String area) {
+	public List<Hotel> selectAll(Search search) {
 		// TODO Auto-generated method stub
-		
-		List<Hotel> list = sqlSessionTemplate.selectList(namespace +".getHotelList", area);
+		List<Hotel> list = sqlSessionTemplate.selectList(namespace +".getHotelList", search); 
 		return list;
 	}
 
@@ -53,18 +49,16 @@ public class HotelDao {
 	}
 
 
-
-	public Hotel getHotelOne(int num) {
-		Hotel hotel=sqlSessionTemplate.selectOne(namespace+".getHotelOne",num);
+	public Hotel getHotelOne(int h_num) {
+		Hotel hotel=sqlSessionTemplate.selectOne(namespace+".getHotelOne",h_num);
 		return hotel;
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+	public int updateHotel(Hotel hotel) {
+		int cnt=sqlSessionTemplate.update(namespace+".updateHotel",hotel);
+		return cnt;
+	}
 	
 
 }

@@ -3,20 +3,37 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="hotel.model.Hotel">
-  	<insert id="insertHotel">
+  	<insert id="insertHotel" parameterType="MyHotel">
 		insert into hotel
-		values(hotel_seq.nextval,#{selNum},#{h_name},#{h_nation},#{h_address1},
+		values(hotel_seq.nextval,#{s_num},#{h_name},#{h_nation},#{h_address1},
 		#{h_address2},#{h_type},#{h_phone},#{h_room_num},#{h_facilities},#{h_internet},
 		#{h_animal},#{h_parking},#{h_smoke},#{h_language},#{h_image},
-		#{h_hotel_url},#{h_comment})  
+		#{h_hotel_url},#{h_grade},#{h_comment})  
+		<selectKey keyProperty="h_num" resultType="int" order="AFTER">
+			select hotel_seq.currval from dual
+		</selectKey>
 	</insert>
 	
 	
 	<select id="getHotelList" resultType="MyHotel">
 		select * from hotel
-		where h_nation like #{area}
-		
-		
+		<if test="area!=null and !area.equals('')">
+			where h_address1 like #{area}
+			<if test="filterType!=null and !filterType.equals('')">
+				and
+				<foreach collection="filters" item="item" separator="or"  >
+				 	h_type=#{item}
+				</foreach> 
+			</if>  
+		</if>
+		<if test="area==null or area.equals('')">
+			<if test="filterType!=null and !filterType.equals('')">
+				where
+				<foreach collection="filters" item="item" separator="or"  >
+				 	h_type=#{item}
+				</foreach>   
+			</if>  
+		</if>
 	</select>
 	
 	<select id="detailData" resultType="MyHotel">
@@ -25,7 +42,7 @@
 	
 	<select id="getThisList" resultType="MyHotel">
 		select * from hotel 
-		where selnum = #{num}
+		where s_num = #{num}
 	
 	</select>
 	
@@ -35,8 +52,17 @@
 	</select>
 	
 	<select id="getHotelOne" resultType="MyHotel">
-		select * from hotel where num=#{num}
+		select * from hotel where h_num=#{h_num}
 	</select>
 	
+	
+	<update id="updateHotel">
+		update hotel
+		set h_name=#{h_name}, h_nation=#{h_nation}, h_address1=#{h_address1},
+		h_address2=#{h_address2},h_type=#{h_type}, h_phone=#{h_phone},h_room_num=#{h_room_num},h_facilities=#{h_facilities},h_internet=#{h_internet},
+		h_animal=#{h_animal},h_parking=#{h_parking},h_smoke=#{h_smoke},h_language=#{h_language},h_image=#{h_image},
+		h_hotel_url=#{h_hotel_url}, h_comment=#{h_comment}
+		where h_num=#{h_num}
+	</update>
   
   </mapper>

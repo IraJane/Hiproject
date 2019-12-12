@@ -12,11 +12,12 @@ import hotel.model.Hotel;
 import hotel.model.HotelDao;
 import hotel.model.Room;
 import hotel.model.RoomDao;
+import hotel.model.Search;
 
 @Controller
 public class HotelDetailController {
 
-	private final String command="/hotelDetail.ho";
+	private final String command="hotelDetail.ho";
 	private final String getPage="hotelDetail";
 	
 	@Autowired
@@ -26,26 +27,27 @@ public class HotelDetailController {
 	private RoomDao roomDao;
 	
 	@RequestMapping(command)
-	public String hotelDetail(@RequestParam("num") int num,
-			@RequestParam(value="area",required=false) String area, 
-			@RequestParam(value="checkin",required=false) String checkin,
-			@RequestParam(value="checkout",required=false) String checkout,
-			@RequestParam(value="adult",required=false) String adult,
-			@RequestParam(value="child",required=false) String child,
-			@RequestParam(value="room",required=false) String room,
+	public String hotelDetail(@RequestParam("h_num") int h_num,Search search,
 			Model model) {
 		
-		System.out.println(area + checkin + checkout +","+  "a:"+ adult +  "a:"+  child +  "a:"+  room);
+		System.out.println(h_num);
+		System.out.println("area:"+search.getArea()+","+"checkin:"+search.getCheckin()+","+"checkout:"+search.getCheckout()+","+"adult:"+search.getAdult()+","
+				+"child:"+search.getChild()+","+"room:"+search.getRoom()+","+
+				"searchas:"+search.getSearchas()+","+"filterType:"+search.getFilterType() 
+				);
 		
 		
-		Hotel hotel=hotelDao.getHotelOne(num);
+		Hotel hotel=hotelDao.getHotelOne(h_num);
+		
 		List<Room> rooms=roomDao.getRoomList(hotel);
 		hotel.setRooms(rooms);
 		hotel.setImages(hotel.getH_image().split(";"));
 		
+		model.addAttribute("search",search);
 		model.addAttribute("hotel",hotel);
 		model.addAttribute("rooms",rooms);
-		
+		System.out.println(rooms);
+		System.out.println("detail 지나감");
 		return getPage;
 	}
 }

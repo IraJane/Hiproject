@@ -39,7 +39,7 @@ public class SellerLoginController {
 		System.out.println("id:" + seller);
 
 
-		Seller login = selDao.getDetails(seller.getEmail(), seller.getPassword());
+		Seller login = selDao.getDetails(seller.getS_email(), seller.getS_password());
 		System.out.println("login:"+login);
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter writer;

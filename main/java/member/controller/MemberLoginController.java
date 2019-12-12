@@ -1,7 +1,6 @@
 package member.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -33,19 +32,14 @@ public class MemberLoginController {
 	@RequestMapping(value=command, method=RequestMethod.POST)
 	public ModelAndView login(Member member, HttpServletResponse response,
 			HttpSession session) throws IOException {
+		//System.out.println("member.getM_email() : " + member.getM_email());
 		ModelAndView mav = new ModelAndView();
 		
 		Member login = memDao.login(member);
+		//System.out.println("login.getM_password() : " + login.getM_password());
+	
+		if(login.getM_email() == null) {
 		
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter writer;
-		writer = response.getWriter();
-		
-		if(login == null) {
-			writer.print("<script type='text/javascript'>");
-			writer.print("alert('아이디 혹은 비밀번호가 틀립니다')");
-			writer.print("</script>");
-			writer.flush();
 			mav.setViewName(getPage);
 			return mav;
 			
@@ -58,6 +52,7 @@ public class MemberLoginController {
 		
 		else {
 			session.setAttribute("loginfo", login);
+			
 			mav.setViewName(goPage);
 			return mav;
 		}

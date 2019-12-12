@@ -8,75 +8,94 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
 public class Seller {
-	private int num;
+	private int s_num;
 	@Email(message="이메일 형태로 입력해주세요")
-	private String email;
+	private String s_email;
 	
 	@NotEmpty(message="비밀번호를 입력해주세요")
-	private String password;
+	private String s_password;
 	
 	@NotEmpty(message="이름을 입력해주세요")
-	private String name;
+	private String s_name;
 	
 	@Pattern(regexp="^[0-9]+$", message="숫자만 입력해주세요")
 	@Size(min=10, max=11, message="전화번호양식에 부적합합니다")
-	private String phone;
+	private String s_phone;
 	
 	@Size(min=10, max=10, message="숫자 10자를 입력해주세요")
-	private String comnumber;
-	public int getNum() {
-		return num;
+	private String s_comnumber;
+
+	public int getS_num() {
+		return s_num;
 	}
-	public void setNum(int num) {
-		this.num = num;
+
+	public void setS_num(int s_num) {
+		this.s_num = s_num;
 	}
-	public String getEmail() {
-		return email;
+
+	public String getS_email() {
+		return s_email;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setS_email(String s_email) {
+		this.s_email = s_email;
 	}
-	public String getPassword() {
-		return password;
+
+	public String getS_password() {
+		return s_password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public void setS_password(String s_password) {
+		this.s_password = s_password;
 	}
-	public String getName() {
-		return name;
+
+	public String getS_name() {
+		return s_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setS_name(String s_name) {
+		this.s_name = s_name;
 	}
-	public String getPhone() {
-		return phone;
+
+	public String getS_phone() {
+		return s_phone;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+
+	public void setS_phone(String s_phone) {
+		this.s_phone = s_phone;
 	}
-	public String getComnumber() {
-		return comnumber;
+
+	public String getS_comnumber() {
+		return s_comnumber;
 	}
-	public void setComnumber(String comnumber) {
-		this.comnumber = comnumber;
+
+	public void setS_comnumber(String s_comnumber) {
+		this.s_comnumber = s_comnumber;
 	}
-	public Seller(int num, String email, String password, String name, String telephone, String comnumber) {
+
+	public Seller(int s_num, String s_email, String s_password, String s_name, String s_phone, String s_comnumber) {
 		super();
-		this.num = num;
-		this.email = email;
-		this.password = password;
-		this.name = name;
-		this.phone = phone;
-		this.comnumber = comnumber;
+		this.s_num = s_num;
+		this.s_email = s_email;
+		this.s_password = s_password;
+		this.s_name = s_name;
+		this.s_phone = s_phone;
+		this.s_comnumber = s_comnumber;
 	}
+
 	public Seller() {
 		super();
 	}
+
 	@Override
 	public String toString() {
-		return "Seller [num=" + num + ", email=" + email + ", password=" + password + ", name=" + name + ", phone="
-				+ phone + ", comnumber=" + comnumber + "]";
+		return "Seller [s_num=" + s_num + ", s_email=" + s_email + ", s_password=" + s_password + ", s_name=" + s_name
+				+ ", s_phone=" + s_phone + ", s_comnumber=" + s_comnumber + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

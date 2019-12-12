@@ -1,14 +1,13 @@
 package member.controller;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.model.Member;
@@ -19,7 +18,9 @@ public class MemberInfoController {
 	private final String command = "info.mem";
 	private final String command2 = "update.mem";
 	private final String command3 = "delete.mem";
+	private final String command4 = "deleteConfirm.mem";
 	private final String getPage = "memberInfoForm";
+	private final String getPage2 = "memberDeleteForm";
 	private final String goPage = "redirect:/main.jsp";
 	
 	@Autowired
@@ -63,17 +64,41 @@ public class MemberInfoController {
 		return mav;
 	}
 	
-	
 	@RequestMapping(command3)
 	public String delete(
-			@RequestParam(value="m_email") String m_email,
-			HttpSession session
+			HttpSession session, Model model
 			) {
+		Member member = (Member) session.getAttribute("loginfo");
 		
-		memDao.delete(m_email);
+		model.addAttribute("member", member);
+		
+		return getPage2;
+	}
+	
+	@ResponseBody
+	@RequestMapping(command4)
+	public String deleteConfirm(
+			@RequestParam(value="m_email") String m_email,
+			@RequestParam(value="m_password") String m_password,
+			HttpSession session, Model model
+			) {
+
+		String success = "1";
+		String error = null;
+
+		
+		Member member = (Member) session.getAttribute("loginfo");
+		
+		String password = member.getM_password();
+		
+		if(password.equals(m_password)) {
+		memDao.delete(member);
 		
 		session.invalidate();
 		
-		return goPage;
+		return success;
+		} else {
+			return error;
+		}
 	}
 }

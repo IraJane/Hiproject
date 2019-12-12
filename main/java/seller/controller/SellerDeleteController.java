@@ -19,10 +19,10 @@ public class SellerDeleteController {
 	
 	
 	@RequestMapping(commend)
-	public String delete(@RequestParam("num") int num,HttpSession session) {
-		System.out.println("delete:"+ num);
+	public String delete(@RequestParam("num") int s_num,HttpSession session) {
+		System.out.println("delete:"+ s_num);
 		
-		int cnt = seldao.deleteThis(num);
+		int cnt = seldao.deleteThis(s_num);
 		System.out.println("cnt:" + cnt);
 		session.invalidate();
 		return gotoPage;

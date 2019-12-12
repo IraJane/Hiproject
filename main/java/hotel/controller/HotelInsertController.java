@@ -6,12 +6,11 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +27,7 @@ import seller.model.Seller;
 @Controller
 public class HotelInsertController {
 	
-	private final String command="hotelInsert.ho";
+	private final String command="/hotelInsert.ho";
 	private final String getPage="hotelInsertForm";
 	private final String gotoPage="redirect:/selMain.sel";
 	
@@ -50,28 +49,16 @@ public class HotelInsertController {
 	public String insertPost(Room rooms,Hotel hotel,
 			MultipartHttpServletRequest mpfRequest,
 			HttpSession session) {
-		
+				
 		Seller seller=(Seller)session.getAttribute("loginfo");
-		int num=seller.getNum();
-		hotel.setSelNum(num);
+		int num=seller.getS_num();
+		hotel.setS_num(num);
 		
-		int roomcnt=0;
-		for(int i=0;i<rooms.getType().length;i++) {
-			String type=rooms.getType()[i];
-			int price=rooms.getPrice()[i];
-			int person=rooms.getPerson()[i];
-			int stock=rooms.getStock()[i];
-			String breakfast=rooms.getBreakfast()[i];
-			String hname=hotel.getH_name();
-			
-			Room room=new Room(type,price,person,stock,breakfast,hname,num);
-			roomcnt+=roomDao.insertRoom(room);
-		}
-		System.out.println("객실 등록:" +roomcnt);
 		
 		String filePath=application.getRealPath("/resources/Hotelimages/"+hotel.getH_name());
 		
 		List<MultipartFile> fileList=mpfRequest.getFiles("file");
+
 		
 		File file=new File(filePath);
 		System.out.println(filePath);
@@ -94,6 +81,21 @@ public class HotelInsertController {
 		hotel.setH_image(image);
 		int hotelcnt=hotelDao.insertHotel(hotel);
 		System.out.println("호텔등록:"+hotelcnt);
+		
+		int roomcnt=0;
+		for(int i=0;i<rooms.getType().length;i++) {
+			String type=rooms.getType()[i];
+			int price=rooms.getPrice()[i];
+			int person=rooms.getPerson()[i];
+			int stock=rooms.getStock()[i];
+			String breakfast=rooms.getBreakfast()[i];
+			System.out.println(hotel.getH_num());
+			int h_num=hotel.getH_num();
+			
+			Room room=new Room(type,price,person,stock,breakfast,h_num);
+			roomcnt+=roomDao.insertRoom(room);
+		}
+		System.out.println("객실 등록:" +roomcnt);
 		
 		return gotoPage;
 	}

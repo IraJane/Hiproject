@@ -1,5 +1,9 @@
 package hotel.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import hotel.model.Hotel;
 import hotel.model.HotelDao;
 import hotel.model.Room;
 import hotel.model.RoomDao;
-import member.model.Member;
+import hotel.model.Search;
 
 @Controller
 public class ReservateThisController {
@@ -27,37 +32,60 @@ public class ReservateThisController {
 	
 	
 	@RequestMapping(commend)
-	public String reservate (@RequestParam("totalprice") String totalprice,
-			@RequestParam(value="checkin",required=false) String checkin,
-			@RequestParam(value="checkout",required=false) String checkout,
-			@RequestParam(value="adult",required=false) String adult,
-			@RequestParam(value="child",required=false) String child,
-			Room room,Model model,HttpSession session) {
+	public String reservate (@RequestParam("h_num") int h_num,@RequestParam("whichrooms") String whichrooms,
+			@RequestParam("howmanyrooms") String howmanyrooms,
+			Room room,Search search,Model model,HttpSession session) {
 		
-		Member login = (Member) session.getAttribute("loginfo");
-		System.out.println(login);
+		/*Member login = (Member) session.getAttribute("loginfo");
+		System.out.println(login);*/
+		System.out.println("h_num:"+h_num);
 		
-		System.out.println("totalprice"+totalprice);
-		System.out.println("rb:"+room+adult+child);
-		model.addAttribute("totalprice",totalprice);
-		model.addAttribute("checkin",checkin);
-		model.addAttribute("checkout",checkout);
-		model.addAttribute("adult",adult);
-		model.addAttribute("child",child);
 		
-		int kid = Integer.parseInt(child);
-		int people = Integer.parseInt(adult);
+		
+		Hotel hotel =hotelDao.getHotelOne(h_num);
 		
 		
 		
 		
+		System.out.println(whichrooms + ";" + howmanyrooms);
 		
-		if(kid>1) {
-			int a = kid/2;
-			people = people + a;
-			model.addAttribute("people",people);
+		String[] aa = whichrooms.split(","); //방번호	
+		String[] bb = howmanyrooms.split(",");  //방 갯수 
+		/*for(String th:a) {
+			System.out.println("th:"+th);
+			
+		}*/
+		
+		Map<String, String> rooms = new HashMap<String, String>();
+		for(int i = 1;i<aa.length;i++) {
+			
+			String r_num = aa[i];
+			String howmany = bb[i];
+			
+			rooms.put(r_num, howmany);
+			model.addAttribute("rooms",rooms);
+			System.out.println("rooms:"+rooms);
 			
 		}
+		
+		List<Room> list = roomDao.getRoomAllList();
+		model.addAttribute("list",list);
+		System.out.println(list.size());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		model.addAttribute("hotel",hotel);
+		model.addAttribute("search",search);
+	/*	model.addAttribute("login",login);*/
 		
 		
 		

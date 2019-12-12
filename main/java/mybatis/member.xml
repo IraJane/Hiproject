@@ -20,7 +20,7 @@
 	
 	<delete id="delete">
 		delete members
-		where m_email = #{m_email}
+		where m_email = #{m_email} and m_password=#{m_password}
 	</delete>
 	
 	<update id="update">

@@ -15,6 +15,7 @@ import hotel.model.Hotel;
 import hotel.model.HotelDao;
 import hotel.model.Room;
 import hotel.model.RoomDao;
+import hotel.model.Search;
 
 @Controller
 public class HotelSearchController {
@@ -30,23 +31,15 @@ public class HotelSearchController {
 	
 	
 	@RequestMapping(commend)
-	public String search (HttpServletRequest request,@RequestParam(value="area",required=false) String area, 
-			@RequestParam(value="checkin",required=false) String checkin,
-			@RequestParam(value="checkout",required=false) String checkout,
-			@RequestParam(value="adult",required=false) String adult,
-			@RequestParam(value="child",required=false) String child,
-			@RequestParam(value="room",required=false) String room,
+	public String search (HttpServletRequest request,Search search,
 			Model model,HttpSession session) {
 		
-		System.out.println(area + checkin + checkout +","+  "a:"+ adult +  "a:"+  child +  "a:"+  room);
+
+		System.out.println("area:"+search.getArea()+","+"checkin:"+search.getCheckin()+","+"checkout:"+search.getCheckout()+","+"adult:"+search.getAdult()+","
+				+"child:"+search.getChild()+","+"room:"+search.getRoom()+","+
+				"searchas:"+search.getSearchas()+","+"filterType:"+search.getFilterType() 
+				);
 		
-		
-		model.addAttribute("area",area);
-		model.addAttribute("checkin",checkin);
-		model.addAttribute("checkout",checkout);
-		model.addAttribute("adult",adult);
-		model.addAttribute("child",child);
-		model.addAttribute("room",room);
 
 		
 		
@@ -55,7 +48,14 @@ public class HotelSearchController {
 		System.out.println("총 호텔 개수:"+totalCount);
 		
 		
+		if(search.getFilterType()!=null) {
+			String[] filters=search.getFilterType().split(",");
+			search.setFilters(filters);
+		}
 		
+		model.addAttribute("search", search);
+				
+		List<Hotel> hotelList=hoDao.selectAll(search); 
 		
 		
 		
@@ -66,7 +66,7 @@ public class HotelSearchController {
 		
 		
 		
-		List<Hotel> hotelList=hoDao.selectAll(area);
+		
 		System.out.println(hotelList);
 		for(int i=0;i<hotelList.size();i++) {
 			String[] images=hotelList.get(i).getH_image().split(";");
