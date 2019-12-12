@@ -4,6 +4,13 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+function change(){
+	location.href="<%=request.getContextPath() %>/selMain.sel";
+	
+}
+
+</script>
 
 <style>
 body {
@@ -43,45 +50,45 @@ height: 700px;
 
 
 <div class="container">
-<a class="btn btn-default" href="<%=request.getContextPath() %>/selMain.sel">메인으로</a>
+<div class="btn btn-default" onclick="change()">메인으로</div>
 <form:form commandName="sel" action="selInfo.sel" method="post">
-<input type="hidden" name="num" value="${seller.num }">
-<input type="hidden" name="email" value="${seller.email }">
+<input type="hidden" name="s_num" value="${seller.s_num }">
+<input type="hidden" name="s_email" value="${seller.s_email }">
 	<div class="form-horizontal">
 		<div>
 			<p class="form-group">아이디</p>
-			<p>${seller.email }</p>
+			<p>${seller.s_email }</p>
 
 		</div>
 		<div>
 			<p>현재 비밀번호</p>
-			<p><input class="form-control" type="password" name="password" value="${seller.password }" readonly><form:errors class="error" path="password"/></p>
+			<p><input class="form-control" type="password" name="s_password" value="${seller.s_password }" readonly><form:errors class="error" path="s_password"/></p>
 
 		</div>
 		<div>
 			<p>비밀번호 변경</p>
-			<p ><input class="form-control" type="password" name="password" value=""><form:errors class="error" path="password"/></p>
+			<p ><input class="form-control" type="password"  value=""></p>
 
 		</div>
 		<div>
 			<p>비밀번호 확인</p>
-			<p><input class="form-control" type="password" name="password-check" value=""></p>
+			<p><input class="form-control" type="password"  value=""></p>
 			<p><span class="message"></span></p>
 		</div>
 		<div>
 			<p>이름</p>
-			<p><input class="form-control" type="text" name="name" value="${seller.name }"><form:errors class="error" path="name"/>
+			<p><input class="form-control" type="text" name="s_name" value="${seller.s_name }"><form:errors class="error" path="s_name"/>
 			</p>
 
 		</div>
 		<div>
 			<p>전화번호</p>
-			<p><input class="form-control" type="text" name="phone" value="${seller.phone }"><form:errors class="error" path="phone"/></p>
+			<p><input class="form-control" type="text" name="s_phone" value="${seller.s_phone }"><form:errors class="error" path="s_phone"/></p>
 
 		</div>
 		<div>
 			<p>사업자번호</p>
-			<p><input class="form-control" type="text" name="comnumber" value="${seller.comnumber }"><form:errors class="error" path="comnumber"/></p>
+			<p><input class="form-control" type="text" name="s_comnumber" value="${seller.s_comnumber }"><form:errors class="error" path="s_comnumber"/></p>
 
 		</div>
 
@@ -92,8 +99,8 @@ height: 700px;
 
 	</div>
 <div class="col-md-8">
-	<input class="btn btn-primary" type="submit" value="수정하기">
-	<a class="btn btn-default" href="<%=request.getContextPath() %>/selDelete.sel?num=${seller.num }">탈퇴하기</a>
+	<input class="btn btn-primary"  type="submit" value="수정하기">
+	<a class="btn btn-default" href="<%=request.getContextPath() %>/selDelete.sel?num=${seller.s_num }">탈퇴하기</a>
 </div>
 </form:form>
 </div>

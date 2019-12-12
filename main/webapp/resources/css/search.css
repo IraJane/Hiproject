@@ -8,7 +8,7 @@ body {
 h4 {
 	font-size: 22px;
 	margin: 0px;
-    background: #ff5919;
+    background: #febb02;
     padding: 9px;
     border-radius: 5px;
 }
@@ -17,6 +17,9 @@ table {
     margin: 10px 5px;
     border: 1px solid #c3c3c3;
     border-radius: 5px;
+}
+.ui-datepicker-calendar {
+	display:block;
 }
 
 .hotelimage {
@@ -47,19 +50,23 @@ table {
 
 
 .leftbar {
-	width : 25%;
+	width : 20%;
 	height: auto;
-	border:1px solid green;
 	margin-left: 30px;
 }
 
 
 .rightbar{
-	width: 70%;
+	width: 77%;
 	height:auto;
 	border: 2px solid #b7b7b7;
 	float:right;
 	border-radius:5px;
+}
+.bigtitle-wrap {
+border-bottom: 1px dotted #b3b3b3;
+    width: 99%;
+    margin: auto;
 }
 
 .rowfilter {
@@ -72,9 +79,8 @@ table {
 
 .leftSearch-wrap {
 	
-	background: #ffa114ad;
+    background: #ffe0b1;
     border-radius: 5px;
-    margin: 5px;
 	
 }
 
@@ -153,6 +159,11 @@ table {
 }
 
 
+.filterType{
+	margin: 10px;
+}
+
+
 
 
 
@@ -183,20 +194,68 @@ table {
 
 .mainsubmitbtn{
 	border: none;
-    background: #ff501b;
+    background: #040cf1;
     margin: 9px 70%;
     border-radius: 5px;
-    font-size: 30px;
+    font-size: 25px;
+    padding: 5px;
+    color: white;
 }
 .mainsubmitbtn:hover {
-	background: #e47b31;
+    background: #002e94;
 }
-.leftbar input {
-	    padding: 5px;
+.leftbar .inputbox {
+ padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.adultselect {
+    width: 80%;
+    border: none;
+    padding: 5px;
+    background: white;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 10px;
+}
+.crselect{
+	width: 39%;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.searchinputSpan {
+	font-size: 12px;
 }
 
 
 
+
+
+
+/****달ㄹㄹㄹ력*****/
+.ui-widget-content {
+	border:1px solid #4f99ff;/*{borderColorContent}; */
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+	color:#003eaf/*{fcDefault}*/;
+	border:none;
+	
+}
+.ui-datepicker .ui-datepicker-header{
+	    background: #8fbcff;
+}
+
+
+
+/*************아래 필터링****/
+.leftFilter-wrap {
+	border: 1px solid #adadad;
+    border-radius: 3px;
+}
 
 
 

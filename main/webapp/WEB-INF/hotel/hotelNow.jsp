@@ -14,7 +14,6 @@ body {
 	padding:0;
 	
 }
-
 h4{
     background: #0300a2;
     border-radius: 5px;
@@ -23,15 +22,12 @@ h4{
     padding: 10px;
     color: white;
 }
-
 .table {
 	    background: #cccccc82;
     width: 98%;
     margin: 10px auto;
     border-radius:5px;
 }
-
-
 .listTable {
 	width: 100%;
     border: 2px solid #b5b4b4;
@@ -43,14 +39,11 @@ h4{
     border: 1px solid #cccccc;
     text-align: center;
  	
-
 }
-
 .total-wrapper {
 	width: 80%;
 	margin:auto;
 }
-
 .h_nameDetail {
 	font-size:30px;
 	color:blue;
@@ -63,17 +56,13 @@ h4{
     font-size: 20px;
     padding: 5px;
 }
-
 .updatedeletebtn {
 	float: right;
 }
 .updatedeletebtn a{
-
     color:black;
     text-decoration:none;
-
 }
-
 .checkCheckin {
 	background: #00a200;
     border-radius: 5px;
@@ -81,14 +70,9 @@ h4{
     font-size: 15px;
     border: none;
 }
-
 .checkForm{
 	margin: 0px;
 }
-
-
-
-
 </style>
 	
 
@@ -130,10 +114,9 @@ h4{
 			</tr>
 			<tr>
 
-
 				<td colspan="2" class="updatedeletebtn">
-				<a href="#">수정하기</a>&nbsp;&nbsp;
-				<a href="#">삭제하기</a></td>
+				<a href="updateHotel.ho?h_num=${hotel.h_num }">수정하기</a>&nbsp;&nbsp;
+				<a href="deleteHotel.ho">삭제하기</a></td>
 			</tr>
 		</table>
 
@@ -144,7 +127,7 @@ h4{
 		<c:forEach items="${thisRoom }" var="room">
 
 				<table class="table">
-					<c:if test="${room.hname == hotel.h_name}">
+					<c:if test="${room.h_num == hotel.h_num}"><!-- 여기서 오류 남 order 부분 고치고 보기  -->
 						<tr>
 							<td>고객정보: ${room.oemail }</td>
 							<td>영문 이름: ${room.oname }</td>
@@ -196,17 +179,3 @@ h4{
 </c:forEach>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

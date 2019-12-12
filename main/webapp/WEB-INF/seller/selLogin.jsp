@@ -63,8 +63,8 @@ float:left;
 <div class="form-wrapper">
 <form action="selLogin.sel" method="post">
 
-	<span>이메일</span> <br><input type="text" name="email" ><br>
-	<span>비밀번호</span> <br><input type="password" name="password"><br>
+	<span>이메일</span> <br><input type="text" name="s_email" ><br>
+	<span>비밀번호</span> <br><input type="password" name="s_password"><br>
 	<span class="wrong"></span><br>
 	<input class="submitbtn" type="submit" value="로그인"><br>
 

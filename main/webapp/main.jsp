@@ -149,6 +149,24 @@ $(function(){
 </script>
 
 
+<script type="text/javascript">
+function login() {
+	var popupX = (window.screen.width/2)-(500/2);
+	var popupY = (window.screen.height/2)-(500/2);
+	
+	window.open(	
+			'login.mem','_blank','height=500, width=500, toolbar=no, menubar=no, location=no, scrollbars=no, status=no, resizable=no, fullscreen=no, channelmode=yes, left='+ popupX +', top='+ popupY
+			); return false
+}
+function logout() {
+	location.href="logout.mem";
+	alert("로그아웃 되었습니다");
+}
+</script>
+
+
+
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -157,7 +175,38 @@ $(function(){
 <link href="<c:url value="/css/test.css" />" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+<style>
+/***drop   *********************************************/
+.drop {
+	position: relative;
+	display: inline-block;
+	float: right;
+	margin: 20px;
+}
+.drop-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.drop-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.drop-content a:hover {background-color: #f1f1f1}
+.drop:hover .drop-content {
+  display: block;
+}
+.drop:hover .drop span {
+  background-color: #3e8e41;
+}
 
+
+</style>
 
 
 
@@ -171,15 +220,25 @@ $(function(){
 <header class="main-menu">
 		<a href="main.jsp" class="main">호텔로고자리</a> 
 		<c:if test="${sessionScope.loginfo == null }">
-			<a class="main-login" href="register.mem" style="float:right; margin:20px;">회원가입</a>
-			<a class="main-login" href="login.mem" style="float:right; margin:20px;">로그인</a>
+			<a class="main-login" href="register.mem" >회원가입</a>
+			<a href="#" onclick="login()" class="main-login">로그인</a>
 		</c:if>
 		<c:if test="${sessionScope.loginfo != null }">
-			<a href="logout.mem" style="float:right; margin:20px;">로그아웃</a>
-			<a href="info.mem" style="float:right; margin:20px;">내 정보</a>
+			<a href="#" onclick="logout()" class="main-login" >로그아웃</a>
+			<span></span>
+			<div class="drop">
+				<span style="color:white">"${sessionScope.loginfo.m_name }"</span>
+				<div class="drop-content">
+					<a href="info.mem">내 정보</a> 
+					<a href="memberReservationForm.der">내 예약 현황</a>
+				</div>
+			</div>
+			
+		
 		</c:if>
 	
 		<a class="mainright" href="selMain.sel">판매자</a>
+		<a class="mainright" href="#">고객센터</a>
 	
 </header>
 	

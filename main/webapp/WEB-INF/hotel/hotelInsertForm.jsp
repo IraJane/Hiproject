@@ -7,12 +7,20 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+	/* function fileDelete(index){
+		selectFiles.splice(index,1);
+		var img_id="#img_id_"+index;
+		$(img_id).remove();
+	} */
+	/* id="img_id_'+index+'" */
+/* 	<a href="javascript:void(0);" onclick="fileDelete('+index+')">삭제</a> */
+	/* var selectFiles=[]; */
 	$(function(){
 		var str="<tr><td><input type='text' name='type'></td>"+
 		"<td><input type='text' name='person'></td>" +
 		"<td><input type='text' name='price'></td>" +
 		"<td><input type='text' name='stock'></td>" +
-		"<td>"+
+		"<td>"+  
 		"<select name='breakfast'>" +
 			"<option value='포함'>포함</option>" +
 			"<option value='미포함'>미포함</option>" +
@@ -26,87 +34,41 @@
 			$(this).closest("tr").remove();
 		});
 		
+		$("input[type='file']").change(function(e){
+			$("#preview").empty();
+			var files=e.target.files; //fileList 객체
+			var arr=Array.prototype.slice.call(files);
+			preview(arr);
+		});
+		function preview(arr){
+			arr.forEach(function(f){
+				var fileName=f.name;
+				if(fileName.length>10){ 
+					fileName=fileName.substring(0,7)+"...";
+				}  
+				var str="";
+				var reader=new FileReader();
+				reader.onload=function(e){
+					str='<div style="display:inline-flex; padding:10px">';
+					str+='<li><span>'+fileName+'</span><br>';
+					str+='<img src="'+e.target.result+'" title="'+f.name+'" width=100 height=100 />'
+					str+='</li></div>';
+					$("#preview").append(str);
+				};
+				reader.readAsDataURL(f);
+			});
+			
+		};
 		
+			
 	});
 </script>
-<style type="text/css">
-body{
-	background:#e6e6e6cc;
-	margin:0;
-
-}
-
-input{
-	padding: 5px;
-}
-
-.total-wrapper {
-width: 100%;
-
-
-
-}
-
-.name-wrapper{
-    width: 80%;
-    margin: 30px auto;
-    background: #ffffff;
-    text-align: center;
-    box-shadow: 0px 2px 5px 3px #bfbfbf;
-}
-.name-wrapper p {
-	padding:5px;
-}
-
-
-.btn{
-	    border: none;
-    background: #001080;
-    padding: 10px;
-    border-radius: 10px;
-    color: white;
-    width:25%;
-    margin: 15px;
-}
-
-.addbtn {
-	background: #002bc7;
-    border: none;
-    color: white;
-    padding: 2px;
-}
-
-.submit-wrapper {
-
-width: 100%;
-    text-align: center;
-}
-.text-wrapper{
-	width: 80%;
-	margin:auto;
-}
-
-#roomtable {
-	margin: auto;
-}
-
-</style>
 </head>
 <body>
-
-<div class="total-wrapper">
 	<form action="hotelInsert.ho" method="post" enctype="multipart/form-data" id="hotelInsertForm"> 
-	<div class="name-wrapper">
 	<p>
 		<label for="h_name">호텔이름</label>
 		<input type="text" name="h_name">	
-	</p>
-	<p>
-		<label for="h_type">호텔유형</label>
-		<input type="radio" name="h_type" value="호텔" checked>호텔	
-		<input type="radio" name="h_type" value="아파트">아파트	
-		<input type="radio" name="h_type" value="모텔">모텔	
-		<input type="radio" name="h_type" value="게스트하우스">게스트하우스	
 	</p>
 	<p>
 		<label for="h_nation">국가</label>
@@ -121,19 +83,35 @@ width: 100%;
 		<input type="text" name="h_address2">	
 	</p>
 	<p>
+		<label for="h_type">호텔유형</label>
+		<input type="radio" name="h_type" value="호텔" checked>호텔	
+		<input type="radio" name="h_type" value="아파트">아파트	
+		<input type="radio" name="h_type" value="모텔">모텔	
+		<input type="radio" name="h_type" value="게스트하우스">게스트하우스	
+	</p>
+		<label for="h_grade">호텔등급</label>
+		<input type="radio" name="h_grade" value="1" checked>1등급
+		<input type="radio" name="h_grade" value="2">2등급
+		<input type="radio" name="h_grade" value="3">3등급	
+		<input type="radio" name="h_grade" value="4">4등급
+		<input type="radio" name="h_grade" value="5">5등급
+		<input type="radio" name="h_grade" value="0">등급없음	
+	<p>
+	</p>
+	<p>
 		<label for="h_phone">호텔 전화번호</label>
 		<input type="text" name="h_phone" placeholder="02-123-1234">	
 	</p>
-	<p class="facilities">
-		<label for="h_facilities">편의 시설</label><br>
+	<p>
+		<label for="h_facilities">편의 시설</label>
 		<input type="checkbox" name="h_facilities" value="피트니스센터">피트니스센터	
 		<input type="checkbox" name="h_facilities" value="수영장">수영장
 		<input type="checkbox" name="h_facilities" value="카페">카페
-		<input type="checkbox" name="h_facilities" value="스파">스파 및 마사지
+		<input type="checkbox" name="h_facilities" value="스파 및 마사지">스파 및 마사지
 		<input type="checkbox" name="h_facilities" value="오락시설">오락시설
 		<input type="checkbox" name="h_facilities" value="사우나">사우나
 		<input type="checkbox" name="h_facilities" value="비즈니스센터">비즈니스센터
-		<input type="checkbox" name="h_facilities" value="물품보관소">물품보관소<br>
+		<input type="checkbox" name="h_facilities" value="물품보관소">물품보관소
 		<input type="checkbox" name="h_facilities" value="기념품가게">기념품가게
 		<input type="checkbox" name="h_facilities" value="안전금고">안전금고
 		<input type="checkbox" name="h_facilities" value="세탁실">세탁실
@@ -172,18 +150,16 @@ width: 100%;
 		<label for="h_hotel_url">호텔 홈페이지 주소</label>
 		<input type="text" name="h_hotel_url" placeholder="www.hotel.com">
 	</p>
-	<p>
+	<div>
 		<label for="file">호텔 이미지</label>
 		<input multiple="multiple" type="file" name="file">
-	</p>
-	<div class="text-wrapper">
-		<textarea rows="7" cols="60" name="h_comment" form="hotelInsertForm" placeholder="추가설명"></textarea>
-		
-		<p>
-			<label for="h_room_num">총 객실 수</label>
-			<input type="text" name="h_room_num" placeholder="10">
-		</p>
+		<div id="preview"></div>  
 	</div>
+	<textarea rows="7" cols="60" name="h_comment" form="hotelInsertForm" placeholder="추가설명"></textarea>
+	<p>
+		<label for="h_room_num">총 객실 수</label>
+		<input type="text" name="h_room_num" placeholder="10">
+	</p>
 	<table id="roomtable">
 		<tr>
 			<th>객실 유형</th>
@@ -205,16 +181,11 @@ width: 100%;
 			</select>
 			</td>
 			<td>
-				<button class="addbtn" type="button" class="addbtn">객실추가</button>		
+				<button type="button" class="addbtn">객실추가</button>		
 			</td>
 		</tr>
 	</table>
-	<div class="submit-wrapper">
-		<input class="btn" type="submit" value="호텔등록">
-	
-	</div>
-	</div>
+	<input type="submit" value="호텔등록">
 	</form>
-</div>
 </body>
 </html>
