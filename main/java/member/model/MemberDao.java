@@ -1,5 +1,7 @@
 package member.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,6 +36,12 @@ public class MemberDao {
 
 	public void update(Member member) {
 		sqlSessionTemplate.update(namespace + ".update", member);
+	}
+
+	public List<Member> getAllMembers() {
+		// TODO Auto-generated method stub
+		List<Member> mem = sqlSessionTemplate.selectList(namespace +".getAllMembers");
+		return mem;
 	}
 
 }

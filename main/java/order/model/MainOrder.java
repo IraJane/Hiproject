@@ -1,5 +1,9 @@
 package order.model;
 
+import java.util.List;
+
+import hotel.model.Hotel;
+
 public class MainOrder {
 	private int o_num;
 	private int m_num ;
@@ -86,6 +90,7 @@ public class MainOrder {
 				+ o_checkin + ", o_checkout=" + o_checkout + ", o_totalpeople=" + o_totalpeople + ", o_comment="
 				+ o_comment + ", o_checker=" + o_checker + ", o_engname=" + o_engname + "]";
 	}
+	
 	
 	
 	

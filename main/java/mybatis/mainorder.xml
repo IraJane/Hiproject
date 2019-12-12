@@ -13,6 +13,10 @@
   	<select id="getMaxNum" resultType="int">
   		select max(o_num) from mainorder
   	</select>
+  	
+  	<select id="getSellerOrders" resultType="MyMainOrder">
+  		select * from mainorder
+  	</select>
   
   
   </mapper>

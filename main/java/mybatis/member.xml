@@ -27,5 +27,9 @@
 		update members set m_email=#{m_email}, m_password=#{m_password}, m_nickname=#{m_nickname}, m_name=#{m_name}, m_phone=#{m_phone}
 		where m_email=#{m_email}
 	</update>
+	
+	<select id="getAllMembers" resultType="MyMember">
+		select * from members
+	</select>
   
   </mapper>

@@ -8,6 +8,10 @@
   		insert into orderdetail
   		values(od_seq.nextval, #{r_num}, #{o_count}, #{o_num})
   	</insert>
+  	
+  	<select id="getOrderRooms" resultType="MyOrderDetail">
+  		select * from orderdetail
+  	</select>
   
   
   </mapper>

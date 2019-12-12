@@ -1,5 +1,7 @@
 package order.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +25,14 @@ public class OrderDetailDao {
 		
 		int cnt = sqlSessionTemplate.insert(namespace + ".insertOrderDetail",od);
 		return cnt;
+	}
+
+
+
+	public List<OrderDetail> getOrderRooms() {
+		// TODO Auto-generated method stub
+		List<OrderDetail> od = sqlSessionTemplate.selectList(namespace + ".getOrderRooms");
+		return od;
 	}
 	
 

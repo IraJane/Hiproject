@@ -6,6 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import hotel.model.Hotel;
+import seller.model.Seller;
+
 @Component("myMainOrderDao")
 public class MainOrderDao {
 	private String namespace = "order.model.MainOrder";
@@ -28,6 +31,16 @@ public class MainOrderDao {
 		int cnt =sqlSessionTemplate.selectOne(namespace +".getMaxNum");
 		return cnt;
 	}
+
+
+	public List<MainOrder> getSellerOrders() {
+		// TODO Auto-generated method stub
+		List<MainOrder> mod = sqlSessionTemplate.selectList(namespace +".getSellerOrders");
+		return mod;
+	}
+
+
+	
 
 	
 	
