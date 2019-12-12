@@ -74,6 +74,8 @@ h4{
 	margin: 0px;
 }
 </style>
+
+
 	
 
 
@@ -85,7 +87,7 @@ h4{
 <div class="total-wrapper">
 
 
-	<c:forEach items="${hodetail }" var="hotel" varStatus="i">
+	<c:forEach items="${hotel }" var="list" varStatus="i">
 
 		<table class="listTable">
 
@@ -96,66 +98,69 @@ h4{
 			</tr>
 			<tr>
 
-				<td colspan="2" class="h_nameDetail"><span class="h_typeDetail">${hotel.h_type }</span>&nbsp;&nbsp;${hotel.h_name }
+				<td colspan="2" class="h_nameDetail"><span class="h_typeDetail">${list.h_type }</span>&nbsp;&nbsp;${list.h_name }
 
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">주소: ${hotel.h_nation }, ${hotel.h_address1 },${hotel.h_address2 }
+				<td colspan="2">주소: ${list.h_nation }, ${list.h_address1 },${list.h_address2 }
 
 				</td>
 			</tr>
 			<tr>
 
-				<td colspan="2">전화번호: ${hotel.h_phone }</td>
+				<td colspan="2">전화번호: ${list.h_phone }</td>
 			</tr>
 			<tr>
-				<td colspan="2">소개글:${hotel.h_comment }</td>
+				<td colspan="2">소개글:${list.h_comment }</td>
 			</tr>
 			<tr>
 
 				<td colspan="2" class="updatedeletebtn">
-				<a href="updateHotel.ho?h_num=${hotel.h_num }">수정하기</a>&nbsp;&nbsp;
+				<a href="updateHotel.ho?h_num=${list.h_num }">수정하기</a>&nbsp;&nbsp;
 				<a href="deleteHotel.ho">삭제하기</a></td>
 			</tr>
 		</table>
 
 
-	<div class="listOrders">
-		<h4>예약내역</h4>
+<!-- 	<div class="listOrders"> -->
+		<h4>예약내역</h4> 
+ 
+		<c:forEach items="${mainOlist }" var="mainOrder">
+			<c:forEach items="${roomList }" var="room">
+				<c:forEach items="${orderDlist }" var="orderDetail">
+				
 
-		<c:forEach items="${thisRoom }" var="room">
-
+				<c:if test="${list.h_num == room.h_num && room.r_num == orderDetail.r_num && orderDetail.o_num == mainOrder.o_num && mem.m_num == mainOrder.m_num}">
 				<table class="table">
-					<c:if test="${room.h_num == hotel.h_num}"><!-- 여기서 오류 남 order 부분 고치고 보기  -->
 						<tr>
-							<td>고객정보: ${room.oemail }</td>
-							<td>영문 이름: ${room.oname }</td>
+							<td>고객정보: </td>
+							<td>영문 이름: </td>
 						</tr>
 						<tr>
-							<td>예약 일자: ${room.checkin }~${room.checkout }</td>
+							<td>예약 일자: ~</td>
 						</tr>
 						<tr>
-							<td>인원: ${room.people }</td>
+							<td>인원: </td>
 						</tr>
 						<tr>
-							<td>방 종류: ${room.roomtype }</td>
+							<td>방 종류: </td>
 						</tr>
 						<tr>
-							<td>결제 금액: ${room.totalprice }</td>
+							<td>결제 금액: </td>
 						</tr>
 						<tr>
-							<td>요구사항: ${room.comments }</td>
+							<td>요구사항: </td>
 						</tr>
 
 						<tr>
 							<td>
 								
 									 
-									<c:if test="${room.checker == 0}">
+									<c:if test="">
 										<form class="checkForm" action="checkCheckin.der">
 											
-											<input type="hidden" name="onum" value="${room.onum }">
+											<input type="hidden" name="onum" value="">
 											상태:<input class="checkCheckin" type="submit" value="Waiting...">
 										
 										
@@ -163,19 +168,22 @@ h4{
 										</form>
 										
 									</c:if>
-									<c:if test="${room.checker == 1}">상태:<input class="checkCheckin" type="button" value="확인완료"></c:if>
+									<c:if test="">상태:<input class="checkCheckin" type="button" value="확인완료"></c:if>
 							
 								
 							</td>
 						</tr>
-					</c:if>
 
 				</table>
+			</c:if>
 		</c:forEach>
-	</div>
+		</c:forEach>
+		</c:forEach>
+		</c:forEach>
+		</c:forEach>
+	</div> 
 
 
 
-</c:forEach>
 
-</div>
+
