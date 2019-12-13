@@ -162,3 +162,139 @@ input {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** middle *****************/
+
+.middleMain{
+
+	width: 100%;
+}
+
+.row {
+	    display: block;
+    margin: auto;
+    text-align: center;
+	
+}
+.advertisementRow {
+	display: block;
+    margin: auto;
+    text-align: center;
+	
+}
+.oneimage{
+    border-radius: 5px;
+    display: inline-block;
+    width: 39%;
+    height: 135px;
+    margin: 15px;
+    border: 1px solid #a2a2a2;
+}
+
+
+.twoimages {
+	border-radius:5px;
+    display: inline-block;
+    width: 39%;
+    height: 320px;
+        margin: 15px;
+}
+
+.threeimages{
+	border-radius:5px;
+	display: inline-block;
+	width: 25.55553%;
+	height: 320px;
+	margin: 0 12px;
+}
+
+.imagetext {
+color: white;
+    font-size: 30px;
+    margin: 0 10px;
+    float: left;
+	text-shadow: 3px 2px 1px #484848;
+}
+
+
+
+
+
+
+
+
+
+
+
+.nothingReally {
+	    width: 100%;
+    background: #000e98;
+    height: 200px;
+}
+.nothingReallyText{
+	text-align:center;
+	color:white;
+	
+}
+.nothingReallybtn{
+	background: #004fe0;
+    color: white;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** footer *****************/
+.modal-footer {
+	display:block;
+	
+}
+.foot{
+
+    width: 100%;
+    margin: auto;
+    text-align: center;
+
+}
+
+.footatag{
+	 color: #000da2;
+}
+.footatag:active, .footatag:hover, .footatag:link,.footatag:visited {
+	
+	color: #000da2;
+}
+.companySns {
+		clear : both;
+}
+	
+.companyInfo2 table {
+    width: 65%;
+		margin: auto;
+		text-algn: center;
+}
+

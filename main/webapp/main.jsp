@@ -293,7 +293,166 @@ function logout() {
 </div>
 
 
+
+<div class="middleMain">
+	<div class="row">
+		
+		
+		<div class="oneimage"  style="background: url(resources/img/광고.jpg) no-repeat center top; background-size:contain;">
+			
+		</div>
+		<div class="oneimage"  style="background: url(resources/img/광고2.png) no-repeat center top; background-size:contain;">
+			
+		</div>
 	
-	<footer class="modal-footer footer"> 만든이: 손안우 신서영 윤서호 이병화 </footer>
+	
+	</div>
+	<div class="row">
+		
+		
+		<div class="twoimages"  style="background: url(resources/img/1.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+		
+		<div class="twoimages"  style="background: url(resources/img/2.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+	
+	
+	</div>
+	
+	<div class="row">
+		
+		
+		<div class="threeimages"  style="background: url(resources/img/3.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+		
+		<div class="threeimages"  style="background: url(resources/img/6.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+		
+		<div class="threeimages"  style="background: url(resources/img/5.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+	
+	
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="nothingReally">
+		<h3 class="nothingReallyText">시간도 돈도 아끼는 일석이조의 현명한 선택!</h3>
+		<h4 class="nothingReallyText">가입하시면 최고의 특가 정보를 보내드릴게요</h4>
+		<p class="nothingReallyText"><input type="text" placeholder="이메일 주소를 입력해주세요"><button class="nothingReallybtn" type="button">구독하기</button></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<footer class="modal-footer footer">
+		
+		<div class="foot">
+			<div class="logo">
+				<img src="">
+			</div>
+			
+			<div class="companyInfo">
+				<strong>
+					(주)AAA | 대표이사 : XXX | 사업자 등록번호 : 111-11-11111 | 통신판매업 신고 : 강남-14211호 | 메일 : admin@admin.com<br>
+					관광사업자 등록번호 : 제2019-1031호 | 주소 : 이대역 | 호스팅서비스 제공자 : 주식회사 AAA<br>
+					고객센터 : 1577-1577 (오전 9시 - 오후 6시)
+				</strong>
+			</div>
+			
+			<div class="companyInfo2">
+				<table>
+					<tr>
+						<th><a class="footatag" href="#">회사소개</a></th>
+						<th><a class="footatag" href="#">광고&제휴 문의</a></th>
+						<th><a class="footatag" href="#">인재채용</a></th>
+						<th><a class="footatag" href="#">개인정보처리방침</a></th>
+						<th><a class="footatag" href="#">청소년 보호 정책</a></th>
+						<th><a class="footatag" href="#">서비스 이용 약관</a></th>
+						<th><a class="footatag" href="#">위치정보 이용약관</a></th>
+						<th><a class="footatag" href="#">사업자 정보 확인</a></th>
+					</tr>
+				</table>
+			</div>
+	
+			<div class="companySns">
+				<a class="footatag"  href="https://www.facebook.com">FaceBook</a>		
+				<a class="footatag"  href="https://www.instagram.com">Instagram</a>		
+				<a class="footatag"  href="https://www.youtube.com">Youtube</a>		
+				<a class="footatag"  href="https://www.blog.naver.com">Naver Blog</a>		
+				<a class="footatag"  href="https://www.twitter.com">Twitter</a>		
+			</div>
+			
+			<div class="notice">
+				(주) AAA는 통신판매 중개자로서 통신판매의 당사자가 아니며 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
+			</div>
+		</div>
+	
+	
+	 </footer>
 </body>
 </html>
