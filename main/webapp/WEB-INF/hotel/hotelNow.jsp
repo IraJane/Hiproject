@@ -131,7 +131,7 @@ h4{
 				<c:forEach items="${orderDlist }" var="orderDetail">
 				
 
-				<c:if test="${list.h_num == room.h_num && room.r_num == orderDetail.r_num && orderDetail.o_num == mainOrder.o_num && mem.m_num == mainOrder.m_num}">
+				<c:if test="${list.h_num == room.h_num && room.r_num == orderDetail.r_num && orderDetail.o_num == mainOrder.o_num }">
 				<table class="table">
 						<tr>
 							<td>고객정보: </td>
@@ -180,7 +180,7 @@ h4{
 		</c:forEach>
 		</c:forEach>
 		</c:forEach>
-		</c:forEach>
+		
 	</div> 
 
 

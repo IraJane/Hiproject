@@ -22,6 +22,8 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="order" />
+	<context:component-scan base-package="hotel" />
+	
 	
 
 	
