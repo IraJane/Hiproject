@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import hotel.model.Hotel;
+import member.model.Member;
 import seller.model.Seller;
 
 @Component("myMainOrderDao")
@@ -37,6 +38,13 @@ public class MainOrderDao {
 		// TODO Auto-generated method stub
 		List<MainOrder> mod = sqlSessionTemplate.selectList(namespace +".getSellerOrders");
 		return mod;
+	}
+
+
+	public List<MainOrder> getMemberOrders(Member login) {
+		// TODO Auto-generated method stub
+		List<MainOrder> md = sqlSessionTemplate.selectList(namespace + ".getMemberOrders",login);
+		return md;
 	}
 
 

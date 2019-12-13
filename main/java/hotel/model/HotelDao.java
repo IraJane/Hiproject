@@ -59,6 +59,16 @@ public class HotelDao {
 		int cnt=sqlSessionTemplate.update(namespace+".updateHotel",hotel);
 		return cnt;
 	}
+
+
+	public List<Hotel> getAllHotelList() {
+		// TODO Auto-generated method stub
+		List<Hotel> hotel = sqlSessionTemplate.selectList(namespace + ".getAllLists");
+		return hotel;
+	}
+
+
+	
 	
 
 }

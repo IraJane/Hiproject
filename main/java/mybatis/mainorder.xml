@@ -17,6 +17,12 @@
   	<select id="getSellerOrders" resultType="MyMainOrder">
   		select * from mainorder
   	</select>
+  	
+  	<select id="getMemberOrders" resultType="MyMainOrder">
+  		select * from mainorder
+  		where m_num = #{m_num}
+  	
+  	</select>
   
   
   </mapper>

@@ -64,5 +64,9 @@
 		h_hotel_url=#{h_hotel_url}, h_comment=#{h_comment}
 		where h_num=#{h_num}
 	</update>
+	
+	<select id="getAllLists" resultType="MyHotel">
+		select * from hotel
+	</select>
   
   </mapper>
