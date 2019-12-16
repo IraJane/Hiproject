@@ -46,7 +46,7 @@ public class SellerHotelNowController {
 	@RequestMapping(commend)
 	public String now(HttpSession session,Model model) {
 		
-		Seller login = (Seller) session.getAttribute("loginfo");
+		Seller login = (Seller) session.getAttribute("selloginfo");
 		System.out.println(login);
 		
 		

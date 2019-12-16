@@ -57,7 +57,7 @@ public class SellerLoginController {
 			
 			return getPage;
 		}
-		session.setAttribute("loginfo", login);
+		session.setAttribute("selloginfo", login);
 		
 		System.out.println("로그인 완료");
 		

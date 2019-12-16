@@ -8,7 +8,7 @@
 		values(hotel_seq.nextval,#{s_num},#{h_name},#{h_nation},#{h_address1},
 		#{h_address2},#{h_type},#{h_phone},#{h_room_num},#{h_facilities},#{h_internet},
 		#{h_animal},#{h_parking},#{h_smoke},#{h_language},#{h_image},
-		#{h_hotel_url},#{h_grade},#{h_comment})  
+		#{h_hotel_url},#{h_comment},#{h_grade})  
 		<selectKey keyProperty="h_num" resultType="int" order="AFTER">
 			select hotel_seq.currval from dual
 		</selectKey>
@@ -61,7 +61,7 @@
 		set h_name=#{h_name}, h_nation=#{h_nation}, h_address1=#{h_address1},
 		h_address2=#{h_address2},h_type=#{h_type}, h_phone=#{h_phone},h_room_num=#{h_room_num},h_facilities=#{h_facilities},h_internet=#{h_internet},
 		h_animal=#{h_animal},h_parking=#{h_parking},h_smoke=#{h_smoke},h_language=#{h_language},h_image=#{h_image},
-		h_hotel_url=#{h_hotel_url}, h_comment=#{h_comment}
+		h_hotel_url=#{h_hotel_url}, h_comment=#{h_comment},h_grade = #{h_grade}
 		where h_num=#{h_num}
 	</update>
 	

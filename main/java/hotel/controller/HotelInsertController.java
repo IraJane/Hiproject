@@ -50,7 +50,7 @@ public class HotelInsertController {
 			MultipartHttpServletRequest mpfRequest,
 			HttpSession session) {
 				
-		Seller seller=(Seller)session.getAttribute("loginfo");
+		Seller seller=(Seller)session.getAttribute("selloginfo");
 		int num=seller.getS_num();
 		hotel.setS_num(num);
 		
