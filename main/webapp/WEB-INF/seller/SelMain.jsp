@@ -40,7 +40,7 @@ $(function(){
 	<a class="floatRigth">반갑습니다</a>
 	
 	<a href="logout.sel">로그아웃</a> <a href="selInfo.sel">내정보 보기</a> <a
-		href="hotelInsert.ho">내숙소 등록하기</a> <a href="hotelNow.ho">내숙소 예약현황</a>
+		href="hotelInsert.ho">내숙소 등록하기</a> <a href="hotelNow.der">내숙소 예약현황</a>
 		
 		
 		
