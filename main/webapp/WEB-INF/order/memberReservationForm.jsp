@@ -56,6 +56,13 @@ color: black;
     padding: 1px;
     border-radius: 5px;
 }
+.donecheckin{
+	background: #929292f7;
+    color: white;
+    font-size: 17px;
+    padding: 1px;
+    border-radius: 5px;
+}
 .button{
 	border: none;
     border-radius: 5px;
@@ -99,7 +106,7 @@ color: black;
 	<tr>
 		<td>
 			<c:if test="${mo.o_checker == 0}"><span class="waitcheckin">예약확정</span></c:if>
-			<c:if test="${mo.o_checker == 1}">숙박완료</c:if>
+			<c:if test="${mo.o_checker == 1}"><span class="donecheckin">숙박완료</span></c:if>
 
 		
 		</td>
