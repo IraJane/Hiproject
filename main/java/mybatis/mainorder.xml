@@ -23,6 +23,12 @@
   		where m_num = #{m_num}
   	
   	</select>
+  	
+  	<update id="updateChecker">
+  	update mainorder
+  	set o_checker = 1
+  	where o_num = #{onum}
+  	</update>
   
   
   </mapper>

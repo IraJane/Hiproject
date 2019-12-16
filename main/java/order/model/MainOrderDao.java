@@ -48,6 +48,13 @@ public class MainOrderDao {
 	}
 
 
+	public int updateCheckin(int onum) {
+		// TODO Auto-generated method stub
+		int cnt = sqlSessionTemplate.update(namespace+ ".updateChecker",onum);
+		return cnt;
+	}
+
+
 	
 
 	
