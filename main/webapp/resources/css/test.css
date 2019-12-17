@@ -142,6 +142,56 @@ input {
 
 
 
+
+/** calender*****************/
+
+
+.ui-datepicker .ui-datepicker-header{
+	
+	
+
+    border: 1px solid #56c1ff;
+    background: #cce1ff;
+
+}
+.ui-datepicker-title{
+    color: #0066bd;
+	
+}
+
+.ui-datepicker-calendar th span{
+	color: #0066bd;
+	font-size: 15px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	border: none;
+    background: none;
+    text-align: center;
+    color: #007eff;
+	
+}
+
+.ui-state-default:hover, .ui-state-active:hover{
+	    background: #ccccccbf;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+	border:none;
+	background:none;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** middle *****************/
 
 .middleMain{
@@ -171,6 +221,8 @@ input {
 }
 
 
+
+
 .twoimages {
 	border-radius:5px;
     display: inline-block;
@@ -178,6 +230,8 @@ input {
     height: 320px;
         margin: 15px;
 }
+
+
 
 .threeimages{
 	border-radius:5px;
@@ -187,10 +241,32 @@ input {
 	margin: 0 12px;
 }
 
+.fiveimages{
+	border-radius:5px;
+	display: inline-block;
+	width: 14.63333333%;
+	height: 200px;
+	margin: 0 12px;
+}
+
+
+.imageshadow {
+    text-align: left;
+    background: #000000a6;
+    opacity: 0.5;
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    border-radius: 5px;
+}
+
+
+
+
 .imagetext {
 color: white;
     font-size: 30px;
-    margin: 0 10px;
+    margin: 0;
     float: left;
 	text-shadow: 3px 2px 1px #484848;
 }
@@ -227,7 +303,10 @@ color: white;
 
 
 
-
+.inserttitles{
+	text-align: center;
+	    margin: 20px 0;
+}
 
 
 

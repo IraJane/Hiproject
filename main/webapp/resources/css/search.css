@@ -12,15 +12,13 @@ h4 {
     padding: 9px;
     border-radius: 5px;
 }
-table {
-	display: flex;
+.tablelist {
+display: flex;
     margin: 10px 5px;
     border: 1px solid #c3c3c3;
     border-radius: 5px;
 }
-.ui-datepicker-calendar {
-	display:block;
-}
+
 
 .hotelimage {
 	width: 200px;
@@ -263,17 +261,41 @@ border: 1px solid #0044c1;
 
 
 /****달ㄹㄹㄹ력*****/
-.ui-widget-content {
-	border:1px solid #4f99ff;/*{borderColorContent}; */
+
+.ui-datepicker .ui-datepicker-header{
+	
+	
+
+    border: 1px solid #56c1ff;
+    background: #cce1ff;
+
 }
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
-	color:#003eaf/*{fcDefault}*/;
-	border:none;
+.ui-datepicker-title{
+    color: #0066bd;
 	
 }
-.ui-datepicker .ui-datepicker-header{
-	    background: #8fbcff;
+
+.ui-datepicker-calendar th span{
+	color: #0066bd;
+	font-size: 15px;
 }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	border: none;
+    background: none;
+    text-align: center;
+    color: #007eff;
+	
+}
+
+.ui-state-default:hover, .ui-state-active:hover{
+	    background: #ccccccbf;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+	border:none;
+	background:none;
+	
+}
+
 
 
 

@@ -77,7 +77,7 @@ $(function () {
       rel="stylesheet">
 
 <div class="background">
-<br><br>
+<br><br><br><br><br><br><br>
 
 <table>
 
@@ -143,14 +143,21 @@ $(function () {
 		
 		
 		
+		<p class="underground-faq">추가로 궁금한 사항이 있는 경우 <span>FAQ</span>에서 모든 정보를 찾아보실 수 있습니다</p>
 		
 
 </div>
-
+	<div class="under-inserthotelbth">
+		<p>숙박 시설을 등록하세요!</p>
+		<a href="#" class="under-inserthotelAtag">숙박 등록</a>
+	
+	
+	
+	
+	</div>
 
 		
 		
-		<p class="underground-faq">추가로 궁금한 사항이 있는 경우 <span>FAQ</span>에서 모든 정보를 찾아보실 수 있습니다</p>
 	
 	</div>
 

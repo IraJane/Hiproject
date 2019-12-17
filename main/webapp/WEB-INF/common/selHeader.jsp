@@ -16,10 +16,10 @@ function change(){
     color: white;
 }
 .hmain-menu {
-	border: 1px solid #980000;
+	border: 1px solid #000f79db;
 	width: 100%;
 	height: 50px;
-	background: #980000;
+	background: #000f79db;
 	
 }
 

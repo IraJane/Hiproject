@@ -14,9 +14,9 @@ margin: 40px;
 
 .background {
 	
-    width: 100%;
-    height: 350px;
-    background: url(../resources/img/tree.png) no-repeat center top;
+    width: auto;
+    height: 620px;
+    background: url(../resources/img/gro.jpg) no-repeat center;
     background-size: cover;
     
 }
@@ -149,6 +149,33 @@ margin:auto;
 }
 
 
+
+.under-inserthotelbth {
+	    width: 100%;
+    margin: 15px auto;
+    padding: 10px;
+    background: #000b58;
+    height: 160px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+.under-inserthotelAtag{
+	border: 3px solid white;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
+
+	
+}
+
+.under-inserthotelAtag:hover, .under-inserthotelAtag:active, .under-inserthotelAtag:link, .under-inserthotelAtag:visited{
+	text-decoration: none;	
+	color: white;
+}
 
 
 

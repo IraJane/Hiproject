@@ -14,6 +14,10 @@ body {
 	padding:0;
 	
 }
+.top-title {
+	    text-align: center;
+    font-size: 30px;
+}
 h4{
     background: #2911007d;
     border-radius: 5px;
@@ -84,7 +88,7 @@ h4{
 
 
 <%@include file="../common/selHeader.jsp"%>
-<h3>호텔 예약 현황</h3>
+<h3 class="top-title">호텔 예약 현황</h3>
 <br>
 
 <div class="total-wrapper">

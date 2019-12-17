@@ -140,6 +140,47 @@ $(function(){
 	 $("#datepicker2").datepicker();
 	 
 	 
+	 /***hover 효과 **********************/
+	 
+	 
+	  $('.oneimage').mouseover(function(){
+		 $(this).children('p').addClass('imageshadow');
+		 
+	 });
+	 
+	 $('.oneimage').mouseout(function(){
+		 $(this).children('p').removeClass('imageshadow');
+		 
+	 });
+	 $('.twoimages').mouseover(function(){
+		 $(this).children('p').addClass('imageshadow');
+		 
+	 });
+	 
+	 $('.twoimages').mouseout(function(){
+		 $(this).children('p').removeClass('imageshadow');
+		 
+	 });
+	 $('.threeimages').mouseover(function(){
+		 $(this).children('p').addClass('imageshadow');
+		 
+	 });
+	 
+	 $('.threeimages').mouseout(function(){
+		 $(this).children('p').removeClass('imageshadow');
+		 
+	 });
+	 $('.fiveimages').mouseover(function(){
+		 $(this).children('p').addClass('imageshadow');
+		 
+	 });
+	 
+	 $('.fiveimages').mouseout(function(){
+		 $(this).children('p').removeClass('imageshadow');
+		 
+	 });
+	 
+	 
 	 
 	
 	
@@ -256,30 +297,31 @@ $(function(){
 
 
 <div class="middleMain">
+<h3 class="inserttitles">AAA에서만 만날 수 있는 특별한 이벤트</h3>
 	<div class="row">
 		
 		
 		<div class="oneimage"  style="background: url(resources/img/광고.jpg) no-repeat center top; background-size:contain;">
-			
+			<p></p>
 		</div>
 		<div class="oneimage"  style="background: url(resources/img/광고2.png) no-repeat center top; background-size:contain;">
-			
+			<p></p>
 		</div>
 	
 	
 	</div>
+		<h3 class="inserttitles">지금 떠나면 좋은 추천여행지</h3>
 	<div class="row">
 		
-		
 		<div class="twoimages"  style="background: url(resources/img/1.jpg) no-repeat center top; background-size:cover;">
-			<p class="imagetext">
-				Seoul
+			<p  class="imagetext" >
+				서울
 			</p>
 		</div>
 		
 		<div class="twoimages"  style="background: url(resources/img/2.jpg) no-repeat center top; background-size:cover;">
 			<p class="imagetext">
-				Seoul
+				제주도
 			</p>
 		</div>
 	
@@ -291,28 +333,62 @@ $(function(){
 		
 		<div class="threeimages"  style="background: url(resources/img/3.jpg) no-repeat center top; background-size:cover;">
 			<p class="imagetext">
-				Seoul
+				부산
 			</p>
 		</div>
 		
 		<div class="threeimages"  style="background: url(resources/img/6.jpg) no-repeat center top; background-size:cover;">
 			<p class="imagetext">
-				Seoul
+				벳푸
 			</p>
 		</div>
 		
 		<div class="threeimages"  style="background: url(resources/img/5.jpg) no-repeat center top; background-size:cover;">
 			<p class="imagetext">
-				Seoul
+				싱가포르
 			</p>
 		</div>
 	
 	
 	</div>
 	
+<h3 class="inserttitles">한국인이 사랑하는 여행지</h3>
 
-
-
+<div class="row">
+		
+		
+		<div class="fiveimages"  style="background: url(resources/img/7.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				대구
+			</p>
+		</div>
+		
+		<div class="fiveimages"  style="background: url(resources/img/8.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				 강릉
+			</p>
+		</div>
+		
+		<div class="fiveimages"  style="background: url(resources/img/9.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				나트랑
+			</p>
+		</div>
+		<div class="fiveimages"  style="background: url(resources/img/10.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				다낭
+			</p>
+		</div>
+		<div class="fiveimages"  style="background: url(resources/img/11.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				타이베이
+			</p>
+		</div>
+		
+		
+	
+	
+	</div>
 
 
 
@@ -325,7 +401,7 @@ $(function(){
 
 
 </div>
-
+<br><br><br>
 
 <div class="nothingReally">
 		<h3 class="nothingReallyText">시간도 돈도 아끼는 일석이조의 현명한 선택!</h3>
