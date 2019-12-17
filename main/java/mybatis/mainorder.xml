@@ -29,6 +29,12 @@
   	set o_checker = 1
   	where o_num = #{onum}
   	</update>
+  	
+  	
+  		<delete id="deleteMOrder">
+  		delete from mainorder
+  		where o_num=#{o_num}
+  	</delete>
   
   
   </mapper>

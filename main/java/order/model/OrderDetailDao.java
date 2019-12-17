@@ -35,5 +35,10 @@ public class OrderDetailDao {
 		return od;
 	}
 	
+	public void deleteODetail(int o_num) {
+		sqlSessionTemplate.delete(namespace+".deleteODetail",o_num);
+	}
+
+	
 
 }

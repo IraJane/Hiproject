@@ -13,6 +13,20 @@
 		select * from rooms where h_num=#{h_num}
 	</select>
 	
+	<update id="updateRoom">
+		update rooms
+		set r_type=#{r_type}, r_person=#{r_person}, r_price=#{r_price}, r_breakfast=#{r_breakfast}, r_stock=#{r_stock}
+		where r_num=#{r_num}
+	</update>
+	
+	<delete id="deleteRoom">
+		delete rooms where r_num=#{r_num}
+	</delete>
+	
+	<delete id="deleteHotelRoom">
+		delete rooms where h_num=#{h_num}
+	</delete>
+	
 	<select id="getRoomAllList" resultType="MyRoom">
 		select * from rooms
 	</select>

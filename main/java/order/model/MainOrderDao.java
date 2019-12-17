@@ -53,6 +53,11 @@ public class MainOrderDao {
 		int cnt = sqlSessionTemplate.update(namespace+ ".updateChecker",onum);
 		return cnt;
 	}
+	
+	public void deleteMOrder(int o_num) {
+		sqlSessionTemplate.delete(namespace+".deleteMOrder",o_num);
+
+	}
 
 
 	

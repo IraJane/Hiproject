@@ -27,7 +27,7 @@ public class SellerInfoController {
 	
 	@RequestMapping(value=commend,method=RequestMethod.GET)
 	public String info(Model model, HttpSession session) {
-		Seller login =(Seller) session.getAttribute("loginfo");
+		Seller login =(Seller) session.getAttribute("selloginfo");
 		System.out.println(login);
 		model.addAttribute("seller",login);
 		

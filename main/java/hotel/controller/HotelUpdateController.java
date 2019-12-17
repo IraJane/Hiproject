@@ -27,7 +27,7 @@ public class HotelUpdateController {
 
 	private final String command="/updateHotel.ho";
 	private final String getPage="hotelUpdateForm";
-	private final String gotoPage="redirect:hotelNow.ho";
+	private final String gotoPage="redirect:hotelNow.der";
 	
 	@Autowired
 	private HotelDao hotelDao;
@@ -44,7 +44,7 @@ public class HotelUpdateController {
 		Hotel hotel=hotelDao.getHotelOne(h_num);
 		List<Room> rooms=roomDao.getRoomList(hotel);
 		hotel.setRooms(rooms);
-		model.addAttribute("hotel",hotel);
+		model.addAttribute("hotel",hotel); 
 		return getPage;
 	}
 	@RequestMapping(value=command,method=RequestMethod.POST)
@@ -53,10 +53,12 @@ public class HotelUpdateController {
 			@RequestParam("originName") String originName,
 			Room rooms,Hotel hotel,
 			MultipartHttpServletRequest mpfRequest,HttpSession session) {
+			  
 			
 			List<MultipartFile> fileList=mpfRequest.getFiles("file");
 			String originfilePath=application.getRealPath("/resources/Hotelimages/"+originName);
 			String newfilePath=application.getRealPath("/resources/Hotelimages/"+hotel.getH_name());
+			System.out.println(newfilePath);
 			File originFile=new File(originfilePath);
 			File newFile=new File(newfilePath);
 			String image="";
@@ -95,12 +97,12 @@ public class HotelUpdateController {
 					image+=fileList.get(i).getOriginalFilename()+";";
 				}//fileList 추가
 			}//change 
-			else {
+			else if(doWhat.equals("add")){
 				if(originName.equals(hotel.getH_name())) {
 					if(originFile.exists()==false) {
 						originFile.mkdirs();
 					}
-					image+=hotel.getH_image();
+					image+=hotelDao.getHotelOne(hotel.getH_num()).getH_image();
 					for(int i=0;i<fileList.size();i++) {
 						originFile=new File(originfilePath+File.separator+fileList.get(i).getOriginalFilename());
 						try {
@@ -129,10 +131,46 @@ public class HotelUpdateController {
 						image+=fileList.get(i).getOriginalFilename()+";";
 					}
 				}
+			}else {
+				image+=hotel.getH_image();
 			}
 			hotel.setH_image(image);
-			hotelDao.updateHotel(hotel);
-		///room 
+			hotelDao.updateHotel(hotel);  
+			System.out.println("호텔수정완료");
+			
+			int updateCnt=0;
+			int deleteCnt=0;
+			int insertCnt=0;
+			
+			for(int i=0;i<rooms.getType().length;i++) {
+				String r_numStr=rooms.getNum()[i];
+				String r_type=rooms.getType()[i];
+				int r_price=rooms.getPrice()[i];
+				int r_person=rooms.getPerson()[i];
+				int r_stock=rooms.getStock()[i];
+				String r_breakfast=rooms.getBreakfast()[i];
+				int h_num=hotel.getH_num();
+				
+				if(!r_numStr.equals("")) {
+					int r_num=Integer.parseInt(r_numStr);
+					if(!r_type.equals("remove_thisroom")) {
+						
+						Room room=new Room(r_num,r_type,r_price,r_person,r_stock,r_breakfast);
+						updateCnt=roomDao.updateRoom(room);
+					}else {
+						deleteCnt=roomDao.deleteRoom(r_num);
+					}
+				}else {
+					Room room=new Room(r_type,r_price,r_person,r_stock,r_breakfast,h_num);
+					insertCnt=roomDao.insertRoom(room);
+				}
+				
+			}
+			System.out.println("룸변경:"+updateCnt);
+			System.out.println("룸삭제:"+deleteCnt);
+			System.out.println("룸추가:"+insertCnt);
+			
+		
 		return gotoPage;
 	}
 	

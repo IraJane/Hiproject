@@ -15,22 +15,33 @@ public class RoomDao {
 	@Autowired
 	SqlSessionTemplate sst;
 
+
+
 	public int insertRoom(Room room) {
 		int cnt=sst.insert(namespace+".insertRoom",room);
 		return cnt;
 	}
-	
+
 	public List<Room> getRoomList(Hotel hotel) {
 		List<Room> roomList=sst.selectList(namespace+".getRoomList",hotel);
 		return roomList;
 	}
 
-	public List<Room> getRoomOrder(int num) {
-		// TODO Auto-generated method stub
-		List<Room> roomlist = sst.selectList(namespace+".getRoomOrder",num);
-		return roomlist;
+	public int updateRoom(Room room) {
+		int cnt=sst.update(namespace+".updateRoom",room);
+		return cnt;
 	}
 
+	public int deleteRoom(int r_num) {
+		int cnt=sst.delete(namespace+".deleteRoom",r_num);
+		return cnt;
+	}
+
+	public int deleteHotelRoom(int h_num) {
+		int cnt=sst.delete(namespace+".deleteHotelRoom",h_num);
+		return cnt;
+		
+	}
 	public List<Room> getRoomAllList() {
 		// TODO Auto-generated method stub
 		List<Room> room =sst.selectList(namespace +".getRoomAllList");

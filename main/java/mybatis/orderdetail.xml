@@ -13,5 +13,11 @@
   		select * from orderdetail
   	</select>
   
+  	<delete id="deleteODetail">
+  		delete from orderdetail
+  		where o_num=#{o_num}
+  	</delete>
+  
+  
   
   </mapper>
