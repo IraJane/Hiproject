@@ -279,11 +279,40 @@
 					  + '</button>').appendTo(document.body);
 			
 		}
+		
+		
+		 function fnMove(cnt){
+		        
+		        if(cnt == 1){
+			        var offset = $(".rtr").offset();
+			        $('html, body').animate({scrollTop : offset.top}, 400);
+		        	
+		        } else if(cnt == 2){
+			        var offset = $(".detail-wrapper").offset();
+		        	$('html, body').animate({scrollTop : offset.top}, 400);
+		        	
+		        }  else if(cnt == 3){
+			        var offset = $(".houserule-wrapper").offset();
+		        	$('html, body').animate({scrollTop : offset.top}, 400);
+		        	
+		        }  else if(cnt == 4){
+			        var offset = $(".review-wrapper").offset();
+		        	$('html, body').animate({scrollTop : offset.top}, 400);
+		        }
+		        
+		        	
+		    }
+
+
+
 
 </script>
 <style>
 body {
 	margin:0;
+}
+.total-container{
+	margin:30px 300px;
 }
 
 h1{
@@ -330,7 +359,7 @@ h1{
 	width: 77%;
 	height:auto;
 	border: 2px solid #b7b7b7;
-	float:right;
+    margin: 0 22%;
 	border-radius:5px;
 }
 	
@@ -339,7 +368,8 @@ h1{
 	    width: 20%;
 	height: auto;
 	border:1px solid green;
-	margin-left: 30px;
+/* 	margin-left: 30px; */
+	float:left;
 }
 
 .calc {
@@ -509,6 +539,50 @@ table {
 .rightbox-commentbox h4 {
 	    background: none;
 }
+.rightbox-commentp{
+	    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.rightbox-btn {
+	    background: #0000c7;
+    border: none;
+    width: 100%;
+    padding: 3px;
+    margin: 5px auto;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+}
+.rightbar-selectbox{
+    list-style: none;
+    width: 100%;
+
+    margin: auto;
+        padding: 0;
+    text-align: center;
+    background: #d2deff;
+    border-bottom: 1px solid #0000a9;
+}
+.rightbar-selectbox li{
+    display: inline-block;
+        width: 24%;
+}
+
+/*********************상단부 select******/
+
+
+.rightbar-selectbtn{
+	border: none;
+    background: #d2deff;
+    width: 100%;
+    /* margin: 0; */
+    font-size: 20px;
+    border-left: 1px solid white;
+}
+
+
 
 
 
@@ -531,7 +605,79 @@ table {
 }
 .famous-wrapper {
     width: 32.3333333333%;
+    list-style:none;
     
+}
+
+.famous-wrapper-title{
+	font-size: 23px;
+}
+
+
+
+/***************하우스 룰****************/
+.houserule-wrapper{
+    width: 95%;
+    margin: auto;
+
+
+}
+.houserule-title{
+	font-size:20px;
+	margin:0;
+}
+.houserule-subtitle{
+	font-size:15px;
+	margin:0;
+}
+.houserule-box{
+	background: #abd5ffa8;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+.houserule-titles{
+	width:20%;
+	padding: 10px;
+}
+.houserule-details{
+	width: 80%;
+	padding: 10px;
+}
+.houserule-checkin{
+    border: 1px solid gray;
+    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #e0e0e0;
+        color: white;
+}
+.houserule-checkin-checkin{
+	width: 40%;
+    float: right;
+    background: #003179d1;
+}
+.houserule-checkin-checkout{
+	width: 40%;
+   
+    background: #003179d1;
+}
+.houserule-cardimg{
+	
+   
+    /* border: 1px solid red; */
+    height: 20px;
+    width: 50px;
+    display:inline-block;
+}
+.visa{
+	background: url(./resources/img/visa.png) no-repeat top;
+	 background-size: contain;
+}
+.master{
+	background: url(./resources/img/master.png) no-repeat top;
+	 background-size: contain;
+	 height: 25px;
 }
 
 
@@ -564,6 +710,15 @@ table {
 }
 
 
+/******    *리뷰 **************/
+.review-wrapper{
+	    width: 95%;
+    background: #c8e3ff;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+
 
 
 
@@ -577,7 +732,157 @@ table {
 </style>
 </head>
 <body>
+
+<%@include file="/WEB-INF/common/header.jsp"%>
+<div class="total-container">
+
+
+
+	<div class="left-bar">
+		
+		
+		
+		<div class="leftSearch-wrap">
+			<form action="Search.ho" method="post" class="leftsearch-form">
+				<h4>검색</h4>
+				<div class="searchinput">
+					<span class="searchinputSpan">여행지 이름:</span>
+					<input class="inputbox" type="text" name="area" placeholder="지역을 입력하세요"
+						value="${param.area }">
+					<br>
+					<p class="searcharea-p scheduler">
+						<span class="searchinputSpan">체크인 날짜:</span>
+						<input class="inputbox"  name="checkin" type="text" id="datepicker" placeholder="체크인" value="${param.checkin }">
+						<br>
+							<span class="searchinputSpan">체크아웃 날짜:</span>
+							<input class="inputbox"  name="checkout" type="text" id="datepicker2" placeholder="체크아웃" value="${param.checkout }">
+					</p>
+
+
+
+					<div class="personbox">
+						<div class="perbox-box">
+							<div>
+								
+									<select class="adultselect">
+									<c:forEach begin="1" end="20" var="p">
+										
+										<option class="adult" value="${p }" <c:if test="${param.adult == p }">selected</c:if>>성인: ${p }명
+									
+									</c:forEach>
+									
+									</select>
+								
+								
+							</div>
+							<div>
+								
+									<select class="crselect">
+									<option <c:if test="${param.child == 0 }">selected</c:if>>아동 없음
+									<c:forEach begin="1" end="20" var="p">
+										
+										<option class="child" value="${p }" <c:if test="${param.child == p }">selected</c:if>>아동: ${p }명
+									
+									</c:forEach>
+									
+									</select>
+									
+								
+							
+							
+									<select class="crselect">
+									
+									<c:forEach begin="1" end="20" var="p">
+										
+										<option class="room" value="${p }" <c:if test="${param.room == p }">selected</c:if>>객실: ${p }개
+									
+									</c:forEach>
+									
+									</select>
+								
+								
+								
+							</div>
+						</div>
+					</div>
+
+					<input type="hidden" name="adult" class="adult" value="${search.adult }">
+					<input type="hidden" name="child" class="child"  value="${search.child }">
+					<input type="hidden" name="room" class="room"  value="${search.room }">
+					<input type="hidden" name="searchas" value="${search.searchas }">
+					<input type="hidden" name="filterType" value="${search.filterType }">
+					<input class="mainsubmitbtn" type="submit" value="검색">
+
+				</div>
+			</form>
+
+		</div>
+	
+	
+		<!-- 지도를 담을영역 --> 
+		<div id="map" style="width:95%;height:300px; border-radius:5px; padding:10; border:1px; margin:auto; margin-bottom:3px;">
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f8dac855d9fc96a72ecec0f6b94fa4b&libraries=services"></script>
+		<script>
+			var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+			var options = { //지도를 생성할 때 필요한 기본 옵션
+				center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+				level: 3 //지도의 레벨(확대, 축소 정도)
+			};
+	
+			var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+			
+			var zoomControl = new kakao.maps.ZoomControl();
+			map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT); // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+			
+			var geocoder = new kakao.maps.services.Geocoder(); // geocoder 객체 생성
+			
+			var addr="${hotel.h_address1}";
+			geocoder.addressSearch(addr, function(result, status) {
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === kakao.maps.services.Status.OK) {
+			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			        map.setCenter(coords);
+			    } 
+			});    
+		</script>
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</div>
+
+
+
+
 <div class="rightbar">
+
+<div>
+	<ul class="rightbar-selectbox">
+		<li><button class="rightbar-selectbtn" onclick="fnMove(1)" style="border-left:none">옵션정보&요금</button></li>
+		<li><button class="rightbar-selectbtn" onclick="fnMove(2)">시설</button></li>
+		<li><button class="rightbar-selectbtn" onclick="fnMove(3)">하우스룰</button></li>
+		<li><button class="rightbar-selectbtn" onclick="fnMove(4)">후기</button></li>
+	
+	</ul>
+</div>
+
 <div>
 	<input type="hidden" name="h_num" value="${hotel.h_num }">
 	<div id="hotelname"><span class="hoteltype">${hotel.h_type }</span>&nbsp;&nbsp;<h1>${hotel.h_name }</h1></div>
@@ -596,23 +901,26 @@ table {
 	<table class="hotelComment-table">
 	
 		<tr>
-			<td>
+			<td style="width: 70%;">
 				<div id="hotelcomment">
 					<a>${hotel.h_nation } 추천 숙소</a><br>
 			
-					<pre>
-					라마다 앙코르 서귀포 호텔은 레스토랑, 카페, 피트니스 센터 및 비즈니스 시설을 운영하고 있으며,
-					 제주 월드컵경기장에서 차로 단 5분 거리에 있습니다. 이 호텔은 공용 공간에 Wi-Fi를 제공하며,
-					  무료 구내 주차장을 보유하고 있습니다.
+					<div>
+				
 					${hotel.h_comment }
-					</pre> 
+					</div> 
 				</div>
 			</td>
-			<td>
+			<td style="width: 30%;">
 				<div class="rightbox-commentbox">
 				<h4>투숙객이 좋아해요</h4>
-				<p><b>조식 정보</b></p>
-				<span>채식, 아시안, 미국식 조식, 뷔페</span>
+				
+					
+					<p><b>조식 정보</b></p>
+					<span>뷔페</span>
+					
+					<p class="rightbox-commentp"><button class="rightbox-btn" type="button" onclick="fnMove(1)">지금 예약하기</button></p>
+					
 			
 			
 				</div>
@@ -768,7 +1076,7 @@ table {
 		<div class="detail-famous-wrapper">
 			
 			<ul  class="famous-wrapper">
-				<li>욕실</li>
+				<li class="famous-wrapper-title"><i class="material-icons">bathtub</i>욕실</li>
 				<li>화장지</li>
 				<li>린넨</li>
 				<li>타월</li>
@@ -782,12 +1090,12 @@ table {
 				<li>헤어드라이어</li>
 				<li>욕조</li>
 				<li>샤워</li>
-			
-				<li>침실</li>
+				<li><br></li>	
+				<li class="famous-wrapper-title"><i class="material-icons">king_bed</i>침실</li>
 				<li>옷장</li>
 				<li>긴 침대(2m 이상)</li>
-			
-				<li>반려동물</li>
+				<li><br></li>
+				<li class="famous-wrapper-title"><i class="material-icons">emoji_nature</i>반려동물</li>
 				<li>애완동물 동반이 ${hotel.h_animal }합니다.</li>
 			</ul>
 		
@@ -797,17 +1105,17 @@ table {
 			
 		
 			<ul class="famous-wrapper">
-				<li>미디어/테크놀로지</li>
+				<li class="famous-wrapper-title"><i class="material-icons">tv</i>미디어/테크놀로지</li>
 				<li>평면 TV</li>
 				<li>케이블 채널</li>
 				<li>위성 채널</li>
 				<li>전화기</li>
 				<li>TV</li>
-			
-				<li>식음료</li>
+				<li><br></li>
+				<li class="famous-wrapper-title"><i class="material-icons">local_dining</i>식음료</li>
 				<li>생수</li>
-			
-				<li>인터넷</li>
+				<li><br></li>
+				<li class="famous-wrapper-title"><i class="material-icons">wifi</i>인터넷</li>
 				<li>
 					<c:if test="${fn:contains(hotel.h_internet,'무료') }">
 					 Wi-Fi(은)는 호텔 전 구역에서 무료입니다
@@ -815,14 +1123,14 @@ table {
 					
 					
 				</li>
-			
-				<li>인터넷</li>
+				<li><br></li>
+				<li class="famous-wrapper-title"><i class="material-icons">accessible</i>접근성</li>
 				<li>비상 알람이 설치된 화장실</li>
 				<li>유닛 전역에서 휠체어 사용 가능</li>
 				<li>엘리베이터로 위층 이동 가능</li>
 				<li>지상층 전체 유닛</li>
-			
-				<li>주차</li>
+				<li><br></li>
+				<li class="famous-wrapper-title"><i class="material-icons">drive_eta</i>주차</li>
 				<li>
 					<c:if test="${fn:contains(hotel.h_parking,'무료') }">
 					호텔 내 (사전 예약 불필요) 전용 주차장이 무료로 이용 가능합니다.
@@ -832,8 +1140,8 @@ table {
 					</c:if>
 				
 				</li>
-			
-				<li>리셉션 서비스</li>
+				<li><br></li>
+				<li class="famous-wrapper-title"><i class="material-icons">business_center</i>리셉션 서비스</li>
 				<li>전용 체크인/체크아웃</li>
 				<li>수하물 보관소</li>
 				<li>환전</li>
@@ -847,26 +1155,26 @@ table {
 	
 			
 			<ul  class="famous-wrapper">
-				<li>청소 서비스</li>
+				<li class="famous-wrapper-title"><i class="material-icons">room_service</i>청소 서비스</li>
 				<li>하우스키핑 (매일)</li>
 				<li>다림질 서비스</li>
 				<li>드라이클리닝 </li>
 				<li>세탁 </li>
-			
-				<li>비즈니스 시설</li>
+				<li><br></li>
+				<li class="famous-wrapper-title"><i class="material-icons">local_printshop</i>비즈니스 시설</li>
 				<li>팩스/복사</li>
 				<li>비즈니스 센터</li>
 				<li>회의/연회 시설 </li>
-			
-				<li>보안 시설</li>
+				<li><br></li>
+				<li class="famous-wrapper-title">보안 시설</li>
 				<li>소화기</li>
 				<li>숙소 외부 CCTV</li>
 				<li>공용 공간 CCTV</li>
 				<li>화염 경보</li>
 				<li>보안 알람</li>
 				<li>24시간 보안</li>
-			
-				<li>일반</li>
+				<li><br></li>
+				<li class="famous-wrapper-title"><i class="material-icons">live_help</i>일반</li>
 				<li>에어컨</li>
 				<li>모닝콜 서비스</li>
 				<li>금연 객실</li>
@@ -881,27 +1189,132 @@ table {
 	
 	</div>
 	
-	
-	
-	
-	
-	
-	
-	
+
 	</div>
 	
 	
-	<h3>이용 후기</h3>
-	<div>
-		<form>
-			<p><textarea placeholder="후기 입력"></textarea></p>
-			<input type="submit" value="등록">
+	<div class="houserule-wrapper">
+		<h5 class="houserule-title">하우스 룰</h5>
+		<p class="houserule-subtitle">${hotel.h_name }에 별도 요청 접수 가능 - 다음 단계에서 입력하세요!</p>
+		<table class="houserule-box">
+			<tr>
+				<td class="houserule-titles">체크인</td>
+				<td class="houserule-details">
+					<div class="houserule-checkin" >
+						<div class="houserule-checkin-checkin" data-percent="75">
+						
+							<span>15:00 이후 체크인</span>
+						</div>
+						
+					</div>
+						
+				</td>
+			</tr>
+			<tr>
+				<td class="houserule-titles">체크아웃</td>
+				<td class="houserule-details">
+					<div class="houserule-checkin" >
+						<div class="houserule-checkin-checkout" data-percent="75" style="width: 40%;">
+						
+							<span>11:00 이전 체크아웃</span>
+						</div>
+						
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="houserule-titles">취소/선결제</td>
+				<td class="houserule-details">숙소 유형에 따라 취소 및 선결제 정책이 달라집니다. 옵션을 선택할 때는 반드시 예약조건을 확인해주시기 바랍니다.</td>
+			</tr>
+			<tr>
+				<td class="houserule-titles">아동/침대 요금 정책</td>
+				<td class="houserule-details">
+					<p>모든 연령의 아동이 투숙 가능합니다.</p>
+					<p>정확한 요금과 투숙 정원 정보를 확인하려면 함께 숙박할 아동의 수를 검색 조건에 추가하시기 바랍니다.</p>
+					<p>이 숙소에서는 유아용 침대를 이용하실 수 없습니다.</p>
+					<p>이 숙소에서는 엑스트라 베드를 이용하실 수 없습니다.</p>
+					
+				</td>
+			</tr>
+			<tr>
+				<td class="houserule-titles">연령 제한 없음</td>
+				<td class="houserule-details">체크인 시 연령 제한이 없습니다</td>
+			</tr>
+			<tr>
+				<td class="houserule-titles">사용 가능한 신용카드</td>
+				<td class="houserule-details">
+					<div class="houserule-cardimg visa"></div>
+					<div class="houserule-cardimg master"></div>
+					
+					<div>도착 전 신용카드 가승인으로 일정 금액을 한시적으로 결제 유보할 권리가 숙박 업체 측에 있습니다.</div></td>
+			</tr>
 		
-		</form>
+		</table>
+		
+		
+	
 	</div>
 	
-	<div>
-		후기들 여기에 들어옴 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	<div class="review-wrapper">
+	
+	
+	
+	
+		<h3>이용 후기</h3>
+		<table>
+			<tr>
+				<td colspan="2">
+					<div>후기 작성일:</div>
+				</td>
+			</tr>
+			<tr>
+				<td>닉네임</td>
+				<td>
+					<div>평점</div>
+					<div>작성내용</div>
+					
+					
+					
+					
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<div>투숙한 방 타입</div>
+					<div>숙박일</div>
+				</td>
+			</tr>
+		
+		</table>
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
 	</div>
 	
 	
@@ -918,113 +1331,16 @@ table {
 	
 	
 	
-	<div class="left-bar">
-		
-		
-		
-		<div class="leftSearch-wrap">
-			<form action="Search.ho" method="post" class="leftsearch-form">
-				<h4>검색</h4>
-				<div class="searchinput">
-					<span class="searchinputSpan">여행지 이름:</span>
-					<input class="inputbox" type="text" name="area" placeholder="지역을 입력하세요"
-						value="${param.area }">
-					<br>
-					<p class="searcharea-p scheduler">
-						<span class="searchinputSpan">체크인 날짜:</span>
-						<input class="inputbox"  name="checkin" type="text" id="datepicker" placeholder="체크인" value="${param.checkin }">
-						<br>
-							<span class="searchinputSpan">체크아웃 날짜:</span>
-							<input class="inputbox"  name="checkout" type="text" id="datepicker2" placeholder="체크아웃" value="${param.checkout }">
-					</p>
 
 
-
-					<div class="personbox">
-						<div class="perbox-box">
-							<div>
-								
-									<select class="adultselect">
-									<c:forEach begin="1" end="20" var="p">
-										
-										<option class="adult" value="${p }" <c:if test="${param.adult == p }">selected</c:if>>성인: ${p }명
-									
-									</c:forEach>
-									
-									</select>
-								
-								
-							</div>
-							<div>
-								
-									<select class="crselect">
-									<option <c:if test="${param.child == 0 }">selected</c:if>>아동 없음
-									<c:forEach begin="1" end="20" var="p">
-										
-										<option class="child" value="${p }" <c:if test="${param.child == p }">selected</c:if>>아동: ${p }명
-									
-									</c:forEach>
-									
-									</select>
-									
-								
-							
-							
-									<select class="crselect">
-									
-									<c:forEach begin="1" end="20" var="p">
-										
-										<option class="room" value="${p }" <c:if test="${param.room == p }">selected</c:if>>객실: ${p }개
-									
-									</c:forEach>
-									
-									</select>
-								
-								
-								
-							</div>
-						</div>
-					</div>
-
-					<input type="hidden" name="adult" class="adult" value="${search.adult }">
-					<input type="hidden" name="child" class="child"  value="${search.child }">
-					<input type="hidden" name="room" class="room"  value="${search.room }">
-					<input type="hidden" name="searchas" value="${search.searchas }">
-					<input type="hidden" name="filterType" value="${search.filterType }">
-					<input class="mainsubmitbtn" type="submit" value="검색">
-
-				</div>
-			</form>
-
-		</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	</div>
+</div>
 
 
 
 
 
 
-
-
-
-
+<%@include file="/WEB-INF/common/footer.jsp"%>
 
 </body>
 </html>

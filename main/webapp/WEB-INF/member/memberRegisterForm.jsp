@@ -91,6 +91,7 @@
 	} 
 </script>
 <body>
+<%@include file="/WEB-INF/common/header.jsp"%>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 mx-auto">

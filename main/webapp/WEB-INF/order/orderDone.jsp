@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 
 <style>
+body{
+margin:0;
+}
 .done-wrapper{
     width: 60%;
     margin: 100px auto;
@@ -41,6 +44,7 @@ a:link, a:visited {
 
 
 </style>
+<%@include file="/WEB-INF/common/header.jsp"%>
 <div class="done-wrapper">
 
 	
@@ -58,3 +62,5 @@ a:link, a:visited {
 
 
 </div>
+
+<%@include file="/WEB-INF/common/footer.jsp"%>

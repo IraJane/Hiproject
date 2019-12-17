@@ -28,7 +28,7 @@ $(function(){
 
 
 <%
-	if (session.getAttribute("loginfo") == null) {
+	if (session.getAttribute("selloginfo") == null) {
 %>
 <header class="main-menu">
 	<a href="selSignup.sel">회원가입</a><a href="selLogin.sel">로그인</a>

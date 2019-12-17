@@ -15,16 +15,22 @@
 <script>
 	$(function() {
 		
-		
-		
+
 		
 			
-			$('.leftbtn').click(function(){
-				$('.hi-1').animate({marginLeft:'+=205px'});
-			});
-			$('.rightbtn').click(function(){
-				$('.hi-1').animate({marginLeft:'-=205px'});
-			});
+				
+					
+				$('.leftbtn').click(function(){
+					var f = $(this).val();
+
+					$('.hi'+f+'-1').animate({marginLeft:'-=205px'});
+				});
+				$('.rightbtn').click(function(){
+					var e = $(this).val();
+
+					$('.hi'+e+'-1').animate({marginLeft:'+=205px'});
+				});
+			
 			
 			
 			
@@ -176,97 +182,13 @@
 	});
 </script>
 
-
-
+<%@include file="/WEB-INF/common/header.jsp"%>
 
 <link href="<c:url value="resources/css/search.css" />" rel="stylesheet">
-bigSearch
-<br>
-header를 이곳에 추가
-<br>
+
 
 
 <div class="bar-wrapper">
-	<div class="rightbar">
-
-		<div class="listarea">
-			
-			<div class="rowfilter" >
-				<ul class="rowFilUl" >
-					<li>기본</li>
-					<li><a href="#" class="searchAsMoney">요금</a></li>
-					<li><a href="#" class="searchAsComment">평점</a></li>
-				</ul>
-			</div>
-			
-			
-			<div class="bigtitle-wrap">
-				<h3>검색된 숙소: ${fn:length(hotelList) }개</h3>
-				<h5>여행해야 할 이유 3가지:</h5>
-			</div>
-			
-			
-			<c:forEach items="${hotelList  }" var="hotel" varStatus="rr">
-				<table class="tablelist">
-					<tr class="tablerow">
-						<td>
-							
-								<div class="img-cutter">
-									
-									<div class="img-only-wrap">
-									<c:forEach items="${hotel.h_image }" var="image" varStatus="i">
-										<img  class="hotelimage hi-${i.count }"
-											src="<%=request.getContextPath() %>/resources/Hotelimages/${hotel.h_name }/${h_image }">
-											
-											
-										
-									</c:forEach>
-									</div>
-								</div>
-								
-										<button type="button" class="leftbtn">&laquo;</button>
-										<button type="button" class="rightbtn"
-											style="margin-left: 150px;">&raquo;</button>
-							
-							
-
-						</td>
-
-						<td><span class="htypesearch">${hotel.h_type }</span><a
-							class="hnamesearch" href="hotelDetail.ho?h_num=${hotel.h_num }&area=${param.area}&checkin=${param.checkin}&checkout=${param.checkout}&adult=${param.adult}&child=${param.child}&room=${param.room}"><b>${hotel.h_name }</b></a>
-
-							<div class="addsearch">
-								<b>${hotel.h_address1 },&nbsp;${hotel.h_nation }</b>
-							</div>
-
-							<div>${hotel.h_comment }</div>
-							<div>객실유형&nbsp;&nbsp;&nbsp;&nbsp;객실가격</div>
-							<c:forEach items="${hotel.rooms }" var="room">
-								<a>${room.r_type }&nbsp;&nbsp;&nbsp;&nbsp;${room.r_price }</a><br>
-							</c:forEach>
-					
-						</td>
-						
-					</tr>
-						
-						
-					
-				</table>
-
-
-			</c:forEach>
-
-
-		
-
-
-	</div>
-
-
-
-
-	</div>
-
 	<div class="leftbar">
 
 		<div class="leftSearch-wrap">
@@ -280,10 +202,10 @@ header를 이곳에 추가
 					<br>
 					<p class="searcharea-p scheduler">
 						<span class="searchinputSpan">체크인 날짜:</span>
-						<input class="inputbox"  name="checkin" type="text" id="datepicker" placeholder="체크인" value="${param.checkin }">
+						<input class="inputbox"  name="checkin" type="text" id="datepicker" placeholder="체크인" value="${param.checkin }" autocomplete="off">
 						<br>
 							<span class="searchinputSpan">체크아웃 날짜:</span>
-							<input class="inputbox"  name="checkout" type="text" id="datepicker2" placeholder="체크아웃" value="${param.checkout }">
+							<input class="inputbox"  name="checkout" type="text" id="datepicker2" placeholder="체크아웃" value="${param.checkout }" autocomplete="off">
 					</p>
 
 
@@ -407,4 +329,92 @@ header를 이곳에 추가
 		</div>
 
 	</div>
+	<div class="rightbar">
+
+		<div class="listarea">
+			
+			<div class="bigtitle-wrap">
+				<h3><c:if test="${param.area != ''}">${param.area}:</c:if> 검색된 숙소 ${fn:length(hotelList) }개</h3>
+				
+			</div>
+			<div class="rowfilter" >
+				<ul class="rowFilUl" >
+					<li><a href="#" class="searchAsMoney">기본</a></li>
+					<li><a href="#" class="searchAsMoney">요금</a></li>
+					<li><a href="#" class="searchAsComment">평점</a></li>
+					<li><a href="#" class="searchAsComment rowbordernone">성급</a></li>
+				</ul>
+			</div>
+			
+			
+			
+			
+			<c:forEach items="${hotelList  }" var="hotel" varStatus="rr">
+				<table class="tablelist">
+					<tr class="tablerow">
+						<td>
+							
+								<div class="img-cutter">
+									
+									<div class="img-only-wrap">
+									<c:forEach items="${hotel.images }" var="image" varStatus="i">
+										<img class="hotelimage hi${rr.count }-${i.count }" src="<%=request.getContextPath() %>/resources/Hotelimages/${hotel.h_name }/${image }">
+									</c:forEach>
+									</div>
+								</div>
+								
+										<button type="button" class="leftbtn" value="${rr.count }">&laquo;</button>
+										<button type="button" class="rightbtn" value="${rr.count }"
+											style="margin-left: 150px;">&raquo;</button>
+							
+							
+
+						</td>
+
+						<td><span class="htypesearch">${hotel.h_type }</span><a
+							class="hnamesearch" href="hotelDetail.ho?h_num=${hotel.h_num }&area=${param.area}&checkin=${param.checkin}&checkout=${param.checkout}&adult=${param.adult}&child=${param.child}&room=${param.room}">
+														<b>${hotel.h_name }</b>
+														<c:if test="${fn:contains(hotel.h_grade,5) }"><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i></c:if>
+														<c:if test="${fn:contains(hotel.h_grade,4) }"><i class="material-icons gradestar">grade</i><i class="material-icons gradestar" >grade</i><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i></c:if>
+														<c:if test="${fn:contains(hotel.h_grade,3) }"><i class="material-icons gradestar">grade</i><i class="material-icons gradestar" >grade</i><i class="material-icons gradestar">grade</i></c:if>
+														<c:if test="${fn:contains(hotel.h_grade,2) }"><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i></c:if>
+														<c:if test="${fn:contains(hotel.h_grade,1) }"><i class="material-icons gradestar">grade</i></c:if>
+
+														</a>
+
+							<div class="addsearch">
+								<b>${hotel.h_address1 },&nbsp;${hotel.h_nation }</b>
+							</div>
+
+							<div>${hotel.h_comment }</div>
+							<div>객실유형&nbsp;&nbsp;&nbsp;&nbsp;객실가격</div>
+							<c:forEach items="${hotel.rooms }" var="room">
+								<a>${room.r_type }&nbsp;&nbsp;&nbsp;&nbsp;${room.r_price }</a><br>
+							</c:forEach>
+					
+						</td>
+						
+					</tr>
+						
+						
+					
+				</table>
+
+
+			</c:forEach>
+
+
+		
+
+
+	</div>
+
+
+
+
+	</div>
+
 </div>
+
+
+<%@include file="/WEB-INF/common/footer.jsp"%>

@@ -149,20 +149,7 @@ $(function(){
 </script>
 
 
-<script type="text/javascript">
-function login() {
-	var popupX = (window.screen.width/2)-(500/2);
-	var popupY = (window.screen.height/2)-(500/2);
-	
-	window.open(	
-			'login.mem','_blank','height=500, width=500, toolbar=no, menubar=no, location=no, scrollbars=no, status=no, resizable=no, fullscreen=no, channelmode=yes, left='+ popupX +', top='+ popupY
-			); return false
-}
-function logout() {
-	location.href="logout.mem";
-	alert("로그아웃 되었습니다");
-}
-</script>
+
 
 
 
@@ -177,33 +164,7 @@ function logout() {
       rel="stylesheet">
 <style>
 /***drop   *********************************************/
-.drop {
-	position: relative;
-	display: inline-block;
-	float: right;
-	margin: 20px;
-}
-.drop-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.drop-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-.drop-content a:hover {background-color: #f1f1f1}
-.drop:hover .drop-content {
-  display: block;
-}
-.drop:hover .drop span {
-  background-color: #3e8e41;
-}
+
 
 
 </style>
@@ -213,11 +174,11 @@ function logout() {
 
 </head>
 <body>
+<%@include file="/WEB-INF/common/header.jsp"%>
 
 	
-	
 	    
-<header class="main-menu">
+<%-- <header class="main-menu">
 		<a href="main.jsp" class="main">호텔로고자리</a> 
 		<c:if test="${sessionScope.loginfo == null }">
 			<a class="main-login" href="register.mem" >회원가입</a>
@@ -240,7 +201,7 @@ function logout() {
 		<a class="mainright" href="selMain.sel">판매자</a>
 		<a class="mainright" href="#">고객센터</a>
 	
-</header>
+</header> --%>
 	
 	
 
@@ -259,8 +220,8 @@ function logout() {
 				<input type="text" name="area" placeholder="지역을 입력하세요">
 			
 				<p class="searcharea-p scheduler"><i class="material-icons">event</i>
-				<input name="checkin" type="text" id="datepicker" placeholder="체크인">
-				<input name="checkout" type="text" id="datepicker2" placeholder="체크아웃">
+				<input name="checkin" type="text" id="datepicker" placeholder="체크인" autocomplete="off">
+				<input name="checkout" type="text" id="datepicker2" placeholder="체크아웃" autocomplete="off">
 				</p>
 				
 				
@@ -405,11 +366,11 @@ function logout() {
 
 
 
-
+<%@include file="/WEB-INF/common/footer.jsp"%>
 
 
 	
-	<footer class="modal-footer footer">
+	<!-- <footer class="modal-footer footer">
 		
 		<div class="foot">
 			<div class="logo">
@@ -453,6 +414,6 @@ function logout() {
 		</div>
 	
 	
-	 </footer>
+	 </footer> -->
 </body>
 </html>
