@@ -38,7 +38,7 @@ public class OrderInsertController {
 		
 		String[] bb = rooms.split(",");
 		System.out.println("bb:"+bb.length);
-		System.out.println(bb[0]+";"+bb[1]);
+	/*	System.out.println(bb[0]+";"+bb[1]);*/
 		
 		
 		for(int i = 0; i<bb.length;i++) {

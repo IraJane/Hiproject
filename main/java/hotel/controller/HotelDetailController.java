@@ -43,6 +43,12 @@ public class HotelDetailController {
 		hotel.setRooms(rooms);
 		hotel.setImages(hotel.getH_image().split(";"));
 		
+		
+		String address=hotel.getH_address1().substring(0,hotel.getH_address1().indexOf("(")-1);
+		hotel.setH_address1(address);
+		
+		
+		
 		model.addAttribute("search",search);
 		model.addAttribute("hotel",hotel);
 		model.addAttribute("rooms",rooms);
