@@ -1,7 +1,5 @@
 package hotel.model;
 
-import java.util.Arrays;
-
 public class Room { 
 	
 	private String[] type;
@@ -202,21 +200,6 @@ public class Room {
 	public void setOriginHname(String originHname) {
 		this.originHname = originHname;
 	}
-
-	@Override
-	public String toString() {
-		return "Room [type=" + Arrays.toString(type) + ", price=" + Arrays.toString(price) + ", breakfast="
-				+ Arrays.toString(breakfast) + ", person=" + Arrays.toString(person) + ", stock="
-				+ Arrays.toString(stock) + ", num=" + Arrays.toString(num) + ", r_num=" + r_num + ", h_num=" + h_num
-				+ ", r_type=" + r_type + ", r_price=" + r_price + ", r_person=" + r_person + ", r_breakfast="
-				+ r_breakfast + ", r_stock=" + r_stock + ", originHname=" + originHname + "]";
-	}
-	
-	
-	
-	
-	
-	
 	
 	
 	
