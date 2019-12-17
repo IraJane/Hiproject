@@ -193,6 +193,7 @@ $(document).ready(function(){
 	</tr>
 	<tr>
 		<td colspan="2">
+			
 			투숙객:${rooms.r_person }
 			<select>
 				<c:forEach begin="1" end="10" var="i" varStatus="i">

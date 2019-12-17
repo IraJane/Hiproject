@@ -4,47 +4,47 @@ body {
 	
 }
 
-.main-menu {
-	border: 1px solid #000e98;
-	width: 100%;
-	height: 50px;
-	background: #000e98;
+h3 {
+margin: 40px;
+    font-size: 35px;
 	
 }
-a {
-text-decoration: none;
-color:white;
-display:inline-block;
-float: right;
 
-}
-a:link,a:visited {
-	color:white;
-	text-decoration: none;
-}
-a:hover,a:active {
-	color:red;
-	text-decoration: none;
-}
+
 
 .background {
 	
-	width: 100%;
-    height: 300px;
-    background:#e0e0e0a1;
+    width: 100%;
+    height: 350px;
+    background: url(../resources/img/tree.png) no-repeat center top;
+    background-size: cover;
     
 }
-.floatRigth {
-	float:right;
-	color:white;
+
+.background table{
+	    width: 30%;
+    margin: auto;
+	    background: #ffffff7a;
+	    padding:10px;
+}
+.background table tbody{
+	    width: 30%;
+    margin: auto;
+    text-align: center;
+        background: #ffffff7a;
+	
 }
 
-.text-wrap {
-	width: 30%;
-    margin: 10px;
-	
+.background-btns{
+	    font-size: 17px;
+    text-decoration: none;
+    color: white;
+    background: blue;
+    border-radius: 5px;
+    padding: 5px;
 	
 }
+
 
 .view-text {
 	width: 15%;
@@ -62,9 +62,158 @@ a:hover,a:active {
 .underground {
 	background:white;
 	width:100%;
-	height:100px;
+	height:auto;
+	
+}
+.underground-undertext{
+	width: 95%;
+
+	margin:15px auto;
+}
+
+.underground-title{
+	    font-size: 28px;
 	
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+.underground-ul{
+    width: 40%;
+    padding: 0;
+    display: inline-block;
+    margin: auto 50px;
+    list-style: none;
+    position: relative;
+	
+}
+
+.underground-ul b{
+	    font-size: 20px;
+}
+
+
+.ul-wrapper{
+	width: 80%;
+margin:auto;
+}
+
+
+
+
+
+
+
+
+.underground-faq{
+	    text-align: center;
+    margin: 30px 0;
+    font-size: 13px;
+}
+.underground-faq span{
+	color:blue;
+}
+
+
+
+
+
+.bottom{
+	    margin: 15px auto;
+    width: 100%;
+    text-align: center;
+    background: #000e98;
+    height: 120px;
+    font-size: 30px;
+    padding: 5px;
+        color: white;
+}
+
+.bottom a{
+	border: 3px solid white;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+        padding: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/************ icons *********/
+.icons1 {
+	    background: #ffd3d3;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 10px -5px;
+	
+	
+}
+.icons2 {
+	    background: #ff936a;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 10px -5px;
+	
+	
+}
+.icons3 {
+	    background: #8cbfff;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 10px -5px;
+	
+	
+}
+.icons4 {
+	    background: #12a70080;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 10px -5px;
+	
+	
+}
+
+
+
+
+
+.clearfix::after{
+	content: ' ';
+	display:block;
+	clear:both;
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
 
 

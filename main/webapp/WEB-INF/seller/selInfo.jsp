@@ -44,6 +44,11 @@ height: 700px;
     margin: 10px 5px;
 }
 
+.btn-primary{
+	background:#980000;
+	border:none;
+}
+
 
 </style>
 

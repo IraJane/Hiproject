@@ -15,7 +15,7 @@ body {
 	
 }
 h4{
-    background: #0300a2;
+    background: #2911007d;
     border-radius: 5px;
     font-size: 20px;
     margin: 3px;
@@ -53,9 +53,10 @@ h4{
 }
 .h_typeDetail {
 	border-radius: 5px;
-    background: orange;
-    font-size: 20px;
-    padding: 5px;
+    background: #b7b7b7;
+    font-size: 15px;
+    /* padding: 5px; */
+    color: white;
 }
 .updatedeletebtn {
 	float: right;
@@ -65,11 +66,12 @@ h4{
     text-decoration:none;
 }
 .checkCheckin {
-	background: #00a200;
+	background: #009a00;
     border-radius: 5px;
     padding: 2px;
     font-size: 15px;
     border: none;
+    color: white;
 }
 .checkForm{
 	margin: 0px;
@@ -81,8 +83,8 @@ h4{
 
 
 
-<div>header위치</div>
-호텔 예약 현황
+<%@include file="../common/selHeader.jsp"%>
+<h3>호텔 예약 현황</h3>
 <br>
 
 <div class="total-wrapper">
@@ -119,7 +121,7 @@ h4{
 
 				<td colspan="2" class="updatedeletebtn">
 				<a href="updateHotel.ho?h_num=${list.h_num }">수정하기</a>&nbsp;&nbsp;
-				<a href="deleteHotel.ho">삭제하기</a></td>
+				<a href="deleteHotel.ho?h_num=${list.h_num }">삭제하기</a></td>
 			</tr>
 		</table>
 
@@ -167,7 +169,7 @@ h4{
 										<form class="checkForm" action="checkCheckin.der">
 											
 											<input type="hidden" name="onum" value="${mainOrder.o_num }">
-											상태:<input class="checkCheckin" type="submit" value="&nbsp;Waiting..."><br>
+											상태 : <input class="checkCheckin" type="submit" value="&nbsp;Waiting..."><br>
 											<span>※2개 이상의 예약이 있을경우 둘다 확정이 됩니다</span>
 										
 										
@@ -175,7 +177,7 @@ h4{
 										</form>
 										
 									</c:if>
-									<c:if test="${mainOrder.o_checker == 1}">상태:<input class="checkCheckin" type="button" value="확인완료"></c:if>
+									<c:if test="${mainOrder.o_checker == 1}">상태 : <input class="checkCheckin" type="button" value="확인완료"></c:if>
 							
 								
 							</td>
@@ -193,6 +195,6 @@ h4{
 </div> 
 	
 
-
+<%@include file="../common/footer.jsp"%>
 
 

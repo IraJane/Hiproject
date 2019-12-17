@@ -89,18 +89,10 @@ color: black;
 
 	
 
-<c:forEach  items="${totalOrder }" var="total">
 <c:forEach  items="${mainOrderd }" var="mo">
-<c:forEach begin="0" end="${od.size()-1 }" var="i">
-<c:forEach begin="0" end="${ho.size()-1 }" var="k">
-<c:forEach begin="0" end="${ro.size()-1 }" var="j">
-<%-- <c:if test="${mo.o_num == od[i].o_num }">
-<c:if test="${od[i].r_num == ro[j].r_num }"> --%>
+<c:set var="loop_flag" value="false" />
 
-<%-- ${od[i].r_num }
-<c:if test="${ro[j].h_num == ho[k].h_num }"> --%>
 
-<c:if test="${mo.o_num == od[i].o_num && od[i].r_num == ro[j].r_num && ro[j].h_num == ho[k].h_num }">
 	
  <table class="table-wrapper">
 	<tr>
@@ -111,6 +103,13 @@ color: black;
 		
 		</td>
 	</tr>
+<c:forEach begin="0" end="${od.size()-1 }" var="i">
+<c:if test="${mo.o_num==od[i].o_num }">
+<c:forEach begin="0" end="${ro.size()-1 }" var="j">
+<c:if test="${ro[j].r_num==od[i].r_num }">
+<c:forEach begin="0" end="${ho.size()-1 }" var="k">
+<c:if test="${not loop_flag }">
+<c:if test="${ho[k].h_num==ro[j].h_num}">
 	<tr>
 		<td>
 			<span class="hoteltype">${ho[k].h_type }</span><h4><a class="totitle" href="hotelDetail.ho?h_num=${ho[k].h_num }">${ho[k].h_name }</a></h4>
@@ -124,13 +123,27 @@ color: black;
 		
 		</td>
 	</tr>
+<c:set var="loop_flag" value="true" />
+</c:if>
+</c:if>
+</c:forEach>
 	<tr>
 		<td>
-			예약한 방 종류 : ${ro[j].r_type }&nbsp;&nbsp;&nbsp; ${od[i].o_count   } 개
+			<div>
+				예약한 방 : ${ro[j].r_type }&nbsp;&nbsp;&nbsp; ${od[i].o_count   } 개
+				<c:if test="${mo.o_checker ==0 }">
+				<a href="#?mo=${mo.o_num}&od=${ od[i].r_num}">취소</a>
+				</c:if>
+			</div>
 		
 		</td>
 	</tr>
-	<tr>
+	
+</c:if>
+</c:forEach>
+</c:if>
+</c:forEach>
+<tr>
 		<td>
 			영문 이름 : ${mo.o_engname } 
 		
@@ -155,13 +168,10 @@ color: black;
 		</td>
 	</tr>
 </table>  
-</c:if>
+
 
 </c:forEach>
-</c:forEach>
-</c:forEach>
-</c:forEach>
-</c:forEach>
+
 
 
 
