@@ -21,10 +21,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="member" />
-	<context:component-scan base-package="order" />
-	<context:component-scan base-package="hotel" />
-	<context:component-scan base-package="seller" />
+	<context:component-scan base-package="member.controller" />
+	<context:component-scan base-package="order.controller" />
+	<context:component-scan base-package="hotel.controller" />
+	<context:component-scan base-package="seller.controller" />
 	
 	
 

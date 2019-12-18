@@ -37,7 +37,8 @@
 			type : "POST",
 			data : formData,
 			success : function(data) {
-				if (a.value == ("admin@admin")) {
+				/***************** 관리자 *****************/
+				if (a.value == ("admin@admin.com")) {
 					//alert(a.value);
 					opener.parent.location="main.ad";
 					window.close();

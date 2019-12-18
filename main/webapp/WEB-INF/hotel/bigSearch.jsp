@@ -387,9 +387,12 @@
 							</div>
 
 							<div>${hotel.h_comment }</div>
-							<div>객실유형&nbsp;&nbsp;&nbsp;&nbsp;객실가격</div>
+							
 							<c:forEach items="${hotel.rooms }" var="room">
-								<a>${room.r_type }&nbsp;&nbsp;&nbsp;&nbsp;${room.r_price }</a><br>
+								<a class="roomperperson"><b>${room.r_type }</b>
+									
+									
+								</a><br>
 							</c:forEach>
 					
 						</td>

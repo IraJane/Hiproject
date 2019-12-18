@@ -149,6 +149,8 @@
 		
 		 $("#datepicker").datepicker(); 
 		 $("#datepicker2").datepicker();
+		 $("#datepicker3").datepicker(); 
+		 $("#datepicker4").datepicker();
 		 
 		 
 		//********Room price picker *****************************************************************
@@ -219,22 +221,7 @@
 			
 			
 			
-			
-			
-			
-			
-		//******************************예약하기 창으로 방 이름  넘기기********************************************
-			
-			
-				
-			
-			
-		
-			
-			
-			
-			
-			
+
 			
 			
 			
@@ -307,6 +294,60 @@
 
 
 </script>
+<script type="text/javascript">
+
+function pushLayer() {
+	$('#myModal').show();
+};
+
+function close_pop(flag) {
+	$('#myModal').hide();
+};
+
+function toSearch() {
+	var checkin = $('#datepicker3').val();
+	var checkout = $('#datepicker4').val();
+	var adult = $('.madult').val();
+	var child = $('.mchild').val();
+	var room = $('.mroom').val();
+	location.href="Search.ho?checkin="+checkin+"&checkout="+checkout+"&adult="+adult+"&child="+child+"&room="+room+"";
+};
+
+
+
+
+</script>
+<style type="text/css">
+
+
+.myModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
+.pop_bt{
+	float:right;
+}
+
+
+
+
+</style>
 <style>
 body {
 	margin:0;
@@ -428,11 +469,31 @@ h4 {
 
 .register-check td {
     border-right: 1px solid #d4d4d4;
-    width:33.33333%;
+    width: 26.33333%;
 }
 .register-check-last {
 	border-right: none !important;
 	
+}
+
+.infochangebtn{
+	    border: none;
+    background: none;
+    color: blue;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+.infoAllbtn{
+	width: 50%;
+    margin: 30px;
+    border: none;
+    background: blue;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+
 }
 
 /******register table   부터 **********************************************/
@@ -483,6 +544,10 @@ table {
     padding: 5px;
     border-radius: 5px;
     width: 100%;
+}
+
+.material-icons{
+	font-size:15px;
 }
 
 
@@ -728,6 +793,7 @@ table {
 
 
 
+
 	
 </style>
 </head>
@@ -852,6 +918,81 @@ table {
 			});    
 		</script>
 		</div>
+		
+		
+		
+		<div id="myModal" class="myModal">
+			<div class="modal-content">
+				<span onclick="close_pop()" class="pop_bt" style="font-size: 13pt;">x</span>
+				
+				<div class="col-md-12 text-center">
+					<h1>검색 하기</h1>
+				</div>
+				<form name="reviewForm" id="reviewForm">
+					<p class="searcharea-p scheduler">
+						<span class="searchinputSpan">체크인 날짜:</span>
+						<input class="inputbox"  name="checkin" type="text" id="datepicker3" placeholder="체크인" value="${param.checkin }">
+						<br>
+							<span class="searchinputSpan">체크아웃 날짜:</span>
+							<input class="inputbox"  name="checkout" type="text" id="datepicker4" placeholder="체크아웃" value="${param.checkout }">
+					</p>
+					
+					<div class="perbox-box">
+							<div>
+								
+									<select class="adultselect">
+									<c:forEach begin="1" end="20" var="p">
+										
+										<option class="madult" value="${p }" <c:if test="${param.adult == p }">selected</c:if>>성인: ${p }명
+									
+									</c:forEach>
+									
+									</select>
+								
+								
+							</div>
+							<div>
+								
+									<select class="crselect">
+									<option <c:if test="${param.child == 0 }">selected</c:if>>아동 없음
+									<c:forEach begin="1" end="20" var="p">
+										
+										<option class="mchild" value="${p }" <c:if test="${param.child == p }">selected</c:if>>아동: ${p }명
+									
+									</c:forEach>
+									
+									</select>
+									
+								
+							
+							
+									<select class="crselect">
+									
+									<c:forEach begin="1" end="20" var="p">
+										
+										<option class="mroom" value="${p }" <c:if test="${param.room == p }">selected</c:if>>객실: ${p }개
+									
+									</c:forEach>
+									
+									</select>
+								
+								
+								
+							</div>
+						</div>
+					
+					
+					
+					
+					
+					<div
+						style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
+						onClick="toSearch();"><span>검색</span>
+						
+					</div>
+				</form>
+			</div>
+		</div>
 	
 	
 	
@@ -962,14 +1103,15 @@ table {
 			<tr>
 				<td>
 					<p>체크인</p>
-					<p>${param.checkin }</p>
+					<p><button class="infochangebtn" onclick="pushLayer()">${param.checkin }</button></p>
 				
 				</td>
 				<td>
 					<p>체크아웃</p>
-					<p>${param.checkout }</p>
+					<p><button class="infochangebtn" onclick="pushLayer()">${param.checkout }</button></p>
 				</td>
-				<td class="register-check-last"><p>성인 : ${param.adult }</p><p>아이 : <c:if test="${param.child ==0 }">0</c:if><c:if test="${param.child !=0 }">${param.child }</c:if></p></td>
+				<td><p>성인 : ${param.adult }</p><p>아이 : <c:if test="${param.child ==0 }">0</c:if><c:if test="${param.child !=0 }">${param.child }</c:if></p></td>
+				<td class="register-check-last"><button class="infoAllbtn" onclick="pushLayer()">검색 변경</button></td>
 			
 			
 			</tr>
@@ -1028,7 +1170,18 @@ table {
 						<li>슬리퍼</li>
 						</ul>
 				</td>
-				<td class="rperson">${room.r_person }</td>
+				<td class="rperson">
+				
+					<c:if test="${room.r_person == 2 }"><i class="material-icons">person</i><i class="material-icons">person</i></c:if>
+					<c:if test="${room.r_person == 3 }"><i class="material-icons">person</i><i class="material-icons">person</i><i class="material-icons">person</i></c:if>
+					<c:if test="${room.r_person == 4 }"><i class="material-icons">person</i><i class="material-icons">person</i><i class="material-icons">person</i><i class="material-icons">person</i></c:if>
+					<c:if test="${room.r_person > 4 }"><i class="material-icons">person</i> X ${room.r_person }</c:if>
+				
+				
+				
+				
+				
+				</td>
 				<td class="rprice"><input type="hidden" class="r_price-${r.index }" name="r_price" value="${room.r_price }">${room.r_price }</td>
 				<td class="rselect">
 					<select class="selectroom" >

@@ -29,25 +29,48 @@ $(document).ready(function(){
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		var sta_ymd = $('#checkin').val();
+		
+		var end_ymd = $('#checkout').val();
+		var sta_ymd_arr = sta_ymd.split("-");
+		
+		var end_ymd_arr = end_ymd.split("-");
+		
+		var sta_ymd_obj = new Date(sta_ymd_arr[0], Number(sta_ymd_arr[1])-1, sta_ymd_arr[2]);
+		
+		var end_ymd_obj = new Date(end_ymd_arr[0], Number(end_ymd_arr[1])-1, end_ymd_arr[2]);
+		
+		var betweenDay = (end_ymd_obj - sta_ymd_obj)/1000/60/60/24; 
+		$('#datedifference').append().text(betweenDay);
+
+   /*  var sta_ymd = document.getElementById("checkin").value; 
+    alert(sta_ymd); */
+   /*  var sta_ymd_arr = sta_ymd.split("."); */
+  
+   /*  var end_ymd = document.getElementById("checkout").value;    
+    var end_ymd_arr = end_ymd.split("."); */
+        
+    
+  /*   var sta_ymd_obj = new Date(sta_ymd_arr[0], Number(sta_ymd_arr[1])-1, sta_ymd_arr[2]);
+    var end_ymd_obj = new Date(end_ymd_arr[0], Number(end_ymd_arr[1])-1, end_ymd_arr[2]);
+    
+    var betweenDay = (end_ymd_obj - sta_ymd_obj)/60/60/24;
+    
+    document.getElementById("datedifference").value = betweenDay; */
+
+
+
 	});
 
 
-</script>
-<script>
-/* function dateDiff(_date1, _date2) {
-    var diffDate_1 = _date1instanceof Date ? _date1 :new Date(_date1);
-    var diffDate_2 = _date2instanceof Date ? _date2 :new Date(_date2);
  
-    diffDate_1 =new Date(diffDate_1.getFullYear(), diffDate_1.getMonth()+1, diffDate_1.getDate());
-    diffDate_2 =new Date(diffDate_2.getFullYear(), diffDate_2.getMonth()+1, diffDate_2.getDate());
- 
-    var diff = Math.abs(diffDate_2.getTime() - diffDate_1.getTime());
-    diff = Math.ceil(diff / (1000 * 3600 * 24));
- 
-    return diff;
-}
-
- */
 
 
 </script>
@@ -167,8 +190,8 @@ $(document).ready(function(){
 	<tr>
 		<td colspan="2">
 			체크인:	${search.checkin }
-			<input type="hidden" name="o_checkin" value="${search.checkin }">
-			<input type="hidden" name="o_checkout" value="${search.checkout }">
+			<input id="checkin" type="hidden" name="o_checkin" value="${search.checkin }">
+			<input id="checkout" type="hidden" name="o_checkout" value="${search.checkout }">
 		</td>
 		
 		
@@ -185,7 +208,7 @@ $(document).ready(function(){
 	
 	<tr>
 		<td colspan="2">
-			총 숙박일: 
+			총 숙박일: <span id="datedifference" onload="dateDiff(${search.checkin },${search.checkout })"></span>일
 
 		</td>
 		
@@ -209,7 +232,7 @@ $(document).ready(function(){
 	
 	<tr>
 		<td colspan="2">
-			총 금액:	<span class="totalprice"></span>
+			총 금액:	<span  class="totalprice"></span>
 		</td>
 		
 				
