@@ -1,4 +1,11 @@
-# Hiproject<br>
+# Hiproject<br>ㅙ
+hotelnow -> seller reservation
+         -> seller Controller
+         
+         둘다 order 에 
+
+
+<hr>
 drop sequence member_seq;
 create sequence member_seq
 start with 0
