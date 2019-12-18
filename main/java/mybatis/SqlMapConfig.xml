@@ -11,6 +11,7 @@
        <typeAlias type="hotel.model.Room" alias="MyRoom"/>
        <typeAlias type="order.model.MainOrder" alias="MyMainOrder"/>
        <typeAlias type="order.model.OrderDetail" alias="MyOrderDetail"/>
+       <typeAlias type="admin.model.Qa" alias="MyQa" />
     </typeAliases>
       
    <mappers>

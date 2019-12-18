@@ -1,8 +1,224 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="admin.model.Admin">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="admin.model.Admin">
+
+
+	<!-- seller -->
+	
+	<select id="getSelCount" resultType="int">
+		select count(*) from sellers
+		<if test="whatColumn == 's_email'">
+			where s_email like #{keyword}
+		</if>
+		
+		<if test="whatColumn == 's_phone'">
+			where s_phone like #{keyword}
+		</if>
+		
+		<if test="whatColumn == 's_comnumber'">
+			where s_comnumber like #{keyword}
+		</if>
+	</select>
+
+	<select id="getSelList" resultType="MySeller">
+		select * from sellers
+		<if test="whatColumn == 's_email'">
+			where s_email like #{keyword}
+		</if>
+		<if test="whatColumn == 's_phone'">
+			where s_phone like #{keyword}
+		</if>
+		<if test="whatColumn == 's_comnumber'">
+			where s_comnumber like #{keyword}
+		</if>
+		order by s_num desc
+	</select>
+
+	<delete id="deleteSel">
+		delete from sellers where s_num=#{s_num}
+	</delete>
+
+	<select id="selectSel" resultType="MySeller">
+		select * from sellers where
+		s_num=#{s_num}
+	</select>
+
+	<update id="updateSelInfo">
+		update sellers set s_password=#{s_password},
+		s_phone=#{s_phone}, s_name=#{s_name}, s_comnumber=#{s_comnumber}
+		where
+		s_email=#{s_email}
+	</update>
+
+	<insert id="insertSel">
+		insert into sellers values(seller_seq.nextval,
+		#{s_email}, #{s_password}, #{s_phone}, #{s_name}, #{s_comnumber})
+	</insert>
+
+
+	<!-- qa -->
+	
+	<insert id="insertQa">
+		insert into qa values(qa_seq.nextval, #{m_num},
+		#{q_title}, #{q_comment}, sysdate, 0)
+	</insert>
+
+	<select id="getQaCount" resultType="int">
+		select count(*) from qa
+		<if test="whatColumn == 'q_checked'">
+			where q_checked like #{keyword}
+		</if>
+		<if test="whatColumn == 'q_num'">
+			where q_num like #{keyword}
+		</if>
+		<!-- <if test="whatColumn == 'm_email'">
+			where m_email like #{keyword}
+		</if> -->
+		<if test="whatColumn == 'q_title'">
+			where q_title like #{keyword}
+		</if>
+		<if test="whatColumn == 'q_comment'">
+			where q_comment like #{keyword}
+		</if>
+	</select>
+
+
+	<select id="getQaList" resultType="MyQa">
+		select qa.q_num, members.m_email, qa.q_title, qa.q_comment, qa.q_regdate, qa.q_checked
+		from qa inner join members
+		on qa.m_num = members.m_num
+		<if test="whatColumn == 'q_checked'">
+			and qa.q_checked like #{keyword}
+		</if>
+		<if test="whatColumn == 'q_num'">
+			and qa.q_num like #{keyword}
+		</if>
+		<!-- <if test="whatColumn == 'm_email'">
+			and members.m_email like #{keyword}
+		</if> -->		
+		<if test="whatColumn == 'q_title'">
+			and qa.q_title like #{keyword}
+		</if>
+		<if test="whatColumn == 'q_comment'">
+			and qa.q_comment like #{keyword}
+		</if>
+	</select>
+
+	<update id="updateQa">
+		update qa set q_checked=1 where q_num=#{q_num}
+	</update>
+
+	<delete id="deleteQa">
+		delete from qa where q_num = #{q_num}
+	</delete>
+
+
+	<!-- members -->
+	
+	<select id="getTotalCountMem" resultType="int">
+		select count(*) from members
+		<if test="whatColumn == 'm_email'">
+			where m_email like #{keyword}
+		</if>
+		<if test="whatColumn == 'm_nickname'">
+			where m_nickname like #{keyword}
+		</if>
+	</select>
+
+	<select id="getMemList" resultType="MyMember">
+		select * from members
+		<if test="whatColumn == 'm_email'">
+			where m_email like #{keyword}
+		</if>
+		<if test="whatColumn == 'm_nickname'">
+			where m_nickname like #{keyword}
+		</if>
+		order by m_num desc
+	</select>
+
+	<delete id="deleteMem">
+		delete members
+		where m_num = #{m_num}
+	</delete>
+
+	<select id="updateView" resultType="Mymember">
+		select * from members
+		where
+		m_num=#{m_num}
+	</select>
+
+	<update id="updateMem">
+		update members set m_email=#{m_email},
+		m_password=#{m_password}, m_nickname=#{m_nickname}, m_name=#{m_name},
+		m_phone=#{m_phone}
+		where m_num = #{m_num}
+	</update>
+	
+	<insert id="insertMem">
+		insert into members values(member_seq.nextval,#{m_email},#{m_password},#{m_nickname},#{m_name},#{m_phone})	
+	</insert>
+	
+	<select id="seletOneMember" resultType="Mymember">
+		select * from members where m_num=#{m_num}
+	</select>
+	
+	
+	<!-- Hotel, rooms -->
+	<update id="updateHotel">
+		update hotel
+		set h_name=#{h_name}, s_num=#{s_num}, h_nation=#{h_nation}, h_address1=#{h_address1},
+		h_address2=#{h_address2},h_type=#{h_type}, h_phone=#{h_phone},h_room_num=#{h_room_num},h_facilities=#{h_facilities},h_internet=#{h_internet},
+		h_animal=#{h_animal},h_parking=#{h_parking},h_smoke=#{h_smoke},h_language=#{h_language},h_image=#{h_image},
+		h_hotel_url=#{h_hotel_url}, h_comment=#{h_comment}
+		where h_num=#{h_num}
+	</update>
+	
+	<update id="updateRoom">
+		update rooms
+		set r_type=#{r_type}, r_price=#{r_price}, r_person=#{r_person}, r_breakfast=#{r_breakfast}, r_stock=#{r_stock}
+		where r_num=#{r_num}	
+	</update>
+	
+	<delete id="deleteHotel">
+		delete from hotel where h_num=#{h_num}
+	</delete>
+	
+	<delete id="deleteHotelRoom">
+		delete from rooms where h_num=#{h_num}
+	</delete>
+
+	<insert id="insertHotel">
+      insert into hotel
+      values(hotel_seq.nextval,#{s_num, jdbcType=INTEGER},#{h_name,jdbcType=VARCHAR},#{h_nation,jdbcType=VARCHAR},#{h_address1,jdbcType=VARCHAR},
+      #{h_address2,jdbcType=VARCHAR},#{h_type,jdbcType=VARCHAR},#{h_phone,jdbcType=VARCHAR},#{h_room_num, jdbcType=INTEGER},#{h_facilities,jdbcType=VARCHAR},#{h_internet,jdbcType=VARCHAR},
+      #{h_animal,jdbcType=VARCHAR},#{h_parking,jdbcType=VARCHAR},#{h_smoke,jdbcType=VARCHAR},#{h_language,jdbcType=VARCHAR},#{h_image},
+      #{h_hotel_url, jdbcType=VARCHAR},#{h_comment,jdbcType=VARCHAR}, #{h_grade,jdbcType=VARCHAR})  
+   </insert>  
+
+	<insert id="insertRoom">
+		insert into rooms values(room_seq.nextval, #{h_num}, #{r_type}, #{r_price}, 
+		#{r_person}, #{r_breakfast}, #{r_stock})
+	</insert> 
+	
+ 	<!-- <select id="getHotelCount" resultType="int">
+		select count(*) from hotel where selnum=#{num}
+	</select>
+	
+	<select id="getHotelList" resultType="MyHotel">
+		select * from hotel where selnum=#{num}
+	</select>
+	
+	<select id="getRoomList" resultType="MyRoom">
+		select * from rooms where hname=#{hname}
+	</select> 
+	
+	-->
+   
+   
   
-  
-  </mapper>
+
+	
+</mapper>
