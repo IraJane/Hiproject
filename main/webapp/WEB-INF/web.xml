@@ -63,6 +63,7 @@
          <param-value>/WEB-INF/spring/appServlet/seller-servlet.xml
          </param-value>
       </init-param>
+      <load-on-startup>1</load-on-startup>
    </servlet>
 
    <servlet-mapping>
@@ -80,6 +81,7 @@
          <param-value>/WEB-INF/spring/appServlet/member-servlet.xml
          </param-value>
       </init-param>
+      <load-on-startup>1</load-on-startup>
    </servlet>
 
    <servlet-mapping>
@@ -96,6 +98,7 @@
          <param-value>/WEB-INF/spring/appServlet/admin-servlet.xml
          </param-value>
       </init-param>
+      <load-on-startup>1</load-on-startup>
    </servlet>
 
    <servlet-mapping>
@@ -112,6 +115,7 @@
          <param-value>/WEB-INF/spring/appServlet/hotel-servlet.xml
          </param-value>
       </init-param>
+      <load-on-startup>1</load-on-startup>
    </servlet>
 
    <servlet-mapping>
@@ -128,6 +132,7 @@
          <param-value>/WEB-INF/spring/appServlet/order-servlet.xml
          </param-value>
       </init-param>
+      <load-on-startup>1</load-on-startup>
    </servlet>
 
    <servlet-mapping>

@@ -339,10 +339,10 @@
 			</div>
 			<div class="rowfilter" >
 				<ul class="rowFilUl" >
-					<li><a href="#" class="searchAsMoney">기본</a></li>
-					<li><a href="#" class="searchAsMoney">요금</a></li>
-					<li><a href="#" class="searchAsComment">평점</a></li>
-					<li><a href="#" class="searchAsComment rowbordernone">성급</a></li>
+					<li><a class="rowatag" href="#" class="searchAsMoney">기본</a></li>
+					<li><a class="rowatag" href="#" class="searchAsMoney">요금</a></li>
+					<li><a class="rowatag" href="#" class="searchAsComment">평점</a></li>
+					<li class="rowbordernone" style="border-right: none;"><a class="rowatag" href="#" class="searchAsComment ">성급</a></li>
 				</ul>
 			</div>
 			
@@ -351,8 +351,8 @@
 			
 			<c:forEach items="${hotelList  }" var="hotel" varStatus="rr">
 				<table class="tablelist">
-					<tr class="tablerow">
-						<td>
+					<tr class="tablerow" >
+						<td rowspan="4">
 							
 								<div class="img-cutter">
 									
@@ -370,9 +370,10 @@
 							
 
 						</td>
-
-						<td><span class="htypesearch">${hotel.h_type }</span><a
-							class="hnamesearch" href="hotelDetail.ho?h_num=${hotel.h_num }&area=${param.area}&checkin=${param.checkin}&checkout=${param.checkout}&adult=${param.adult}&child=${param.child}&room=${param.room}">
+						</tr>
+						<tr>
+							<td class="hanmeFirst"><span class="htypesearch">${hotel.h_type }</span>
+								<a class="hnamesearch" href="hotelDetail.ho?h_num=${hotel.h_num }&area=${param.area}&checkin=${param.checkin}&checkout=${param.checkout}&adult=${param.adult}&child=${param.child}&room=${param.room}">
 														<b>${hotel.h_name }</b>
 														<c:if test="${fn:contains(hotel.h_grade,5) }"><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i></c:if>
 														<c:if test="${fn:contains(hotel.h_grade,4) }"><i class="material-icons gradestar">grade</i><i class="material-icons gradestar" >grade</i><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i></c:if>
@@ -380,19 +381,27 @@
 														<c:if test="${fn:contains(hotel.h_grade,2) }"><i class="material-icons gradestar">grade</i><i class="material-icons gradestar">grade</i></c:if>
 														<c:if test="${fn:contains(hotel.h_grade,1) }"><i class="material-icons gradestar">grade</i></c:if>
 
-														</a>
-
+								</a>
+							</td>
+							<td class="hanmeSecond">	
+								<span class="hname-score">9.5</span>
+								
+							</td>
+						</tr>
+						<tr>
+							<td>
 							<div class="addsearch">
 								<b>${hotel.h_address1 },&nbsp;${hotel.h_nation }</b>
 							</div>
-
-							<div>${hotel.h_comment }</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<%-- <div>${hotel.h_comment }</div> --%>
 							
 							<c:forEach items="${hotel.rooms }" var="room">
-								<a class="roomperperson"><b>${room.r_type }</b>
-									
-									
-								</a><br>
+								<a class="roomperperson"><b>${room.r_type }</b></a>
+								<a class="roomperperson"><b>\ ${room.r_price }</b></a><br>
 							</c:forEach>
 					
 						</td>

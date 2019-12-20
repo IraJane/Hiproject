@@ -72,7 +72,6 @@
 				$('input.adult').attr('value', ori+i);
 				
 				
-
 			});
 			
 			$('#plus').click(function(){
@@ -221,7 +220,6 @@
 			
 			
 			
-
 			
 			
 			
@@ -237,11 +235,9 @@
 		
 	
 		
-
 	});
 </script>
 <script type="text/javascript">
-
 		function reservate(){
 			$('form[name=roomreservate]').submit();
 			
@@ -289,21 +285,14 @@
 		        
 		        	
 		    }
-
-
-
-
 </script>
 <script type="text/javascript">
-
 function pushLayer() {
 	$('#myModal').show();
 };
-
 function close_pop(flag) {
 	$('#myModal').hide();
 };
-
 function toSearch() {
 	var checkin = $('#datepicker3').val();
 	var checkout = $('#datepicker4').val();
@@ -312,14 +301,8 @@ function toSearch() {
 	var room = $('.mroom').val();
 	location.href="Search.ho?checkin="+checkin+"&checkout="+checkout+"&adult="+adult+"&child="+child+"&room="+room+"";
 };
-
-
-
-
 </script>
 <style type="text/css">
-
-
 .myModal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -343,10 +326,6 @@ function toSearch() {
 .pop_bt{
 	float:right;
 }
-
-
-
-
 </style>
 <style>
 body {
@@ -355,7 +334,6 @@ body {
 .total-container{
 	margin:30px 300px;
 }
-
 h1{
 	display: inline-block;
 }
@@ -383,7 +361,6 @@ h1{
 		margin:auto;
 		padding:15px;
 	}
-
 	#hoteloptions{
 		width: 95%;
 		margin:20px;
@@ -412,7 +389,6 @@ h1{
 /* 	margin-left: 30px; */
 	float:left;
 }
-
 .calc {
 	border: 2px solid #ff6b09;
     background: white;
@@ -420,7 +396,6 @@ h1{
     margin: 10px;
     border-radius: 5px;	
 }
-
 .mainsubmitbtn{
     border: none;
     background: #040cf1;
@@ -443,7 +418,6 @@ background: #ffe0b1;
     margin: 15px;
 	
 }
-
 .leftsearch-form {
 	text-align: center;
 	padding: 10;
@@ -455,18 +429,15 @@ h4 {
     padding: 9px;
     border-radius: 5px;
 }
-
 .register-wrap {
 	margin: 20px;
 }
-
 /******register  부터 **********************************************/
 .register-check {
 	border: 1px solid #ababab;
     width: 100%;
     border-radius: 5px;
 }
-
 .register-check td {
     border-right: 1px solid #d4d4d4;
     width: 26.33333%;
@@ -475,7 +446,6 @@ h4 {
 	border-right: none !important;
 	
 }
-
 .infochangebtn{
 	    border: none;
     background: none;
@@ -483,7 +453,6 @@ h4 {
     text-decoration: underline;
     font-size: 20px;
 }
-
 .infoAllbtn{
 	width: 50%;
     margin: 30px;
@@ -493,16 +462,11 @@ h4 {
     border-radius: 5px;
     color: white;
     font-size: 15px;
-
 }
-
 /******register table   부터 **********************************************/
 table {
     width: 100%;
 }
-
-
-
 .rtype {
 	width: 25%;
     
@@ -511,7 +475,6 @@ table {
 	width: 10%;
 	
 }
-
 .rprice, .rselect{
 	width:20%;
 	
@@ -528,15 +491,12 @@ table {
 	font-size:10px;
 	color:green;
 }
-
-
 .totalreservate {
 	position: relative;
     background: #90bcff96;
     padding: 10px;
     margin: 10px;
 }
-
 .reservatebtn {
 	    border: none;
     background: #0000ca;
@@ -545,18 +505,14 @@ table {
     border-radius: 5px;
     width: 100%;
 }
-
 .material-icons{
 	font-size:15px;
 }
-
-
 /************************right bar 의 comment     wrapper   **********************************/
 .hotelComment-table{
 	 width: 98%;
     margin: auto;
 }
-
 .hotelComment-table tbody{
 	    width: 100%;
 }
@@ -575,7 +531,6 @@ table {
     width:68%;
    
 }
-
 #hotelcomment{
 		/* background-color: #4587ffb0; */
 	display:inline-block;
@@ -587,7 +542,6 @@ table {
 .rightbox-hotel-wrapper{
 	width:100%;
 	
-
 }
 .rightbox-comments{
     width: 30%;
@@ -609,7 +563,6 @@ table {
     margin: auto;
     text-align: center;
 }
-
 .rightbox-btn {
 	    background: #0000c7;
     border: none;
@@ -623,7 +576,6 @@ table {
 .rightbar-selectbox{
     list-style: none;
     width: 100%;
-
     margin: auto;
         padding: 0;
     text-align: center;
@@ -634,10 +586,7 @@ table {
     display: inline-block;
         width: 24%;
 }
-
 /*********************상단부 select******/
-
-
 .rightbar-selectbtn{
 	border: none;
     background: #d2deff;
@@ -646,18 +595,11 @@ table {
     font-size: 20px;
     border-left: 1px solid white;
 }
-
-
-
-
-
 /************************detail    wrapper   **********************************/
 .hoteloption-list{
 	width:95%;
 	margin:auto;
-
 }
-
 .detail-wrapper{
     display: inline-block;
     width: 100%;
@@ -673,19 +615,13 @@ table {
     list-style:none;
     
 }
-
 .famous-wrapper-title{
 	font-size: 23px;
 }
-
-
-
 /***************하우스 룰****************/
 .houserule-wrapper{
     width: 95%;
     margin: auto;
-
-
 }
 .houserule-title{
 	font-size:20px;
@@ -699,7 +635,6 @@ table {
 	background: #abd5ffa8;
     border-radius: 5px;
     padding: 10px;
-
 }
 .houserule-titles{
 	width:20%;
@@ -744,8 +679,6 @@ table {
 	 background-size: contain;
 	 height: 25px;
 }
-
-
 /****search 부분 ******/
 .adultselect {
     width: 80%;
@@ -763,18 +696,14 @@ table {
     border-radius: 5px;
     font-size: 13px;
 }
-
 .searchinputSpan {
 	font-size: 12px;
 }
-
 .inputbox {
  padding: 8px;
     border: none;
     border-radius: 5px;
 }
-
-
 /******    *리뷰 **************/
 .review-wrapper{
 	    width: 95%;
@@ -782,18 +711,6 @@ table {
     margin: 20px auto;
     padding: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 	
 </style>
 </head>
@@ -1047,8 +964,9 @@ table {
 					<a>${hotel.h_nation } 추천 숙소</a><br>
 			
 					<div>
-				
-					${hotel.h_comment }
+					<pre class="commentboxxx">
+						${hotel.h_comment }
+					</pre>
 					</div> 
 				</div>
 			</td>
@@ -1167,7 +1085,9 @@ table {
 						<li>난방 시설</li>
 						<li>에어컨</li>
 						<li>타월</li>
-						<li>슬리퍼</li>
+						<li>슬리퍼&&&</li>
+					
+
 						</ul>
 				</td>
 				<td class="rperson">
@@ -1184,6 +1104,7 @@ table {
 				</td>
 				<td class="rprice"><input type="hidden" class="r_price-${r.index }" name="r_price" value="${room.r_price }">${room.r_price }</td>
 				<td class="rselect">
+				
 					<select class="selectroom" >
 						<option selected value="0">0
 					<c:forEach begin="0" end="${room.r_stock }" varStatus="i"> 
@@ -1196,6 +1117,52 @@ table {
 						<option value="${price * namy  }">${i.count }&nbsp;(${price * namy })
 					</c:forEach>
 					</select>
+					
+					
+					
+					
+					
+					
+				<%-- <c:set value="${detailss }" var="de" />
+					
+				<select class="selectroom" >
+						<option selected value="0">${de.tlist.size() }
+						
+					<c:forEach begin="0" end="${de.tlist.size() }" varStatus="det"> 
+					<c:if test="${de.tlist[det.index].r_num == room.r_num }" > 
+					<c:forEach begin="0" end="${room.r_stock }" varStatus="i"> 
+						
+						<c:set var="stock" value="${room.r_stock }" />
+							<c:out value="${room.r_stock - de.tlist[det.index].o_count }"></c:out>
+						
+						
+						
+						<c:set var="price" value="${room.r_price }" />
+						<fmt:formatNumber value="${price}" type="number" var="numberType" />
+						<c:set var="namy" value="${i.count }" />
+						<fmt:formatNumber value="${namy}" type="number" var="numberType" />
+					
+						<option value="${price * namy  }">aha${i.count }&nbsp;(${price * namy })
+					</c:forEach>
+					</c:if>
+					</c:forEach> 
+					</select> --%>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					 
+					
+					
+					
+					
+					
+					
 				</td>
 				<td class="rtotal">
 					

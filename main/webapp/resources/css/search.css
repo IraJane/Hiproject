@@ -64,7 +64,7 @@ display: flex;
 	    margin: 10px 22%;
 }
 .bigtitle-wrap {
-border-bottom: 1px dotted #b3b3b3;
+/* border-bottom: 1px dotted #b3b3b3; */
     width: 99%;
     margin: auto;
 }
@@ -114,6 +114,9 @@ border-bottom: 1px dotted #b3b3b3;
 	
 	
 }
+.tablelist tbody {
+	width:100%;
+}
 .tablerow td{
 	margin: 10px;
 }
@@ -127,9 +130,24 @@ border-bottom: 1px dotted #b3b3b3;
 }
 
 .hnamesearch {
-	color: #0000d6;
+	color: #0177f1;
 	font-size: 35px;
 	text-decoration: none;
+	
+}
+
+.hanmeFirst{
+	width:80%;
+}
+.hanmeSecond{
+	width: 15%;
+}
+
+.hname-score{
+    background: #0101ca;
+    color: white;
+    padding: 10px;
+    border-radius: 15px 15px 15px 0px;
 	
 }
 .hnamesearch:hover {
@@ -137,7 +155,7 @@ border-bottom: 1px dotted #b3b3b3;
 }
 
 .addsearch {
-	color: blue;
+	color: #0177f1;
 	font-style:bold;
 }
 
@@ -163,7 +181,7 @@ border-bottom: 1px dotted #b3b3b3;
 .rowFilUl {
 border: 1px solid #0044c1;
     width: auto;
-    height: 28px;
+    height: 25px;
     font-size: 20px;
     text-align: center;
     margin: auto;
@@ -179,6 +197,10 @@ border: 1px solid #0044c1;
     width: 24%;
     margin: auto -2px;
     text-decoration:none;
+    
+}
+.rowFilUl li .rowatag{
+	color:black;
 }
 
 .rowbordernone{
@@ -189,6 +211,7 @@ border: 1px solid #0044c1;
 .rowFilUl li a:hover, a:active,a:link,a:visited {
 
     text-decoration:none;
+    
 
 }
 
