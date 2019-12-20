@@ -60,6 +60,22 @@ public class MainOrderDao {
 	}
 
 
+	public MainOrder getAllOrders( int o_num, String o_checkin) {
+		// TODO Auto-generated method stub
+		MainOrder mooo = new MainOrder();
+		mooo.setO_num(o_num);
+		mooo.setO_checkin(o_checkin);
+		
+		MainOrder cnt = sqlSessionTemplate.selectOne(namespace+".getAllOrders",mooo);
+		return cnt;
+	}
+
+
+	
+
+	
+
+
 	
 
 	

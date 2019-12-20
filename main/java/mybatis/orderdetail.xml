@@ -17,7 +17,17 @@
   		delete from orderdetail
   		where o_num=#{o_num}
   	</delete>
+  	
+  	<select id="getOrderStocks" resultType="MyOrderDetail">
+  		select * from orderdetail
+  		where r_num=#{r_num}
+  	</select>
   
+  	<select id="getThisOrder"  resultType="MyOrderDetail">
+  		select * from orderdetail
+  		where o_num=#{o_num}
+  
+  	</select>
   
   
   </mapper>

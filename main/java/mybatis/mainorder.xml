@@ -35,6 +35,12 @@
   		delete from mainorder
   		where o_num=#{o_num}
   	</delete>
+  	
+  	<select id="getAllOrders" resultType="MyMainOrder">
+  		select * from mainorder
+		where o_checkin = #{o_checkin} and o_num = #{o_num}
+  	
+  	</select>
   
   
   </mapper>

@@ -39,6 +39,22 @@ public class OrderDetailDao {
 		sqlSessionTemplate.delete(namespace+".deleteODetail",o_num);
 	}
 
+
+
+	public List<OrderDetail> getOrderStocks(int r_num) {
+		// TODO Auto-generated method stub
+		List<OrderDetail> odetail = sqlSessionTemplate.selectList(namespace+ ".getOrderStocks",r_num);
+		return odetail;
+	}
+
+
+
+	public List<OrderDetail> getThisOrderDetails(int o_num) {
+		// TODO Auto-generated method stub
+		List<OrderDetail> list = sqlSessionTemplate.selectList(namespace + ".getThisOrder",o_num);
+		return list;
+	}
+
 	
 
 }
