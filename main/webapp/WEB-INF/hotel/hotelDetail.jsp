@@ -211,8 +211,8 @@
 			$('input.totalprice').attr('value',total);
 			$('.totalprice1').append(
 					'<div class="totalreservate">'+total+'원'+
-					'<br><input type="hidden" name="whichrooms" value="'+roomname+'">'+
-					'<br><input type="hidden" name="howmanyrooms" value="'+getHowmany+'">'+
+					'<br><input type="text" name="whichrooms" value="'+roomname+'">'+
+					'<br><input type="text" name="howmanyrooms" value="'+getHowmany+'">'+
 					'<br><a>세금 및 기타 요금 포함</a>'+
 					'<ul><li>즉시 예약 확정</li><li>가입이 필요 없습니다</li><li>예약 수수료, 신용카드 수수료 없음!</li></ul>'+
 					'<button class="reservatebtn" onclick="javascript:reservate()" >예약하기</button></div>');
@@ -1105,7 +1105,7 @@ table {
 				<td class="rprice"><input type="hidden" class="r_price-${r.index }" name="r_price" value="${room.r_price }">${room.r_price }</td>
 				<td class="rselect">
 				
-					<select class="selectroom" >
+				 	<%-- <select class="selectroom" >
 						<option selected value="0">0
 					<c:forEach begin="0" end="${room.r_stock }" varStatus="i"> 
 						
@@ -1116,37 +1116,36 @@ table {
 					
 						<option value="${price * namy  }">${i.count }&nbsp;(${price * namy })
 					</c:forEach>
-					</select>
+					</select>  --%>
 					
 					
 					
 					
 					
-					
-				<%-- <c:set value="${detailss }" var="de" />
-					
+				<c:set value="${map }" var="count"/>
+				
 				<select class="selectroom" >
-						<option selected value="0">${de.tlist.size() }
-						
-					<c:forEach begin="0" end="${de.tlist.size() }" varStatus="det"> 
-					<c:if test="${de.tlist[det.index].r_num == room.r_num }" > 
-					<c:forEach begin="0" end="${room.r_stock }" varStatus="i"> 
-						
-						<c:set var="stock" value="${room.r_stock }" />
-							<c:out value="${room.r_stock - de.tlist[det.index].o_count }"></c:out>
-						
-						
+						<option selected value="0">0
+					<c:if test="${room.r_stock - count[room.r_num] <=0 }">
+					
+					
+					
+						<option value="0">객실 없음
+					
+					</c:if>
+					<c:if test="${room.r_stock - count[room.r_num] >0 }">
+					
+					<c:forEach begin="0" end="${room.r_stock - count[room.r_num] }" varStatus="i"> 
 						
 						<c:set var="price" value="${room.r_price }" />
 						<fmt:formatNumber value="${price}" type="number" var="numberType" />
 						<c:set var="namy" value="${i.count }" />
 						<fmt:formatNumber value="${namy}" type="number" var="numberType" />
 					
-						<option value="${price * namy  }">aha${i.count }&nbsp;(${price * namy })
+						<option value="${price * namy  }">${i.count }&nbsp;(${price * namy })
 					</c:forEach>
 					</c:if>
-					</c:forEach> 
-					</select> --%>
+					</select>
 					
 					
 					
