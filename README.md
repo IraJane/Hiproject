@@ -3,6 +3,10 @@ hotelnow -> seller reservation
          -> seller Controller
          
          둘다 order 에 
+         
+재고 처리 함 <br>
+<br>
+할것 : 메인 부터 마음에 안드는 것들 잡기 <br>
 
 
 <hr>
