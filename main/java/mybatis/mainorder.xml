@@ -41,6 +41,8 @@
 		where o_checkin = #{o_checkin} and o_num = #{o_num}
   	
   	</select>
+  	
+  
   
   
   </mapper>

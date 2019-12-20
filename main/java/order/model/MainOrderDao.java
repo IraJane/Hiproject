@@ -6,9 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import hotel.model.Hotel;
+import hotel.model.Search;
 import member.model.Member;
-import seller.model.Seller;
 
 @Component("myMainOrderDao")
 public class MainOrderDao {
@@ -69,6 +68,9 @@ public class MainOrderDao {
 		MainOrder cnt = sqlSessionTemplate.selectOne(namespace+".getAllOrders",mooo);
 		return cnt;
 	}
+
+
+	
 
 
 	

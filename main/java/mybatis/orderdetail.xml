@@ -28,6 +28,12 @@
   		where o_num=#{o_num}
   
   	</select>
+  	
+  	<select id="getDetailList" resultType="MyOrderDetail">
+  		select * from orderdetail where orderdetail.o_num in(
+			select o_num from mainorder WHERE (o_checkIn &lt;= #{checkin} AND #{checkin} &lt;= o_checkOut) 
+			or (o_checkIn &lt;= #{checkout} AND #{checkout} &lt;= o_checkOut) )
+  	</select>
   
   
   </mapper>
