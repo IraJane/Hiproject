@@ -2,9 +2,35 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+   
+  <bean class="org.springframework.mail.javamail.JavaMailSenderImpl"
+    p:host="smtp.naver.com"
+    p:port="465"
+    p:username="joongang601"
+    p:password="joongang601!">
+    <property name="javaMailProperties">
+    <props>
+      <prop key="mail.smtp.starttls.enable">true</prop>
+      <prop key="mail.smtp.auth">true</prop>
+      <prop key="mail.smtps.ssl.checkserveridentity">true</prop>
+      <prop key="mail.smtps.ssl.trust">*</prop>
+      <prop key="mail.debug">true</prop>
+      <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+    </props>
+    </property>
+  </bean>
+   
+   
+   
+   
+   
+   
+   
+   
    <bean class="org.apache.commons.dbcp.BasicDataSource"
       id="dataSource">
       <property name="driverClassName"
