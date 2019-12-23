@@ -20,3 +20,5 @@ $(function(){
 function submitHotel(){
     $("#hotelInsertForm").submit();
 };
+
+

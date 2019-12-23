@@ -1060,19 +1060,19 @@ function renderPagination(wizard, options, state)
 
         if (!options.forceMoveForward)
         {
-            buttons += buttonTemplate.format("#previous")+"role=\"menuitem\">"+options.labels.previous+"</a></li>";
+            buttons += buttonTemplate.format("previous")+"role=\"menuitem\">"+options.labels.previous+"</a></li>";
         }
 
-        buttons += buttonTemplate.format("#next")+"role=\"menuitem\">"+options.labels.next+"</a></li>";
-
-        if (options.enableFinishButton)
+        buttons += buttonTemplate.format("next")+"role=\"menuitem\">"+options.labels.next+"</a></li>";  
+  
+        if (options.enableFinishButton)          
         {
-            buttons += buttonTemplate.format("#finish")+"onclick=\"submitHotel()\" role=\"menuitem\">"+options.labels.finish+"</a></li>";
+            buttons += buttonTemplate.format("finish")+"onclick=\"submitHotel()\" role=\"menuitem\">"+options.labels.finish+"</a></li>";
         }
 
         if (options.enableCancelButton)
         {
-            buttons += buttonTemplate.format("#cancel")+"role=\"menuitem\">"+options.labels.cancel+"</a></li>";
+            buttons += buttonTemplate.format("cancel")+"role=\"menuitem\">"+options.labels.cancel+"</a></li>";
         }
 
         wizard.append(pagination.format(options.actionContainerTag, options.clearFixCssClass,
