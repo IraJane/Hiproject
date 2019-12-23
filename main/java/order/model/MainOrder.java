@@ -14,6 +14,14 @@ public class MainOrder {
 	private String o_comment ;
 	private String o_checker ;
 	private String o_engname ;
+	private int o_reviewchecker;
+	
+	public int getO_reviewchecker() {
+		return o_reviewchecker;
+	}
+	public void setO_reviewchecker(int o_reviewchecker) {
+		this.o_reviewchecker = o_reviewchecker;
+	}
 	public int getO_num() {
 		return o_num;
 	}
@@ -69,7 +77,7 @@ public class MainOrder {
 		this.o_engname = o_engname;
 	}
 	public MainOrder(int o_num, int m_num, String o_orderdate, String o_checkin, String o_checkout,
-			String o_totalpeople, String o_comment, String o_checker, String o_engname) {
+			String o_totalpeople, String o_comment, String o_checker, String o_engname,int o_reviewchecker) {
 		super();
 		this.o_num = o_num;
 		this.m_num = m_num;
@@ -80,6 +88,7 @@ public class MainOrder {
 		this.o_comment = o_comment;
 		this.o_checker = o_checker;
 		this.o_engname = o_engname;
+		this.o_reviewchecker = o_reviewchecker;
 	}
 	public MainOrder() {
 		super();

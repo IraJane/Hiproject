@@ -40,7 +40,6 @@ public class QaInsertController {
 			model.addAttribute("qa",qa);
 			return getPage;
 		}
-		
 		int cnt = qDao.insertQa(qa);
 		System.out.println("qa삽입:"+ cnt);
 		
@@ -52,3 +51,6 @@ public class QaInsertController {
 	
 	
 }
+	
+	
+	

@@ -1,8 +1,11 @@
 /*package admin.controller;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
 import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,36 +14,48 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import admin.model.AdminDao;
 import hotel.model.Hotel;
 import hotel.model.HotelDao;
 import hotel.model.Room;
 import hotel.model.RoomDao;
+
 @Controller("adminHotelUpdateController")
 public class HotelUpdateController {
+
 	private final String command = "/updateHotel.ad";
 	private final String getPage = "adHotelUpdateForm";
 	private final String gotoPage = "redirect:hotelNow.ad";
+
 	@Autowired
 	private AdminDao adDao;
+
 	@Autowired
 	private HotelDao hotelDao;
+
 	@Autowired
 	private RoomDao roomDao;
+
 	@Autowired
 	ServletContext application;
+
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String doUpdateGet(@RequestParam("h_num") int h_num, Model model) {
+
 		Hotel hotel = hotelDao.getHotelOne(h_num);
 		List<Room> rooms = roomDao.getRoomList(hotel);
 		hotel.setRooms(rooms);
 		model.addAttribute("hotel", hotel);
+
 		return getPage;
 	}
+
 	@RequestMapping(value = command, method = RequestMethod.POST)
 	public String doUpdatePost(@RequestParam("filebtn") String doWhat, @RequestParam("originName") String originName,
 			Room rooms, Hotel hotel, MultipartHttpServletRequest mpfRequest, Model model) {
 		System.out.println("[POST hotel]:" + hotel);
+
 		List<MultipartFile> fileList = mpfRequest.getFiles("file");
 		String originfilePath = application.getRealPath("/resources/Hotelimages/" + originName);
 		String newfilePath = application.getRealPath("/resources/Hotelimages/" + hotel.getH_name());
@@ -151,6 +166,8 @@ public class HotelUpdateController {
 		System.out.println("객실수정"); 
 		
 		int s_num = hotel.getS_num();
+
 		return gotoPage + "?s_num=" + s_num;
 	}
+
 }*/

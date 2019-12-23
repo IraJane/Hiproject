@@ -32,7 +32,7 @@ public class MemberListController {
 			@RequestParam(value = "pageSize", required = false) String pageSize, 
 			@RequestParam(value = "whatColumn", required = false) String whatColumn,
 			@RequestParam(value = "keyword", required = false) String keyword,
-			HttpServletRequest request) {
+			HttpServletRequest request) {	
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);

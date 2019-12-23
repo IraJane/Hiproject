@@ -6,7 +6,7 @@
   	
   	<insert id="insertOrders">
   		insert into mainorder
-  		values(o_seq.nextval,#{m_num }, sysdate, #{o_checkin }, #{o_checkout }, #{o_totalpeople  }, #{o_comment },0,#{o_engname  })
+  		values(o_seq.nextval,#{m_num }, sysdate, #{o_checkin }, #{o_checkout }, #{o_totalpeople  }, #{o_comment },0,#{o_engname  },0)
   	
   	</insert>
   	
@@ -41,6 +41,11 @@
 		where o_checkin = #{o_checkin} and o_num = #{o_num}
   	
   	</select>
+  	
+  	<update id="checkReview">
+  		update mainorder set o_reviewchecker = 1
+  		where o_num=${o_num}
+  	</update>
   	
   
   

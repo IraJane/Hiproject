@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member.model.ReviewComposite">
+
+	<select id="getReviewList"
+		resultType="member.model.ReviewComposite">
+		<!-- select distinct c.c_num, c.c_date, c.c_star, c.c_comment, m.m_nickname, 
+			o.o_checkin, o.o_checkout, r.r_type, h.h_name from review c, members m, mainorder 
+			o, orderdetail od, rooms r, hotel h where c.h_num=#{h_num} and c.m_num = 
+			m.m_num and c.o_num = o.o_num and o.o_num = od.o_num and od.r_num = r.r_num 
+			and c.h_num=h.h_num -->
+
+		select c.c_num, c.c_date, c.c_star, c.c_comment,
+		m.m_nickname, o.o_checkin, o.o_checkout,  op.r_type, h.h_name
+		from review c, members m, mainorder o, hotel h, (
+		select o_num, listagg(r_type, ', ') within group (order by od_num) as r_type
+		from (
+		select * from rooms r, orderdetail od
+		where r.r_num = od.r_num
+		) group by o_num
+		)op
+		where c.h_num=#{h_num} and c.m_num = m.m_num and c.o_num = o.o_num and o.o_num =
+		op.o_num and c.h_num=h.h_num
+	</select>
+
+</mapper>

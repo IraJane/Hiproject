@@ -46,10 +46,31 @@ public class QaDao {
 		return cnt;
 	}
 
+	
 	public int deleteQa(int q_num) {
 		int cnt = sqlSessionTemplate.delete(namespace + ".deleteQa", q_num);
 		return cnt;
+		
 	}
+
+	public int getCountNew() {
+		int cnt = sqlSessionTemplate.selectOne(namespace + ".getCountNew");
+		return cnt;
+		
+	}
+	
+	
+	/*public boolean deleteQa(int q_num) {
+		int cnt = sqlSessionTemplate.delete(namespace + ".deleteQa", q_num);
+		boolean result;
+		if(cnt==0) {
+			result = false;
+		} 
+		else {
+			result = true;			
+		}
+		return result;
+	}*/
 
 	
 	

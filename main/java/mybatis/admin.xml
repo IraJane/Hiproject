@@ -5,9 +5,7 @@
 
 <mapper namespace="admin.model.Admin">
 
-
 	<!-- seller -->
-	
 	<select id="getSelCount" resultType="int">
 		select count(*) from sellers
 		<if test="whatColumn == 's_email'">
@@ -60,7 +58,6 @@
 
 
 	<!-- qa -->
-	
 	<insert id="insertQa">
 		insert into qa values(qa_seq.nextval, #{m_num},
 		#{q_title}, #{q_comment}, sysdate, 0)
@@ -85,7 +82,6 @@
 		</if>
 	</select>
 
-
 	<select id="getQaList" resultType="MyQa">
 		select qa.q_num, members.m_email, qa.q_title, qa.q_comment, qa.q_regdate, qa.q_checked
 		from qa inner join members
@@ -108,14 +104,17 @@
 	</select>
 
 	<update id="updateQa">
-		update qa set q_checked=1 where q_num=#{q_num}
+		update qa set q_checked=1 
+		where q_num=#{q_num}
 	</update>
 
 	<delete id="deleteQa">
 		delete from qa where q_num = #{q_num}
 	</delete>
 
-
+	<select id="getCountNew" resultType="int">
+		select count(*) from qa where q_checked=0
+	</select>
 	<!-- members -->
 	
 	<select id="getTotalCountMem" resultType="int">
@@ -167,58 +166,147 @@
 	
 	
 	<!-- Hotel, rooms -->
-	<update id="updateHotel">
-		update hotel
-		set h_name=#{h_name}, s_num=#{s_num}, h_nation=#{h_nation}, h_address1=#{h_address1},
-		h_address2=#{h_address2},h_type=#{h_type}, h_phone=#{h_phone},h_room_num=#{h_room_num},h_facilities=#{h_facilities},h_internet=#{h_internet},
-		h_animal=#{h_animal},h_parking=#{h_parking},h_smoke=#{h_smoke},h_language=#{h_language},h_image=#{h_image},
-		h_hotel_url=#{h_hotel_url}, h_comment=#{h_comment}
-		where h_num=#{h_num}
-	</update>
-	
-	<update id="updateRoom">
-		update rooms
-		set r_type=#{r_type}, r_price=#{r_price}, r_person=#{r_person}, r_breakfast=#{r_breakfast}, r_stock=#{r_stock}
-		where r_num=#{r_num}	
-	</update>
-	
 	<delete id="deleteHotel">
 		delete from hotel where h_num=#{h_num}
 	</delete>
 	
+	
 	<delete id="deleteHotelRoom">
 		delete from rooms where h_num=#{h_num}
 	</delete>
-
-	<insert id="insertHotel">
-      insert into hotel
-      values(hotel_seq.nextval,#{s_num, jdbcType=INTEGER},#{h_name,jdbcType=VARCHAR},#{h_nation,jdbcType=VARCHAR},#{h_address1,jdbcType=VARCHAR},
-      #{h_address2,jdbcType=VARCHAR},#{h_type,jdbcType=VARCHAR},#{h_phone,jdbcType=VARCHAR},#{h_room_num, jdbcType=INTEGER},#{h_facilities,jdbcType=VARCHAR},#{h_internet,jdbcType=VARCHAR},
-      #{h_animal,jdbcType=VARCHAR},#{h_parking,jdbcType=VARCHAR},#{h_smoke,jdbcType=VARCHAR},#{h_language,jdbcType=VARCHAR},#{h_image},
-      #{h_hotel_url, jdbcType=VARCHAR},#{h_comment,jdbcType=VARCHAR}, #{h_grade,jdbcType=VARCHAR})  
-   </insert>  
-
-	<insert id="insertRoom">
-		insert into rooms values(room_seq.nextval, #{h_num}, #{r_type}, #{r_price}, 
-		#{r_person}, #{r_breakfast}, #{r_stock})
-	</insert> 
 	
- 	<!-- <select id="getHotelCount" resultType="int">
-		select count(*) from hotel where selnum=#{num}
+
+   <!-- order -->
+	<delete id="deleteMOrder">
+		delete from mainorder where o_num=#{o_num}
+	</delete>
+	
+	<delete id="deleteODetail" parameterType="hashmap">
+		delete from orderdetail 
+		where o_num=#{o_num} 
+		and r_num=#{r_num}
+	</delete>
+	
+	<select id="findODetail" resultType="int">
+		select count(*) from orderdetail where o_num=#{o_num}
 	</select>
 	
-	<select id="getHotelList" resultType="MyHotel">
-		select * from hotel where selnum=#{num}
+	
+	<!-- review -->
+
+	<select id="getRvcCnt" resultType="int">
+		select count(*)
+		
+		from review c, members m, mainorder o, hotel h, (
+		select o_num, listagg(r_type, ', ') within group (order by od_num) as r_type
+		from (
+		select * from rooms r, orderdetail od
+		where r.r_num = od.r_num
+		) group by o_num
+		)op
+		
+		<choose>
+		<when test="whatColumn == 'h_name'">
+		where h.h_name like #{keyword} 
+		and c.m_num = m.m_num 
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num
+		</when>
+		<when test="whatColumn == 'm_nickname'">
+		where m.m_nickname like #{keyword} 
+		and c.m_num = m.m_num
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num		
+		</when>
+		<otherwise>
+		where c.m_num = m.m_num 
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num
+		</otherwise>
+		</choose>
+		
+    
+		<!-- <if test="whatColumn == null">
+		where c.m_num = m.m_num 
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num
+		</if>
+		<if test="whatColumn == 'h_name'">
+		where h.h_name like #{keyword} 
+		and c.m_num = m.m_num 
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num
+		</if>
+		<if test="whatColumn == 'm_nickname'">
+		where m.m_nickname like #{keyword} 
+		and c.m_num = m.m_num
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num 
+		</if> -->
 	</select>
 	
-	<select id="getRoomList" resultType="MyRoom">
-		select * from rooms where hname=#{hname}
-	</select> 
+	<select id="getRvcList" resultType="member.model.ReviewComposite">
+		select c.c_num, c.c_date, c.c_star, c.c_comment,
+		m.m_nickname, o.o_checkin, o.o_checkout,  op.r_type, h.h_name
+		
+		from review c, members m, mainorder o, hotel h, (
+		select o_num, listagg(r_type, ', ') within group (order by od_num) as r_type
+		from (
+		select * from rooms r, orderdetail od
+		where r.r_num = od.r_num
+		) group by o_num
+		)op
+    
+   		<choose>
+		<when test="whatColumn == 'h_name'">
+		where h.h_name like #{keyword} 
+		and c.m_num = m.m_num 
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num
+		</when>
+		<when test="whatColumn == 'm_nickname'">
+		where m.m_nickname like #{keyword} 
+		and c.m_num = m.m_num
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num		
+		</when>
+		<otherwise>
+		where c.m_num = m.m_num 
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num
+		</otherwise>
+		</choose>
+		
+		<!-- <if test="whatColumn == null">
+		where c.m_num = m.m_num 
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num
+		</if>
+		<if test="whatColumn == 'h_name'">
+		where h.h_name like #{keyword} 
+		and c.m_num = m.m_num 
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num
+		</if>
+		<if test="whatColumn == 'm_nickname'">
+		where m.m_nickname like #{keyword} 
+		and c.m_num = m.m_num
+		and c.o_num = o.o_num 
+		and o.o_num = op.o_num 
+		and c.h_num=h.h_num 
+		</if> -->
+	</select>
 	
-	-->
-   
-   
-  
 
-	
 </mapper>

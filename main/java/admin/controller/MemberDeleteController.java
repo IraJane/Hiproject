@@ -23,6 +23,8 @@ public class MemberDeleteController {
 			Member member,
 			@RequestParam(value="pageNumber", required=true) int pageNumber) {
 	
+		
+		
 		int m_num = member.getM_num();
 		adDao.deleteMem(m_num);
 		

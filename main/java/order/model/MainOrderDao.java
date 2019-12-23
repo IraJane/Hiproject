@@ -70,6 +70,12 @@ public class MainOrderDao {
 	}
 
 
+	public void checkReview(MainOrder mainorder) {
+		sqlSessionTemplate.update(namespace+ ".checkReview", mainorder);
+		
+	}
+
+
 	
 
 

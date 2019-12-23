@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="member.model.Review">
+	
+	<insert id="writeReview">
+		insert into review (c_num, m_num, o_num, c_comment, c_star, c_checker, h_num)
+		values (c_seq.nextval, #{m_num}, #{o_num}, #{c_comment}, #{c_star}, #{c_checker}, #{h_num})
+	</insert>
+	
+	<select id="getReviewList" resultType="MyReview">
+		select * from review
+		where h_num = #{h_num}
+	</select>
+</mapper>

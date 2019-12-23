@@ -12,6 +12,7 @@
        <typeAlias type="order.model.MainOrder" alias="MyMainOrder"/>
        <typeAlias type="order.model.OrderDetail" alias="MyOrderDetail"/>
        <typeAlias type="admin.model.Qa" alias="MyQa" />
+       <typeAlias type="member.model.Review" alias="MyReview"/>
     </typeAliases>
       
    <mappers>
@@ -22,6 +23,8 @@
       <mapper resource="mybatis/room.xml"/>
       <mapper resource="mybatis/mainorder.xml"/>
       <mapper resource="mybatis/orderdetail.xml"/>
+      <mapper resource="mybatis/review.xml"/>
+      <mapper resource="mybatis/reviewComposite.xml"/>
    </mappers>
  
  </configuration>

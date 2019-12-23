@@ -1,11 +1,5 @@
 package hotel.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +15,8 @@ import hotel.model.HotelDao;
 import hotel.model.Room;
 import hotel.model.RoomDao;
 import hotel.model.Search;
-import order.model.MainOrder;
+import member.model.ReviewComposite;
+import member.model.ReviewCompositeDao;
 import order.model.MainOrderDao;
 import order.model.OrderDetail;
 import order.model.OrderDetailDao;
@@ -44,6 +39,9 @@ public class HotelDetailController {
 	@Autowired
 	OrderDetailDao odetailDao;
 	
+	@Autowired
+	private ReviewCompositeDao rvcDao;
+	
 	@RequestMapping(command)
 	public String hotelDetail(@RequestParam("h_num") int h_num,Search search,
 			Model model) {
@@ -55,7 +53,14 @@ public class HotelDetailController {
 				);
 		
 		
+		
+		
+		
 		Hotel hotel=hotelDao.getHotelOne(h_num);
+		
+		
+		List<ReviewComposite> review = rvcDao.getReviewList(h_num);
+		
 		
 		List<Room> rooms=roomDao.getRoomList(hotel);
 		hotel.setRooms(rooms);
@@ -109,6 +114,8 @@ public class HotelDetailController {
 		model.addAttribute("search",search);
 		model.addAttribute("hotel",hotel);
 		model.addAttribute("rooms",rooms);
+		model.addAttribute("review", review);
+		System.out.println("review : " + review);
 		System.out.println(rooms);
 		System.out.println("detail 지나감");
 		return getPage;

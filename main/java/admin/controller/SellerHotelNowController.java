@@ -44,23 +44,33 @@ public class SellerHotelNowController {
 	
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String doAction(@RequestParam("s_num") int s_num, 
+	public String doAction(
+			@RequestParam("s_num") int s_num, 
 			Model model) {
+		
+		
 		List<Hotel> hotel = hotelDao.getList(s_num);
 		System.out.println("hotel:" + hotel);
 		model.addAttribute("hotel",hotel);
 		
+		
 		List<MainOrder> mainOlist = mainOrderDao.getSellerOrders();
 		model.addAttribute("mainOlist", mainOlist);
+		
 		
 		List<Room> roomList = roomDao.getRoomAllList();
 		model.addAttribute("roomList", roomList);
 		
+		
 		List<OrderDetail> orderDlist = orderDetailDao.getOrderRooms();
 		model.addAttribute("orderDlist", orderDlist);
 		
-		List<Member> memberList = memberDao.getAllMembers();
-		model.addAttribute("memberList", memberList);
+		
+		
+		List<Member> memberlist = memberDao.getAllMembers();
+		model.addAttribute("memberlist", memberlist);
+		
+		
 		
 		model.addAttribute("s_num",s_num);
 		return getPage;

@@ -1,5 +1,6 @@
 package admin.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import hotel.model.Hotel;
 import hotel.model.Room;
 import member.model.Member;
+import member.model.ReviewComposite;
 import seller.model.Seller;
 import utility.Paging;
 
@@ -30,7 +32,7 @@ public class AdminDao {
 	/*seller*/
 	
 	public int getSelCount(Map<String, String> map) {
-		System.out.println("dao.getTotalCount");
+		System.out.println("dao.getSelCount");
 		int totalCount= sqlSessionTemplate.selectOne(namespace + ".getSelCount");
 		return totalCount;
 	}
@@ -145,6 +147,50 @@ public class AdminDao {
 		sqlSessionTemplate.delete(namespace + ".deleteHotelRoom", h_num);
 		
 	}
+
+	public void deleteMOrder(int o_num) {
+		sqlSessionTemplate.delete(namespace + ".deleteMOrder", o_num);
+		
+	}
+
+	public void deleteODetail(Map<String, Integer> param) {
+		sqlSessionTemplate.delete(namespace + ".deleteODetail", param);
+		
+	}
+	
+	public int findODetail(int o_num) {
+		int cnt = sqlSessionTemplate.selectOne(namespace+ ".findODetail", o_num);
+		return cnt;
+	}
+
+
+	public int deleteReview(int c_num) {
+		int cnt = sqlSessionTemplate.delete(namespace + ".deleteReview" + c_num);
+		return cnt;
+	}
+	
+	
+	public int getRvcCnt(Map<String,String> map) {
+		int cnt = sqlSessionTemplate.selectOne(namespace + ".getRvcCnt");	//null
+		return cnt;
+	}
+	
+	public List<ReviewComposite> getRvcList(Paging pageInfo, Map<String,String> map) {
+		RowBounds row = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		List<ReviewComposite> list = sqlSessionTemplate.selectList(namespace + ".getRvcList", map, row);
+		return list;
+	}
+
+		
+
+
+	
+	
+	
+
+	
+
+
 
 
 

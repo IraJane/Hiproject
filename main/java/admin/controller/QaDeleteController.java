@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import admin.model.QaDao;
 
@@ -24,14 +25,13 @@ public class QaDeleteController {
 			@RequestParam(value = "q_num", required = true) int q_num,
 			@RequestParam(value = "pageNumber", required = false) String pageNumber,
 			@RequestParam(value = "whatColumn", required = false) String whatColumn,
-			@RequestParam(value = "keyword", required = false) String keyword,
+			@RequestParam(value = "keyword", required = false) String keyword,		
 			Model model) {
 		
-		int cnt = qDao.deleteQa(q_num);
+		
+		int cnt = qDao.deleteQa(q_num);	
 		System.out.println("qa삭제:" + cnt);
-		model.addAttribute("pageNumber", pageNumber);
-		model.addAttribute("whatColumn", whatColumn);
-		model.addAttribute("keyword",keyword);
+
 		return gotoPage;
 		
 	}
