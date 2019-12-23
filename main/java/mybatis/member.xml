@@ -31,5 +31,13 @@
 	<select id="getAllMembers" resultType="MyMember">
 		select * from members
 	</select>
+	<select id="checkMail" resultType="MyMember">
+		select * from members
+		where m_email=#{m_email}
+	</select>
+	<update id="updatePw">
+		update members set m_password=#{m_password}
+		where m_email=#{m_email}
+	</update>
   
   </mapper>
