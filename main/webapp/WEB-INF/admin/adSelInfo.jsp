@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="member.model.Member"%>
-<%@ include file="./../common/common.jsp"%>
+<%@include file="./../common/common.jsp" %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -39,23 +38,17 @@ height: 700px;
 .col-md-8 {
     margin: 10px 5px;
 }
+.btn-primary{
+	background:#980000;
+	border:none;
+}
 </style>
 
-	<%-- <%
-		if (session.getAttribute("loginfo") == null) {
-			response.sendRedirect("main.jsp");
-		} else {
-			Member loginfo = (Member) session.getAttribute("loginfo");
-			if (!loginfo.getM_email().equals("admin@admin.com")) {
-				response.sendRedirect("main.jsp");
-			}
-		}
-	%> --%>
-	
+
 
 <div class="container">
-<div class="btn btn-default" onclick="change()">메인으로</div>
-<form:form commandName="sel" action="selInfo.sel" method="post">
+<div class="btn btn-default" onclick="history.go(-1); return fasle;">뒤로가기</div>
+<form:form commandName="sel" action="updateSel.ad" method="post">
 <input type="hidden" name="s_num" value="${seller.s_num }">
 <input type="hidden" name="s_email" value="${seller.s_email }">
 	<div class="form-horizontal">
@@ -66,17 +59,17 @@ height: 700px;
 		</div>
 		<div>
 			<p>현재 비밀번호</p>
-			<p><input class="form-control" type="password" name="s_password" value="${seller.s_password }" readonly><form:errors class="error" path="s_password"/></p>
+			<p><input class="form-control" type="text" name="s_password" value="${seller.s_password }" readonly><form:errors class="error" path="s_password"/></p>
 
 		</div>
 		<div>
 			<p>비밀번호 변경</p>
-			<p ><input class="form-control" type="password"  value=""></p>
+			<p ><input class="form-control" type="text"  value=${seller.s_password }></p>
 
 		</div>
 		<div>
 			<p>비밀번호 확인</p>
-			<p><input class="form-control" type="password"  value=""></p>
+			<p><input class="form-control" type="text"  value=""></p>
 			<p><span class="message"></span></p>
 		</div>
 		<div>

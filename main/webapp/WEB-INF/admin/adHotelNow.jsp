@@ -15,8 +15,12 @@ body {
 	padding:0;
 	
 }
+.top-title {
+	    text-align: center;
+    font-size: 30px;
+}
 h4{
-    background: #0300a2;
+    background: #2911007d;
     border-radius: 5px;
     font-size: 20px;
     margin: 3px;
@@ -54,9 +58,10 @@ h4{
 }
 .h_typeDetail {
 	border-radius: 5px;
-    background: orange;
-    font-size: 20px;
-    padding: 5px;
+    background: #b7b7b7;
+    font-size: 15px;
+    /* padding: 5px; */
+    color: white;
 }
 .updatedeletebtn {
 	float: right;
@@ -66,11 +71,12 @@ h4{
     text-decoration:none;
 }
 .checkCheckin {
-	background: #00a200;
+	background: #009a00;
     border-radius: 5px;
     padding: 2px;
     font-size: 15px;
     border: none;
+    color: white;
 }
 .checkForm{
 	margin: 0px;
@@ -78,26 +84,19 @@ h4{
 </style>
 
 
-	<%-- <%
-		if (session.getAttribute("loginfo") == null) {
-			response.sendRedirect("main.jsp");
-		} else {
-			Member loginfo = (Member) session.getAttribute("loginfo");
-			if (!loginfo.getM_email().equals("admin@admin.com")) {
-				response.sendRedirect("main.jsp");
-			}
-		}
-	%> --%>
 
 
 
-<div>header위치</div>
-호텔 예약 현황
-<br>
-<a href="insertHo.ad?s_num=${s_num }">추가하기</a>
 
+				
+<%@include file="/WEB-INF/common/header.jsp"%>
+
+<h3 class="top-title">호텔 예약 현황</h3>
 <div class="total-wrapper">
 
+<a href="insertHo.ad?s_num=${s_num }">추가하기</a>
+
+<br>
 
 	<c:forEach items="${hotel }" var="list" varStatus="i">
 
@@ -135,26 +134,30 @@ h4{
 		</table>
 
 
+	
  	<div class="listOrders">
 		<h4>예약내역</h4> 
-
+ 
 		<c:forEach items="${mainOlist }" var="mainOrder">
 			<c:forEach items="${roomList }" var="room">
 				<c:forEach items="${orderDlist }" var="orderDetail">
 				<c:forEach items="${memberlist }" var="member">
+				
 
-
-				<c:if test="${list.h_num == room.h_num && room.r_num == orderDetail.r_num && orderDetail.o_num == mainOrder.o_num && mainOrder.m_num == member.m_num}">
+				<c:if test="${list.h_num == room.h_num && 
+				room.r_num == orderDetail.r_num && 
+				orderDetail.o_num == mainOrder.o_num &&
+				mainOrder.m_num == member.m_num}">
 				<table class="table">
 						<tr>
 							<td colspan="2">예약번호: ${mainOrder.o_num }</td>
-
+							
 						</tr>
 						<tr>
 							<td>고객정보: ${member.m_num }</td>
 							<td>영문 이름: ${mainOrder.o_engname }</td>
 						</tr>
-
+	
 						<tr>
 							<td>예약 일자: ${mainOrder.o_checkin } ~ ${mainOrder.o_checkout }</td>
 							<td>인원: ${mainOrder.o_totalpeople }</td>
@@ -172,33 +175,46 @@ h4{
 
 						<tr>
 							<td colspan="2">
-
-
+								
+									 
 									<c:if test="${mainOrder.o_checker == 0}">
 										<form class="checkForm" action="checkCheckin.der">
-
+											
 											<input type="hidden" name="onum" value="${mainOrder.o_num }">
-											상태:<input class="checkCheckin" type="submit" value="&nbsp;Waiting..."><br>
+											상태 : <input class="checkCheckin" type="submit" value="&nbsp;Waiting..."><br>
 											<span>※2개 이상의 예약이 있을경우 둘다 확정이 됩니다</span>
-
-
-
+										
+										
+										
 										</form>
-
+										
 									</c:if>
-									<c:if test="${mainOrder.o_checker == 1}">상태:<input class="checkCheckin" type="button" value="확인완료"></c:if>
-
-
+									<c:if test="${mainOrder.o_checker == 1}">상태 : <input class="checkCheckin" type="button" value="확인완료"></c:if>
+							
+								
 							</td>
 						</tr>
 
 				</table>
 			</c:if>
+			
 		</c:forEach>
+		
 		</c:forEach>
+		
 		</c:forEach>
+		
 		</c:forEach>
 	</div>
+	
+	
+	
+	
 	</c:forEach>
-
+		
 </div> 
+	
+
+
+
+<%@include file="../common/footer.jsp"%>

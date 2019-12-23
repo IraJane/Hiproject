@@ -19,9 +19,6 @@ function logout() {
 	alert("로그아웃 되었습니다");
 }
 </script>
-
-
-
 <style>
 
 .header {
@@ -133,6 +130,6 @@ color:white;
 		</c:if>
 	
 		<a class="hmainright ha" href="selMain.sel">판매자</a>
-		<a class="hmainright ha" href="#">고객센터</a>
+		<a class="hmainright ha" href="insertQa.ad">고객센터</a>
 	
 </header>

@@ -1390,18 +1390,20 @@ table {
 	
 	
 	
+		<c:forEach items="${review }" var="rv">
+		<input type="hidden" name="c_num" class="c_num" value="${rv.c_num }">
 		<h3>이용 후기</h3>
 		<table>
 			<tr>
 				<td colspan="2">
-					<div>후기 작성일:</div>
+					<div>후기 작성일 ${rv.c_date }</div>
 				</td>
 			</tr>
 			<tr>
-				<td>닉네임</td>
+				<td>닉네임 ${rv.m_nickname }</td>
 				<td>
-					<div>평점</div>
-					<div>작성내용</div>
+					<div>평점 ${rv.c_star }</div>
+					<div>작성내용 ${rv.c_comment }</div>
 					
 					
 					
@@ -1409,15 +1411,21 @@ table {
 				</td>
 				
 			</tr>
-			
+
 			<tr>
 				<td colspan="2">
-					<div>투숙한 방 타입</div>
-					<div>숙박일</div>
+				
+					<div>투숙한 방 타입 
+						${rv.r_type }
+					</div>
+				
+					<div>숙박일 ${rv.o_checkin } ~ ${rv.o_checkout }</div>
 				</td>
 			</tr>
 		
 		</table>
+		
+		</c:forEach>
 		
 		
 		

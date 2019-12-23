@@ -93,19 +93,9 @@
 </script>
 <body>
 
+<%@include file="/WEB-INF/common/header.jsp"%>
 
-	<%-- <%
-		if (session.getAttribute("loginfo") == null) {
-			response.sendRedirect("main.jsp");
-		} else {
-			Member loginfo = (Member) session.getAttribute("loginfo");
-			if (!loginfo.getM_email().equals("admin@admin.com")) {
-				response.sendRedirect("main.jsp");
-			}
-		}
-	%> --%>
-	
-	
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 mx-auto">

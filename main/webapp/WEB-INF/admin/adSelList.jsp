@@ -20,33 +20,33 @@
 <script type="text/javascript">
 	
 </script>
+<style>
+table {
+	table-layout: fixed;
+	word-wrap: break-word;
+	/*     overflow-y: hidden; */
+}
+#page {
+	text-align: center;
+}
+</style>
 </head>
 <body>
 
-	<%-- <%
-		if (session.getAttribute("loginfo") == null) {
-			response.sendRedirect("main.jsp");
-		} else {
-			Member loginfo = (Member) session.getAttribute("loginfo");
-			if (!loginfo.getM_email().equals("admin@admin.com")) {
-				response.sendRedirect("main.jsp");
-			}
-		}
-	%> --%>
-
 	<%@include file="/WEB-INF/common/header.jsp"%>
+
 	<!-- <div class="container-fluid"> -->
 	<div class="container">
 	
 	
 		<div class="row">
-			<div class="col">
+			<div class="col-md-12">
 				<ul class="nav nav-tabs nav-justified">
 					<li role="presentation"><a href="main.ad" id="home" >Home</a></li>
 					<li role="presentation" class="active"><a href="listSel.ad" id="seller">Seller</a></li>
 					<li role="presentation"><a href="listMem.ad" id="member">Member</a></li>
 					<li role="presentation"><a href="listQa.ad" id="qa">QA</a></li>
-					<li role="presentation"><a href="#" >Comment</a></li>
+					<li role="presentation"><a href="listReview.ad" >Reviews</a></li>
 				</ul>
 			</div>
 		</div>
@@ -81,10 +81,10 @@
 		</div>
 
 		<div class="row">
-			<div class="col">
+			<div class="col-md-12">
 				<table class="table table-hover table-condensed">
 					<tr>
-						<td colspan="9"><a href="insertSel.ad">추가하기</a></td>
+						<td colspan="8"><a href="insertSel.ad">추가하기</a></td>
 					</tr>
 					<tr>
 						<th>번호</th>
@@ -93,7 +93,7 @@
 						<th>이름</th>
 						<th>연락처</th>
 						<th>사업자등록번호</th>
-						<th>매물조회</th>
+						<th>매물관리</th>
 						<th>정보수정</th>
 
 						<!-- <th>삭제</th> -->
@@ -106,15 +106,15 @@
 							<td>${sel.s_name}</td>
 							<td>${sel.s_phone}</td>
 							<td>${sel.s_comnumber}</td>
-							<td><a href="hotelNow.ad?s_num=${sel.s_num }">매물 조회</a></td>
-							<td><a href="updateSel.ad?s_num=${sel.s_num }">정보 수정</a></td>
+							<td><a href="hotelNow.ad?s_num=${sel.s_num }">매물관리</a></td>
+							<td><a href="updateSel.ad?s_num=${sel.s_num }">정보수정</a></td>
 							<%-- <td><a href="deleteSel.ad?s_num=${sel.s_num }">삭제</a></td> --%>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" id="page">
 			<div class="col">${pageInfo.pagingHtml }</div>
 		</div>
 

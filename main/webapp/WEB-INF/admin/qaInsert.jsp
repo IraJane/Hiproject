@@ -1,4 +1,3 @@
-  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="member.model.Member"%>
@@ -91,12 +90,6 @@ hr {
 <script src="<c:url value="/js/bootstrap.min.js" />"></script>
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 
-<!-- <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 <script type="text/javascript">
 	
@@ -121,7 +114,6 @@ hr {
 			}
 		}
 	}
-	
 	
 	function fnChkByte(obj, maxByte) {
 		var str = obj.value;
@@ -150,42 +142,33 @@ hr {
 		} else {
 			document.getElementById('byteInfo').innerText = rbyte;
 		}
-		
 	}
-	
-	
 	
 	function login(){
 		var popupX = (window.screen.width/2)-(500/2);
 		var popupY = (window.screen.height/2)-(500/2);
 		window.open('login.mem', '_blank', 'height=500, width=500, toolbar=no, menubar=no left='+popupX+', top='+popupY,'true');
 		return false;
-		
 	}
 	
 </script>
 </head>
 <body>
+
 	<%@include file="/WEB-INF/common/header.jsp"%>
-
-
-	<%-- <%
+	<% 
 		if (session.getAttribute("loginfo") != null) {
 			Member loginfo = (Member) session.getAttribute("loginfo");
 			int m_num = loginfo.getM_num();
-			session.setAttribute("m_num", m_num);
+			pageContext.setAttribute("m_num", m_num);
 		}
-	%> --%>
-
+	%> 
 
 	<div class="container">
 		<div class="row">
 			<div class="col">
-
 				<h1>도움이 필요하세요?</h1>
-
 				<hr>
-
 				<!-- <div class="top-menu"> 		
 					<ul class="tab"> 
 						<li class="item"><a href="#" class="item-a active">예약관리</a></li>
@@ -235,8 +218,7 @@ hr {
 			<div class="row">
 				<div class="col">
 					<h4>원하는 답을 못 찾으셨나요? ;(</h4>
-					<h4>
-						개인별 맞춤 서비스를 받으시려면 <a class="loginlink" onclick="login()" href="#">로그인</a>을
+					<h4>개인별 맞춤 서비스를 받으시려면 <a class="loginlink" onclick="login()" href="#">로그인</a>을
 						해주세요.
 					</h4>
 				</div>
@@ -255,20 +237,16 @@ hr {
 					<div class="form">
 
 
-						<form:form commandName="qa" method="post" action="insertQa.ad">
+						<form:form commandName="qa" method="POST" action="insertQa.ad">
 
 							<label for="m_email">이메일</label>
 							<input class="form-control" id="m_email" type="text"
 								placeholder="${sessionScope.loginfo.m_email}" readonly>
-							<input type="hidden" name="m_num" value="${sessionScope.m_num}" />
+							<input type="hidden" name="m_num" value="${m_num}" />
 							<br>
 
 							<label for="q_title">문의 분류</label>
-							<%-- <input type="text" class="form-control"
-							placeholder="문의분류를 간단하게 적어주세요.(최대 50Byte)" name="title"
-							id="title" value="${qna.title }"> --%>
 							<br>
-
 							<select class="form-control" id="q_title" name="q_title">
 								<option value="">선택하세요</option>
 								<option value="예약">예약/숙박관련 문의</option>
@@ -278,23 +256,17 @@ hr {
 							<form:errors class="err" path="q_title" />
 							<br>
 
-							<label for="q_content">문의 내용</label>
+							<label for="q_comment">문의 내용</label>
 							<textarea class="form-control"
-								placeholder="상세하게 적어주실수록 좋습니다! (최대 2000Byte)" id="q_content"
+								placeholder="상세하게 적어주실수록 좋습니다! (최대 2000Byte)" id="q_comment"
 								name="q_comment" style="margin: 0px 0px 0px 0px; height: 100px"
 								onKeyUp="javascript:fnChkByte(this,'2000')">${qa.q_comment}</textarea>
-							<%-- <textarea name="content" onKeyUp="javascript:fnChkByte(this,'2000')">${qa.q_comment}</textarea> --%>
-							<p>
-								<span id="byteInfo">0</span>
-							</p>
+							<p><span>/2000Byte</span><span id="byteInfo">0</span></p>
 							<form:errors class="err" path="q_comment" />
 							<br>
 							<br>
 							<button type="submit" class="btn btn-primary btn-block">보내기</button>
 						</form:form>
-
-
-
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -304,12 +276,6 @@ hr {
 				</div>
 			</div>
 		</c:if>
-
-
-
 	</div>
-	
-
-	
 </body>
 </html>

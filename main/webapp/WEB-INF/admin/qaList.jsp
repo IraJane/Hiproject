@@ -20,7 +20,6 @@
 <script type="text/javascript">
 	
 </script>
-
 <style type="text/css">
 table {
 	table-layout: fixed;
@@ -37,35 +36,21 @@ table {
 	text-align: center;
 }
 </style>
-
 </head>
 
-
-<body>
-
-
-	<%-- <%
-		if (session.getAttribute("loginfo") == null) {
-			response.sendRedirect("main.jsp");
-		} else {
-			Member loginfo = (Member) session.getAttribute("loginfo");
-			if (!loginfo.getM_email().equals("admin@admin.com")) {
-				response.sendRedirect("main.jsp");
-			}
-		}
-	%> --%>
-	<%@include file="/WEB-INF/common/header.jsp"%>
+<body>	
+<%@include file="/WEB-INF/common/header.jsp"%>
 
 	<div class="container">
 		<!-- <div class="container-fluid"> -->
 		<div class="row">
-			<div class="col">
+			<div class="col-md-12" >
 				<ul class="nav nav-tabs nav-justified">
 					<li role="presentation"><a href="main.ad" id="home">Home</a></li>
 					<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
 					<li role="presentation"><a href="listMem.ad" id="member">Member</a></li>
 					<li role="presentation" class="active"><a href="listQa.ad" id="qa">QA</a></li>
-					<li role="presentation"><a href="#">Comment</a></li>
+					<li role="presentation"><a href="listReview.ad">Reviews</a></li>
 				</ul>
 			</div>
 			
@@ -147,13 +132,8 @@ table {
 							</td>
 	
 						</tr>
-
-
 					</c:forEach>
-
 				</table>
-
-
 			</div>
 		</div>
 		<div class="row" id="page">
@@ -161,6 +141,11 @@ table {
 		</div>
 
 	</div>
+	
+	
 
+	
+	
+	
 </body>
 </html>

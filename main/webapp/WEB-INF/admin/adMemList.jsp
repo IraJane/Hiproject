@@ -22,41 +22,33 @@
 </script>
 
 <style type="text/css">
-/* .row {
-	border: 1px solid black;
-} 
-.col {
-	border: 1px solid black;
-	
-} */
+table {
+	table-layout: fixed;
+	word-wrap: break-word;
+	/*     overflow-y: hidden; */
+}
+#page {
+	text-align: center;
+}
 </style>
 
 
 </head>
 <body>
-	<%-- <%
-		if (session.getAttribute("loginfo") == null) {
-			response.sendRedirect("main.jsp");
-		} else {
-			Member loginfo = (Member) session.getAttribute("loginfo");
-			if (!loginfo.getM_email().equals("admin@admin.com")) {
-				response.sendRedirect("main.jsp");
-			}
-		}
-	%> --%>
-	<%@include file="/WEB-INF/common/header.jsp"%>
+
+<%@include file="/WEB-INF/common/header.jsp"%>
 	<div class="container">
 
 
 		<div class="row">
-			<div class="col">
+			<div class="col-md-12">
 			
 					<ul class="nav nav-tabs nav-justified">
 						<li role="presentation"><a href="main.ad" id="home" >Home</a></li>
 						<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
 						<li role="presentation" class="active"><a href="listMem.ad" id="member">Member</a></li>
 						<li role="presentation"><a href="listQa.ad" id="qa">QA</a></li>
-						<li role="presentation"><a href="#" >Comment</a></li>
+						<li role="presentation"><a href="listReview.ad" >Reviews</a></li>
 					</ul>
 			
 			
@@ -82,17 +74,17 @@
 						<option value="m_email" <c:if test="${whatColumn eq 'm_email' }">selected</c:if>>이메일 검색</option>
 						<option value="m_name" <c:if test="${whatColumn eq 'm_name' }">selected</c:if>>이름 검색</option>
 					</select> <input type="text" name="keyword"> 
-					<input type="submit"value="검색">
+					<input type="submit" value="검색">
 				</form>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col">
+			<div class="col-md-12">
 
 				<table class="table table-hover table-condensed">
 					<tr>
-						<td colspan="9"><a href="insertMem.ad">추가하기</a></td>
+						<td colspan="8"><a href="insertMem.ad">추가하기</a></td>
 					</tr>
 					<tr>
 						<th>번호</th>
@@ -101,8 +93,8 @@
 						<th>이름</th>
 						<th>닉네임</th>
 						<th>전화번호</th>
-						<th>예약조회</th>
-						<th>수정</th>
+						<th>예약관리</th>
+						<th>정보수정</th>
 						<!-- <th>삭제</th> -->
 					</tr>
 					<c:forEach items="${memList }" var="mem">
@@ -113,9 +105,9 @@
 							<td>${mem.m_name}</td>
 							<td>${mem.m_nickname}</td>
 							<td>${mem.m_phone}</td>
-							<td><a href="reservationInfo.ad?m_num=${mem.m_num }">예약조회</a></td>
+							<td><a href="reservationInfo.ad?m_num=${mem.m_num }">예약관리</a></td>
 							<td><a
-								href="updateMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">수정</a></td>
+								href="updateMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">정보수정</a></td>
 							<%-- <td><a
 								href="deleteMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">삭제</a></td> --%>
 						</tr>
@@ -124,7 +116,7 @@
 			</div>
 
 		</div>
-		<div class="row">
+		<div class="row" id="page">
 			<div class="col">${pageInfo.pagingHtml}</div>
 		</div>
 

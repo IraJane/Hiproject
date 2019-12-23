@@ -68,6 +68,8 @@
 </head>
 <body>
 
+<%@include file="/WEB-INF/common/header.jsp"%>
+
 	<%-- <%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
