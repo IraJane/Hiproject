@@ -183,11 +183,116 @@ $(function(){
 	 
 	 
 	
+	 
+	 
+	
 	
 
 });
 
 </script>
+<script type="text/javascript">
+// valid 부분 수정 
+function check_valid(){
+	
+	if($('.area').val() == '' || $('.check').val() == ''){
+		if($('.areaspan').text() != '여행 지역과 날짜를 입력해주세요'){
+			$('.alert').show();
+			
+		}
+	} else {
+		var area = $('.area').val();
+		var cin = $('.cin').val();
+		var cout = $('.cout').val();
+		
+		location.href="Search.ho?area="+area+"&checkin="+cin+"&checkout="+cout;
+		
+	}
+	
+	
+	
+}
+
+
+$(function(){
+	$('.area').keyup(function(){
+		
+		$('.alert').hide();
+		
+		
+	})
+		
+	
+	
+	
+});
+
+
+
+
+</script>
+
+<script>
+// 사진 클릭시 이동 
+
+$(function(){
+	
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+	    dd='0'+dd
+	} 
+
+	if(mm<10) {
+	    mm='0'+mm
+	} 
+
+	today = yyyy+'-'+mm+'-'+dd;
+	//alert(today);
+	
+	
+	var d = new Date();
+	d.setDate(d.getDate() + 2);
+	var da = d.getDate();
+	var ma = d.getMonth()+1; //January is 0!
+	var ya = d.getFullYear();
+	var twoday = ya+'-'+ma+'-'+da;
+	
+	
+	
+	console.log(twoday);
+	
+	$('.clickimg').click(function(){
+		
+		var area = $(this).children().text();
+		var cin = today;
+		var cout = twoday;
+		
+		location.href="Search.ho?area="+area+"&checkin="+cin+"&checkout="+cout+"&adult="+2+"&child="+0+"&room="+1;
+		
+		
+		
+		
+		
+	});
+	
+	
+	
+	
+	
+});
+
+
+
+
+
+</script>
+
+
+
 
 
 
@@ -200,12 +305,11 @@ $(function(){
 
 <link href="<c:url value="/css/bootstrap.css" />" rel="stylesheet">
 <link href="<c:url value="/js/test.js" />" rel="stylesheet">
-<link href="<c:url value="/css/test.css" />" rel="stylesheet">
+<link href="<c:url value="resources/css/test.css" />" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <style>
 /***drop   *********************************************/
-
 
 
 </style>
@@ -255,14 +359,14 @@ $(function(){
 	
 	
 	
-		<form action="Search.ho" method="post">
+		<form class="mainForm" action="Search.ho" method="post">
 			<div class="searchinput">
 				<i class="material-icons">airplanemode_active</i>
-				<input type="text" name="area" placeholder="지역을 입력하세요">
+				<input type="text" class="area" name="area" placeholder="지역을 입력하세요">
 			
 				<p class="searcharea-p scheduler"><i class="material-icons">event</i>
-				<input name="checkin" type="text" id="datepicker" placeholder="체크인" autocomplete="off">
-				<input name="checkout" type="text" id="datepicker2" placeholder="체크아웃" autocomplete="off">
+				<input class="check cin"  name="checkin" type="text" id="datepicker" placeholder="체크인" autocomplete="off">
+				<input class="check cout" name="checkout" type="text" id="datepicker2" placeholder="체크아웃" autocomplete="off">
 				</p>
 				
 				
@@ -287,9 +391,18 @@ $(function(){
 				</div>
 
 			
-				<input class="mainsubmitbtn" type="submit" value="검색">
+				<input class="mainsubmitbtn" type="button" onclick="check_valid()" value="검색">
 			
 			</div>
+			
+			
+			
+			<div class="alert alert-warning alert-dismissible fade show areaspan" role="alert">
+  				여행 지역과 날짜를 입력해주세요
+			</div>
+			
+			
+			
 		</form>
 	</div>
 </div>
@@ -313,16 +426,12 @@ $(function(){
 		<h3 class="inserttitles">지금 떠나면 좋은 추천여행지</h3>
 	<div class="row">
 		
-		<div class="twoimages"  style="background: url(resources/img/1.jpg) no-repeat center top; background-size:cover;">
-			<p  class="imagetext" >
-				서울
-			</p>
+		<div class="twoimages clickimg"  style="background: url(resources/img/1.jpg) no-repeat center top; background-size:cover;">
+			<p  class="imagetext" >서울</p>
 		</div>
 		
-		<div class="twoimages"  style="background: url(resources/img/2.jpg) no-repeat center top; background-size:cover;">
-			<p class="imagetext">
-				제주도
-			</p>
+		<div class="twoimages clickimg"  style="background: url(resources/img/2.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">제주도</p>
 		</div>
 	
 	
@@ -331,22 +440,18 @@ $(function(){
 	<div class="row">
 		
 		
-		<div class="threeimages"  style="background: url(resources/img/3.jpg) no-repeat center top; background-size:cover;">
+		<div class="threeimages clickimg"  style="background: url(resources/img/3.jpg) no-repeat center top; background-size:cover;">
 			<p class="imagetext">
 				부산
 			</p>
 		</div>
 		
-		<div class="threeimages"  style="background: url(resources/img/6.jpg) no-repeat center top; background-size:cover;">
-			<p class="imagetext">
-				벳푸
-			</p>
+		<div class="threeimages clickimg"  style="background: url(resources/img/6.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">안면도</p>
 		</div>
 		
-		<div class="threeimages"  style="background: url(resources/img/5.jpg) no-repeat center top; background-size:cover;">
-			<p class="imagetext">
-				싱가포르
-			</p>
+		<div class="threeimages clickimg"  style="background: url(resources/img/5.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">경주</p>
 		</div>
 	
 	
@@ -357,32 +462,22 @@ $(function(){
 <div class="row">
 		
 		
-		<div class="fiveimages"  style="background: url(resources/img/7.jpg) no-repeat center top; background-size:cover;">
-			<p class="imagetext">
-				대구
-			</p>
+		<div class="fiveimages clickimg"  style="background: url(resources/img/7.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">대구</p>
 		</div>
 		
-		<div class="fiveimages"  style="background: url(resources/img/8.jpg) no-repeat center top; background-size:cover;">
-			<p class="imagetext">
-				 강릉
-			</p>
+		<div class="fiveimages clickimg"  style="background: url(resources/img/8.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">강릉</p>
 		</div>
 		
-		<div class="fiveimages"  style="background: url(resources/img/9.jpg) no-repeat center top; background-size:cover;">
-			<p class="imagetext">
-				나트랑
-			</p>
+		<div class="fiveimages clickimg"  style="background: url(resources/img/9.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">속초</p>
 		</div>
-		<div class="fiveimages"  style="background: url(resources/img/10.jpg) no-repeat center top; background-size:cover;">
-			<p class="imagetext">
-				다낭
-			</p>
+		<div class="fiveimages clickimg"  style="background: url(resources/img/10.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">인천</p>
 		</div>
-		<div class="fiveimages"  style="background: url(resources/img/11.jpg) no-repeat center top; background-size:cover;">
-			<p class="imagetext">
-				타이베이
-			</p>
+		<div class="fiveimages clickimg"  style="background: url(resources/img/11.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">목포</p>
 		</div>
 		
 		
@@ -404,6 +499,7 @@ $(function(){
 <br><br><br>
 
 <div class="nothingReally">
+		<br>
 		<h3 class="nothingReallyText">시간도 돈도 아끼는 일석이조의 현명한 선택!</h3>
 		<h4 class="nothingReallyText">가입하시면 최고의 특가 정보를 보내드릴게요</h4>
 		<p class="nothingReallyText"><input type="text" placeholder="이메일 주소를 입력해주세요"><button class="nothingReallybtn" type="button">구독하기</button></p>

@@ -35,6 +35,42 @@ input {
 
 
 
+
+
+
+
+
+
+
+
+/*********search 하는 머리 부분*************************/
+.areaspan {
+display:none;
+}
+.alert-warning{
+    background-color: #ffa7a7;
+    width: 30%;
+    height: 20px;
+    padding: 20px;
+    line-height: 2px;
+    margin: 10px;
+    border-left: 5px solid #ff3939;
+    border-right: none;
+    border-radius: 5px 0px 0px 5px;
+    color: #bd0000;
+    border-top: none;
+    
+    border-bottom: none;
+}
+
+
+/*********search 하는 머리 부분*************************/
+
+
+
+
+
+
 .searcharea {
 	
 	width: 80%;
@@ -264,7 +300,7 @@ input {
 
 
 .imagetext {
-color: white;
+	color: white;
     font-size: 30px;
     margin: 0;
     float: left;
