@@ -26,7 +26,7 @@ function logout() {
 	
 }
 .mainLogo{
-    background: url(resources/img/logo.png) no-repeat center top;
+    background: url(resources/img/logo3.png) no-repeat center top;
     background-size: contain;
     width: 10%;
     height: 75%;
@@ -34,10 +34,10 @@ function logout() {
 
 
 .hmain-menu {
-	border: 1px solid #000e98;
-	width: 100%;
-	height: 50px;
-	background: #000e98;
+    /* border: 1px solid #000f79db; */
+    width: 100%;
+    height: 50px;
+    background: #000f79db;
 	
 }
 
@@ -65,7 +65,7 @@ color:white;
 	
 }
 .hmain{
-	margin: 10px;
+	margin: 6px;
 	float: left;
 	
 }
@@ -135,7 +135,7 @@ color:white;
 		
 		</c:if>
 	
-		<a class="hmainright ha" href="selMain.sel">판매자</a>
+		<a class="hmainright ha" href="selMain.sel" target="_blank">판매자</a>
 		<a class="hmainright ha" href="insertQa.ad">고객센터</a>
 	
 </header>

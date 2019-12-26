@@ -87,7 +87,7 @@
 								<label for="exampleInputEmail1">Password</label> <input
 									type="password" name="m_password" id="password"
 									class="form-control" aria-describedby="emailHelp"
-									placeholder="Enter Password">
+									placeholder="Enter Password" onkeypress="if(event.keyCode == 13){ login(); return; }">
 							</div>
 							<div class="col-md-12 text-center ">
 								<button type="button" id="btnLogin" onclick="login()"

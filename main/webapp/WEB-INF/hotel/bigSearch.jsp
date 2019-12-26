@@ -174,6 +174,178 @@
 					$("form[name=searchForm]").submit();
 				}
 			});
+			
+			
+			/****************성급*************************/
+			
+			$(".filterType_grade1").click(function(){
+				if(filterTypeArray.indexOf("1등급")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>1등급");
+					filterTypeArray.unshift("1등급");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>1등급");
+					filterTypeArray.splice(filterTypeArray.indexOf("1등급"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			$(".filterType_grade2").click(function(){
+				if(filterTypeArray.indexOf("2등급")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>2등급");
+					filterTypeArray.unshift("2등급");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>2등급");
+					filterTypeArray.splice(filterTypeArray.indexOf("2등급"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			
+			$(".filterType_grade3").click(function(){
+				if(filterTypeArray.indexOf("3등급")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>3등급");
+					filterTypeArray.unshift("3등급");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>3등급");
+					filterTypeArray.splice(filterTypeArray.indexOf("3등급"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			
+			$(".filterType_grade4").click(function(){
+				if(filterTypeArray.indexOf("4등급")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>4등급");
+					filterTypeArray.unshift("4등급");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>4등급");
+					filterTypeArray.splice(filterTypeArray.indexOf("4등급"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			
+			$(".filterType_grade5").click(function(){
+				if(filterTypeArray.indexOf("5등급")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>5등급");
+					filterTypeArray.unshift("5등급");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>5등급");
+					filterTypeArray.splice(filterTypeArray.indexOf("5등급"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			
+			$(".filterType_grade6").click(function(){
+				if(filterTypeArray.indexOf("해당없음")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>해당없음");
+					filterTypeArray.unshift("해당없음");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>해당없음");
+					filterTypeArray.splice(filterTypeArray.indexOf("해당없음"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			
+			
+			
+			/**   후기    *******************************************    *******/
+			
+			$(".filterType_comment9").click(function(){
+				if(filterTypeArray.indexOf("최고: 9이상")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>최고: 9이상");
+					filterTypeArray.unshift("최고: 9이상");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>최고: 9이상");
+					filterTypeArray.splice(filterTypeArray.indexOf("최고: 9이상"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			
+			$(".filterType_comment8").click(function(){
+				if(filterTypeArray.indexOf("매우좋음: 8이상")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>매우좋음: 8이상");
+					filterTypeArray.unshift("매우좋음: 8이상");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>매우좋음: 8이상");
+					filterTypeArray.splice(filterTypeArray.indexOf("매우좋음: 8이상"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			
+			$(".filterType_comment7").click(function(){
+				if(filterTypeArray.indexOf("좋음: 7이상")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>좋음: 7이상");
+					filterTypeArray.unshift("좋음: 7이상");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>좋음: 7이상");
+					filterTypeArray.splice(filterTypeArray.indexOf("좋음: 7이상"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			
+			$(".filterType_comment6").click(function(){
+				if(filterTypeArray.indexOf("만족: 6이상")==-1){
+					$(this).html("<i class='fas fa-check-square'></i>만족: 6이상");
+					filterTypeArray.unshift("만족: 6이상");
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}else{
+					$(this).html("<i class='far fa-square'></i>만족: 6이상");
+					filterTypeArray.splice(filterTypeArray.indexOf("만족: 6이상"),1);
+					var filterType=filterTypeArray.join();
+					$("input[name=filterType]").attr("value",filterType);
+					$("form[name=searchForm]").submit();
+				}
+			});
+			
+			
+			
+			
+			
+			
 		
 		
 		
@@ -192,7 +364,7 @@
 	<div class="leftbar">
 
 		<div class="leftSearch-wrap">
-			<form action="Search.ho" class="leftsearch-form">
+			<form action="Search.ho" class="leftsearch-form " name="searchForm">
 				<h4>검색</h4>
 				<br>
 				<div class="searchinput">
@@ -231,7 +403,7 @@
 							<div>
 								
 									<select class="crselect">
-									<option <c:if test="${param.child == 0 }">selected</c:if>>아동 없음
+									<option value="0" <c:if test="${param.child == 0 }">selected</c:if>>아동 없음
 									<c:forEach begin="1" end="20" var="p">
 										
 										<option class="child" value="${p }" <c:if test="${param.child == p }">selected</c:if>>아동: ${p }명
@@ -271,10 +443,10 @@
 
 		</div>
 		<div class="leftFilter-wrap">
-			<h2>필터링 기준:</h2>
+			<h3 class="leftFilter-title">필터링 기준:</h3>
 			
 				<div class="filterType">
-				<h5>숙소 유형</h5>
+				<h3 class="left-titles">숙소 유형</h3>
 				<c:set value="${search.filterType }" var="filter"/>
 				 <span class="filterType_hotel">
 				 	<c:if test="${fn:contains(filter,'호텔') }">
@@ -311,6 +483,105 @@
 				 		<i class="far fa-square"></i>아파트
 				 	</c:if>
 				  </span>
+			    </div>
+			    
+			    <div class="filterType">
+				<h3  class="left-titles">성급</h3>
+				<c:set value="${search.filterType }" var="filter"/>
+				 <span class="filterType_grade1">
+				 	<c:if test="${fn:contains(filter,'1') }">
+				 		<i class='fas fa-check-square'></i>1등급 
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'1')==-1 }">
+				 		<i class="far fa-square"></i>1등급
+				 	</c:if>
+				  </span>
+				  <br>
+				  <span class="filterType_grade2">
+				  <c:if test="${fn:contains(filter,'2') }">
+				 		<i class='fas fa-check-square'></i>2등급 
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'2')==-1 }">
+				 		<i class="far fa-square"></i>2등급
+				 	</c:if>
+				 	</span>
+				 	<br>
+				  <span class="filterType_grade3">
+				  <c:if test="${fn:contains(filter,'3') }">
+				 		<i class='fas fa-check-square'></i>3등급 
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'3')==-1 }">
+				 		<i class="far fa-square"></i>3등급 
+				 	</c:if>
+				 	</span>
+				 	<br>
+				  <span class="filterType_grade4">
+				  	<c:if test="${fn:contains(filter,'4') }">
+				 		<i class='fas fa-check-square'></i>4등급 
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'4')==-1 }"> 
+				 		<i class="far fa-square"></i>4등급
+				 	</c:if>
+				  </span>
+				  <br>
+				  <span class="filterType_grade5">
+				  	<c:if test="${fn:contains(filter,'5') }">
+				 		<i class='fas fa-check-square'></i>5등급 
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'5')==-1 }"> 
+				 		<i class="far fa-square"></i>5등급 
+				 	</c:if>
+				  </span>
+				  <br>
+				  <span class="filterType_grade6">
+				  	<c:if test="${fn:contains(filter,'6') }">
+				 		<i class='fas fa-check-square'></i>해당없음
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'6')==-1 }"> 
+				 		<i class="far fa-square"></i>해당없음
+				 	</c:if>
+				  </span>
+			    </div>
+			    
+			    <div class="filterType">
+				<h3  class="left-titles">후기 평점</h3>
+				<c:set value="${search.filterType }" var="filter"/>
+				 <span class="filterType_comment9">
+				 	<c:if test="${fn:contains(filter,'9') }">
+				 		<i class='fas fa-check-square'></i>최고: 9이상 
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'9')==-1 }">
+				 		<i class="far fa-square"></i>최고: 9이상
+				 	</c:if>
+				  </span>
+				  <br>
+				  <span class="filterType_comment8">
+				  <c:if test="${fn:contains(filter,'8') }">
+				 		<i class='fas fa-check-square'></i>매우좋음: 8이상
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'8')==-1 }">
+				 		<i class="far fa-square"></i>매우좋음: 8이상
+				 	</c:if>
+				 	</span>
+				 	<br>
+				  <span class="filterType_comment7">
+				  <c:if test="${fn:contains(filter,'7') }">
+				 		<i class='fas fa-check-square'></i>좋음: 7이상
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'7')==-1 }">
+				 		<i class="far fa-square"></i>좋음: 7이상
+				 	</c:if>
+				 	</span>
+				 	<br>
+				  <span class="filterType_comment6">
+				  	<c:if test="${fn:contains(filter,'6') }">
+				 		<i class='fas fa-check-square'></i>만족: 6이상
+				 	</c:if>
+				 	<c:if test="${fn:indexOf(filter,'6')==-1 }"> 
+				 		<i class="far fa-square"></i>만족: 6이상
+				 	</c:if>
+				  </span>
+				 
 			    </div>
 
 
@@ -384,7 +655,7 @@
 								</a>
 							</td>
 							<td class="hanmeSecond">	
-								<span class="hname-score">9.5</span>
+								<span class="hname-score">${hotel.h_staravg }</span>
 								
 							</td>
 						</tr>
@@ -399,10 +670,19 @@
 							<td>
 							<%-- <div>${hotel.h_comment }</div> --%>
 							
-							<c:forEach items="${hotel.rooms }" var="room">
-								<a class="roomperperson"><b>${room.r_type }</b></a>
-								<a class="roomperperson"><b>\ ${room.r_price }</b></a><br>
+							<table>
+							<c:forEach items="${hotel.rooms }" var="room" >
+								<tr>
+									<td>
+										<a class="roomperperson"><b>${room.r_type }</b></a>
+									
+									</td>
+									<td>
+										<a class="roomperperson"><b>\ ${room.r_price }</b></a><br>
+									</td>
+								</tr>
 							</c:forEach>
+							</table>
 					
 						</td>
 						

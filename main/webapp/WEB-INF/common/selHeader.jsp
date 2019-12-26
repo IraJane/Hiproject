@@ -11,12 +11,20 @@ function change(){
 </script>
 <style>
 
-.mainbtn {
+.hmainbtn {
 	font-size: 30px;
     color: white;
 }
+.hoa {
+	text-decoration: none;
+	color: white;
+}
+.hoa:hover, .hoa:active {
+	text-decoration: none;
+	color: red;
+}
 .hmain-menu {
-	border: 1px solid #000f79db;
+/* 	border: 1px solid #000f79db; */
 	width: 100%;
 	height: 50px;
 	background: #000f79db;
@@ -55,7 +63,7 @@ float: right;
 </style>
 
 <header class="hmain-menu">
-	<a onclick="change()" class="mainbtn">main</a>
+	<a onclick="change()" class="hmainbtn hoa">main</a>
 <%
 	if (session.getAttribute("selloginfo") == null) {
 %>

@@ -17,6 +17,7 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script>
 	$(function() {
 		
@@ -211,8 +212,8 @@
 			$('input.totalprice').attr('value',total);
 			$('.totalprice1').append(
 					'<div class="totalreservate">'+total+'원'+
-					'<br><input type="text" name="whichrooms" value="'+roomname+'">'+
-					'<br><input type="text" name="howmanyrooms" value="'+getHowmany+'">'+
+					'<br><input type="hidden" name="whichrooms" value="'+roomname+'">'+
+					'<br><input type="hidden" name="howmanyrooms" value="'+getHowmany+'">'+
 					'<br><a>세금 및 기타 요금 포함</a>'+
 					'<ul><li>즉시 예약 확정</li><li>가입이 필요 없습니다</li><li>예약 수수료, 신용카드 수수료 없음!</li></ul>'+
 					'<button class="reservatebtn" onclick="javascript:reservate()" >예약하기</button></div>');
@@ -226,6 +227,30 @@
 			
 			
 		});
+		
+		
+		// 이미지 띄우기 
+		//alert($('.hotelimage').length);
+		for(var i = 0; i<$('.hotelimage').length; i++){
+
+			var claaas = '.hoImage-'+i;
+			//alert(claaas);
+			
+			$(claaas).click(function(){
+				//alert($(claaas).attr('src'));
+				var srrc = $(this).attr('src');
+				$('.bigImage').attr('src',srrc);
+				
+			
+			
+			
+		});
+		
+		}
+		
+		var srrc = $('.hoImage-0').attr('src');
+		$('.bigImage').attr('src',srrc);
+		
 		
 		
 		
@@ -296,17 +321,22 @@ function close_pop(flag) {
 function toSearch() {
 	var checkin = $('#datepicker3').val();
 	var checkout = $('#datepicker4').val();
-	var adult = $('.madult').val();
-	var child = $('.mchild').val();
-	var room = $('.mroom').val();
-	location.href="Search.ho?checkin="+checkin+"&checkout="+checkout+"&adult="+adult+"&child="+child+"&room="+room+"";
+	var adult = $('select[name=madult]').val();
+	var child = $('select[name=mchild]').val();
+	var room = $('select[name=mroom]').val();  
+	var h_num=${hotel.h_num};
+	scroll=1;
+	location.href="hotelDetail.ho?h_num="+h_num+"&checkin="+checkin+"&checkout="+checkout+"&adult="+adult+"&child="+child+"&room="+room+"&scroll="+scroll+"";
+	
+	
+	
 };
 </script>
 <style type="text/css">
 .myModal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
+	z-index: 50 !important; /* Sit on top */
 	left: 0;
 	top: 0;
 	width: 100%; /* Full width */
@@ -325,6 +355,10 @@ function toSearch() {
 }
 .pop_bt{
 	float:right;
+}
+#diamonds li:hover {
+    position: relative;
+    z-index: 1;
 }
 </style>
 <style>
@@ -345,10 +379,10 @@ h1{
     border-radius: 5px;
 	}
 	#imageArea{
-		background-color: #4587ffb0;
-		width: 95%;
-		
-		margin:20px;
+	background-color: #d2deff;
+    width: 95%;
+    margin: 20px;
+    border-radius: 5px;
 		
 	}
 	
@@ -383,11 +417,11 @@ h1{
 	
 /*****************left bar*********************/
 .left-bar {
-	    width: 20%;
-	height: auto;
-	border:1px solid green;
-/* 	margin-left: 30px; */
-	float:left;
+   width: 14%;
+    height: auto;
+    border-radius: 10px;
+    float: left;
+    position: fixed;
 }
 .calc {
 	border: 2px solid #ff6b09;
@@ -415,12 +449,12 @@ h1{
 	
 background: #ffe0b1;
     border-radius: 5px;
-    margin: 15px;
+    margin: 0 0 15px 0;
 	
 }
 .leftsearch-form {
 	text-align: center;
-	padding: 10;
+    padding: 10px;
 }
 h4 {
     font-size: 22px;
@@ -605,6 +639,8 @@ table {
     width: 100%;
     position: relative;
     margin: 0 20px;
+    
+    z-index: -1 !important;
 }
 .detail-famous-wrapper {
 	display: inline-flex;
@@ -706,10 +742,66 @@ table {
 }
 /******    *리뷰 **************/
 .review-wrapper{
-	    width: 95%;
+    width: 92.77777%;
     background: #c8e3ff;
     margin: 20px auto;
     padding: 10px;
+    border-radius: 5px;
+}
+.comment-roomDate{
+	background: #e8e8e899;
+    font-size: 12px;
+    color: #5d5d5d;
+    border: 2px solid #a2a2a2;
+    border-radius: 5px;
+}
+.comment-star {
+    float: right;
+    background: #0000a5;
+    padding: 5px 15px 5px 15px;
+    border-radius: 10px 10px 10px 0px;
+    color: white;
+    font-size: 17px;
+}
+
+
+
+/************ 이미지 *********************/
+
+.hotelimage {
+    width: 60px;
+    height: 60px;
+    margin: 0 0 0 5px;
+    padding: 5px;
+}
+
+.bigImage{
+     width: 69.1276666%;
+    height: 330px;
+    /* border: 1px solid black; */
+    margin: 10px 0 10px 10px;
+    border-radius: 10px;
+}
+.image-container {
+    border: 3px solid #ffffff;
+    border-radius: 5px;
+    background: #e5ecff;
+    height: 330px;
+    margin: 10px 10px;
+    /* padding: 5px; */
+    float: right;
+    width: 25%;
+   	overflow:scroll;
+   	text-align:center;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.image-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.image-container {
+  -ms-overflow-style: none;
 }
 	
 </style>
@@ -750,7 +842,7 @@ table {
 									<select class="adultselect">
 									<c:forEach begin="1" end="20" var="p">
 										
-										<option class="adult" value="${p }" <c:if test="${param.adult == p }">selected</c:if>>성인: ${p }명
+										<option class="adult" value="${p }" <c:if test="${search.adult == p }">selected</c:if>>성인: ${p }명
 									
 									</c:forEach>
 									
@@ -761,10 +853,10 @@ table {
 							<div>
 								
 									<select class="crselect">
-									<option <c:if test="${param.child == 0 }">selected</c:if>>아동 없음
+									<option value="0" <c:if test="${search.child == 0 }">selected</c:if>>아동 없음
 									<c:forEach begin="1" end="20" var="p">
 										
-										<option class="child" value="${p }" <c:if test="${param.child == p }">selected</c:if>>아동: ${p }명
+										<option class="child" value="${p }" <c:if test="${search.child == p }">selected</c:if>>아동: ${p }명
 									
 									</c:forEach>
 									
@@ -777,7 +869,7 @@ table {
 									
 									<c:forEach begin="1" end="20" var="p">
 										
-										<option class="room" value="${p }" <c:if test="${param.room == p }">selected</c:if>>객실: ${p }개
+										<option class="room" value="${p }" <c:if test="${search.room == p }">selected</c:if>>객실: ${p }개
 									
 									</c:forEach>
 									
@@ -803,7 +895,7 @@ table {
 	
 	
 		<!-- 지도를 담을영역 --> 
-		<div id="map" style="width:95%;height:300px; border-radius:5px; padding:10; border:1px; margin:auto; margin-bottom:3px;">
+		<div id="map" style="height:300px; border-radius:5px; padding:10; border:1px; margin:auto; margin-bottom:3px;">
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f8dac855d9fc96a72ecec0f6b94fa4b&libraries=services"></script>
 		<script>
 			var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -843,7 +935,7 @@ table {
 				<span onclick="close_pop()" class="pop_bt" style="font-size: 13pt;">x</span>
 				
 				<div class="col-md-12 text-center">
-					<h1>검색 하기</h1>
+					<h1>변경하기</h1>
 				</div>
 				<form name="reviewForm" id="reviewForm">
 					<p class="searcharea-p scheduler">
@@ -857,10 +949,10 @@ table {
 					<div class="perbox-box">
 							<div>
 								
-									<select class="adultselect">
+									<select class="adultselect"  name='madult'>
 									<c:forEach begin="1" end="20" var="p">
 										
-										<option class="madult" value="${p }" <c:if test="${param.adult == p }">selected</c:if>>성인: ${p }명
+										<option class="madult" value="${p }" <c:if test="${search.adult == p }">selected</c:if>>성인: ${p }명
 									
 									</c:forEach>
 									
@@ -870,11 +962,11 @@ table {
 							</div>
 							<div>
 								
-									<select class="crselect">
-									<option <c:if test="${param.child == 0 }">selected</c:if>>아동 없음
+									<select class="crselect" name="mchild">
+									<option  value="0" <c:if test="${search.child == 0 }">selected</c:if>>아동 없음
 									<c:forEach begin="1" end="20" var="p">
 										
-										<option class="mchild" value="${p }" <c:if test="${param.child == p }">selected</c:if>>아동: ${p }명
+										<option class="mchild" value="${p }" <c:if test="${search.child == p }">selected</c:if>>아동: ${p }명
 									
 									</c:forEach>
 									
@@ -883,11 +975,11 @@ table {
 								
 							
 							
-									<select class="crselect">
+									<select class="crselect" name="mroom">
 									
 									<c:forEach begin="1" end="20" var="p">
 										
-										<option class="mroom" value="${p }" <c:if test="${param.room == p }">selected</c:if>>객실: ${p }개
+										<option class="mroom" value="${p }" <c:if test="${search.room == p }">selected</c:if>>객실: ${p }개
 									
 									</c:forEach>
 									
@@ -944,11 +1036,14 @@ table {
 <div>
 	<input type="hidden" name="h_num" value="${hotel.h_num }">
 	<div id="hotelname"><span class="hoteltype">${hotel.h_type }</span>&nbsp;&nbsp;<h1>${hotel.h_name }</h1></div>
-	<div id="hoteladdress"><p><i class="material-icons">navigation</i>${hotel.h_address2 } , ${hotel.h_address1 }, ${hotel.h_nation }</p></div>
+	<div id="hoteladdress"><p><i class="far fa-compass"></i>&nbsp;${hotel.h_address2 } , ${hotel.h_address1 }, ${hotel.h_nation }</p></div>
 	<div id="imageArea">  
-		<c:forEach items="${hotel.h_image }" var="image">
-			<img class="hotelimage" src="<%=request.getContextPath() %>/resources/Hotelimages/${hotel.h_name }/${image }" width="200px" height="200px">
+		<img class="bigImage">
+		<div class="image-container">
+		<c:forEach items="${hotel.images }" var="image" varStatus="img">
+			<img class="hotelimage hoImage-${img.index }" src="<%=request.getContextPath() %>/resources/Hotelimages/${hotel.h_name }/${image }" >
 		</c:forEach>
+		</div>
 	</div>
 	<hr>
 	
@@ -963,10 +1058,8 @@ table {
 				<div id="hotelcomment">
 					<a>${hotel.h_nation } 추천 숙소</a><br>
 			
-					<div>
-					<pre class="commentboxxx">
-						${hotel.h_comment }
-					</pre>
+					<div style="    word-break: break-word;">
+					<pre class="commentboxxx" style="white-space: pre-wrap;">${hotel.h_comment }</pre>
 					</div> 
 				</div>
 			</td>
@@ -1028,7 +1121,7 @@ table {
 					<p>체크아웃</p>
 					<p><button class="infochangebtn" onclick="pushLayer()">${param.checkout }</button></p>
 				</td>
-				<td><p>성인 : ${param.adult }</p><p>아이 : <c:if test="${param.child ==0 }">0</c:if><c:if test="${param.child !=0 }">${param.child }</c:if></p></td>
+				<td><p>성인 : ${param.adult }명</p><p>아이 : <c:if test="${param.child ==0 }">0명</c:if><c:if test="${param.child !=0 }">${param.child }명</c:if></p></td>
 				<td class="register-check-last"><button class="infoAllbtn" onclick="pushLayer()">검색 변경</button></td>
 			
 			
@@ -1386,24 +1479,30 @@ table {
 
 	
 	<div class="review-wrapper">
+		<h3>이용 후기</h3>
 	
 	
 	
 	
 		<c:forEach items="${review }" var="rv">
 		<input type="hidden" name="c_num" class="c_num" value="${rv.c_num }">
-		<h3>이용 후기</h3>
-		<table>
+		<table style="margin: 15px 0;">
 			<tr>
-				<td colspan="2">
-					<div>후기 작성일 ${rv.c_date }</div>
+				<td><i class="fas fa-user-circle" style="font-size: 30px;color: #5f5f5f;"></i> <b>${rv.m_nickname }</b>
+					<div class="comment-star">${rv.c_star }</div>
 				</td>
 			</tr>
 			<tr>
-				<td>닉네임 ${rv.m_nickname }</td>
 				<td>
-					<div>평점 ${rv.c_star }</div>
-					<div>작성내용 ${rv.c_comment }</div>
+					<fmt:formatDate  value = "${rv.c_date }" pattern = "yyyy년 MM월 dd일" var = "date"/>
+					<div style="    font-size: 13px; color: #353535;">후기 작성: ${date }</div>
+				</td>
+			</tr>
+			<tr>
+			
+				<td>
+					
+					<div style="font-size: 20px;">${rv.c_comment }</div>
 					
 					
 					
@@ -1413,13 +1512,14 @@ table {
 			</tr>
 
 			<tr>
-				<td colspan="2">
+				<td colspan="2" class="comment-roomDate">
 				
-					<div>투숙한 방 타입 
+					<div style="    margin: 10px 0 0 10px;"><i class="fas fa-bed"></i>&nbsp;투숙한 방 타입 
 						${rv.r_type }
 					</div>
-				
-					<div>숙박일 ${rv.o_checkin } ~ ${rv.o_checkout }</div>
+					
+					<fmt:formatDate  value = "${rv.o_checkin }" pattern = "yyyy년 MM월" var = "date"/>
+					<div style="    margin:0 0 10px 29px;">숙박일 ${date }</div>
 				</td>
 			</tr>
 		
