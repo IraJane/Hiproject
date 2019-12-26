@@ -1,7 +1,13 @@
 package hotel.model;
 
+import java.util.Arrays;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Search {
+	
 	private String area;
+	
 	private String checkin;
 	private String checkout;
 	private String adult;
@@ -10,7 +16,21 @@ public class Search {
 	private String searchas;
 	private String filterType;
 	private String[] filters;
+	private String[] gradeArray;
+	
+	
+	
+	
+	
+	
 		
+	@Override
+	public String toString() {
+		return "Search [area=" + area + ", checkin=" + checkin + ", checkout=" + checkout + ", adult=" + adult
+				+ ", child=" + child + ", room=" + room + ", searchas=" + searchas + ", filterType=" + filterType
+				+ ", filters=" + Arrays.toString(filters) + ", gradeArray=" + Arrays.toString(gradeArray) + "]";
+	}
+
 	public Search() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -86,6 +106,14 @@ public class Search {
 
 	public void setFilters(String[] filters) {
 		this.filters = filters;
+	}
+
+	public String[] getGradeArray() {
+		return gradeArray;
+	}
+
+	public void setGradeArray(String[] gradeArray) {
+		this.gradeArray = gradeArray;
 	}
 
 	

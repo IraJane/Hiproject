@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hotel.model.Hotel;
+import hotel.model.HotelDao;
 import member.model.Member;
 import member.model.Review;
 import member.model.ReviewDao;
@@ -27,10 +29,13 @@ public class MemberReviewController {
 	
 	@Autowired
 	private MainOrderDao mainOrderDao;
+	
+	@Autowired
+	HotelDao hotelDao;
 
 	@ResponseBody
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public void doAction(HttpSession session, Review review, MainOrder mainorder) {
+	public void doAction(HttpSession session, Review review, MainOrder mainorder,Hotel hotel) {
 		Member login = (Member) session.getAttribute("loginfo");
 		
 		System.out.println(login.getM_num());
@@ -50,6 +55,12 @@ public class MemberReviewController {
 		
 		
 		mainOrderDao.checkReview(mainorder);
+		
+		int h_num = review.getH_num();
+	    float avg = rvDao.avgStar(h_num);  
+	    hotel.setH_staravg(avg);
+	    hotelDao.avgStar(hotel);
+		
 	}
 	
 }

@@ -71,6 +71,11 @@ public class HotelDao {
 		sqlSessionTemplate.delete(namespace+".deleteHotel", h_num);
 		
 	}
+	
+	public void avgStar(Hotel hotel) {
+	      sqlSessionTemplate.update(namespace+ ".avgStar", hotel);
+	      
+	   }
 
 
 	

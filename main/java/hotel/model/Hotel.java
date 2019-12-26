@@ -23,10 +23,34 @@ public class Hotel {
 	private String h_image;
 	private String h_comment;
 	private int h_room_num;
+	private int h_postcode;
 	private String[] images;
 	private List<Room> rooms;
+	private float h_staravg;
 	
 	
+	
+	
+	public float getH_staravg() {
+		return h_staravg;
+	}
+
+
+	public void setH_staravg(float h_staravg) {
+		this.h_staravg = h_staravg;
+	}
+
+
+	public int getH_postcode() {
+		return h_postcode;
+	}
+
+
+	public void setH_postcode(int h_postcode) {
+		this.h_postcode = h_postcode;
+	}
+
+
 	public Hotel() {
 		super();
 		// TODO Auto-generated constructor stub

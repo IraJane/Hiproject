@@ -14,4 +14,9 @@
 		select * from review
 		where h_num = #{h_num}
 	</select>
+	
+	<select id="avgStar" resultType="float">
+       select round(avg(c_star), 1) from review where h_num = #{h_num}
+   </select>
+	
 </mapper>

@@ -19,7 +19,13 @@ public class ReviewCompositeDao {
 		System.out.println("2");
 		return review;
 	}
-	
+/*
+	public Integer getAvg(int h_num) {
+		// TODO Auto-generated method stub
+		int cnt = sqlSessionTemplate.selectOne(namespace + ".getAvg",h_num);
+		return cnt;
+	}
+	*/
 
 
 

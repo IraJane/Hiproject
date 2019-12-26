@@ -8,7 +8,7 @@
 		values(hotel_seq.nextval,#{s_num},#{h_name},#{h_nation},#{h_address1},
 		#{h_address2},#{h_type},#{h_phone},#{h_room_num},#{h_facilities},#{h_internet},
 		#{h_animal},#{h_parking},#{h_smoke},#{h_language},#{h_image},
-		#{h_hotel_url},#{h_comment},#{h_grade})  
+		#{h_hotel_url},#{h_comment},#{h_grade},#{h_postcode})  
 		<selectKey keyProperty="h_num" resultType="int" order="AFTER">
 			select hotel_seq.currval from dual
 		</selectKey>
@@ -18,7 +18,7 @@
 	<select id="getHotelList" resultType="MyHotel">
 		select * from hotel
 		<if test="area!=null and !area.equals('')">
-			where h_address1 like #{area}
+			where h_address1 like '%' || #{area} || '%'
 			<if test="filterType!=null and !filterType.equals('')">
 				and
 				<foreach collection="filters" item="item" separator="or"  >
@@ -35,6 +35,76 @@
 			</if>  
 		</if>
 	</select>
+	
+	<!-- <select id="getHotelList" resultType="MyHotel">
+		select * from hotel
+		<if test="area!=null and !area.equals('')">
+			where h_address1 like '%' || #{area} || '%'
+			<if test="filterType!=null and !filterType.equals('')">
+				and
+				<foreach collection="filters" item="item" separator="or"  >
+				 	h_type=#{item}
+				</foreach>
+				<if test="grade!=null and !grade.equals('')">
+					and
+					<foreach collection="gradeArray" item="item" separator="or">
+						h_grade=#{item}
+					</foreach>
+				</if> 
+			</if>
+			<if test="filterType==null or filterType.equals('')">
+				<if test="grade!=null and !grade.equals('')">
+					and
+					<foreach collection="gradeArray" item="item" separator="or">
+						h_grade=#{item}
+					</foreach>
+				</if> 
+			</if>
+		</if>
+		<if test="area==null or area.equals('')">
+			<if test="filterType!=null and !filterType.equals('')">
+				where
+				<foreach collection="filters" item="item" separator="or"  >
+				 	h_type=#{item}
+				</foreach> 
+				<if test="grade!=null and !grade.equals('')">
+					and
+					<foreach collection="gradeArray" item="item" separator="or">
+						h_grade=#{item}
+					</foreach>
+				</if>   
+			</if>
+			<if test="filterType==null or filterType.equals('')">
+				<if test="grade!=null and !grade.equals('')">
+					where
+					<foreach collection="gradeArray" item="item" separator="or">
+						h_grade=#{item}
+					</foreach>
+				</if> 
+			</if>
+		</if>
+	</select> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<select id="detailData" resultType="MyHotel">
 		select * from hotel where h_name like #{h_name}
@@ -72,6 +142,11 @@
 	<delete id="deleteHotel">
   		delete from hotel where h_num=#{h_num}
   	</delete>
+  	
+  	<update id="avgStar">
+      update hotel set h_staravg = #{h_staravg}
+        where h_num=#{h_num}
+   </update>
 	
 	
   

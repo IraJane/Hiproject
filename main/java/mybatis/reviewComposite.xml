@@ -25,5 +25,24 @@
 		where c.h_num=#{h_num} and c.m_num = m.m_num and c.o_num = o.o_num and o.o_num =
 		op.o_num and c.h_num=h.h_num
 	</select>
+	
+	
+	
+	
+	<!-- <select id="getAvg"
+		resultType="int">
+		
+
+		select avg(c.c_star)
+		from review c, members m, mainorder o, hotel h, (
+		select o_num, listagg(r_type, ', ') within group (order by od_num) as r_type
+		from (
+		select * from rooms r, orderdetail od
+		where r.r_num = od.r_num
+		) group by o_num
+		)op
+		where c.h_num=#{h_num} and c.m_num = m.m_num and c.o_num = o.o_num and o.o_num =
+		op.o_num and c.h_num=h.h_num
+	</select> -->
 
 </mapper>

@@ -27,4 +27,10 @@ public class ReviewDao {
 		return reviewList;
 	}
 
+
+	public float avgStar(int h_num) {
+	      float avg = sqlSessionTemplate.selectOne(namespace+".avgStar", h_num);
+	      return avg;
+	   }
+
 }
