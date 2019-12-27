@@ -122,7 +122,7 @@ color: black;
 
 	<tr>
 		<td>
-			<span class="hoteltype">${ho[k].h_type }</span><h4><a class="totitle" href="hotelDetail.ho?h_num=${ho[k].h_num }">${ho[k].h_name }</a></h4>
+			<span class="hoteltype">${ho[k].h_type }</span><h4><a class="totitle" href="hotelDetail.ho?h_num=${ho[k].h_num }&checkin=2020-02-02&checkout=2020-02-05">${ho[k].h_name }</a></h4>
 		
 		</td>
 	</tr>

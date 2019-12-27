@@ -210,6 +210,10 @@
 			alltype = alltype + roomname;
 			
 			$('input.totalprice').attr('value',total);
+			
+			if(getHowmany != 0){
+				
+			
 			$('.totalprice1').append(
 					'<div class="totalreservate">'+total+'원'+
 					'<br><input type="hidden" name="whichrooms" value="'+roomname+'">'+
@@ -218,6 +222,7 @@
 					'<ul><li>즉시 예약 확정</li><li>가입이 필요 없습니다</li><li>예약 수수료, 신용카드 수수료 없음!</li></ul>'+
 					'<button class="reservatebtn" onclick="javascript:reservate()" >예약하기</button></div>');
 			
+			}
 			
 			
 			

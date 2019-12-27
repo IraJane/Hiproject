@@ -6,7 +6,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
 function change(){
-	location.href="<%=request.getContextPath() %>/selMain.sel";
+	location.href="<%=request.getContextPath() %>/listSel.ad";
 	
 }
 </script>
@@ -14,6 +14,8 @@ function change(){
 <style>
 body {
 background:#e0e0e0a1;
+
+
 }
 td {
     padding: 10px;
@@ -34,20 +36,26 @@ height: 700px;
     background: white;
     margin: 40px auto;
     box-shadow: 0px 1px 6px 2px #c3c3c3;
+
 }
 .col-md-8 {
+
     margin: 10px 5px;
 }
+
 .btn-primary{
 	background:#980000;
 	border:none;
 }
+
+
 </style>
 
 
 
 <div class="container">
 <div class="btn btn-default" onclick="history.go(-1); return fasle;">뒤로가기</div>
+
 <form:form commandName="sel" action="updateSel.ad" method="post">
 <input type="hidden" name="s_num" value="${seller.s_num }">
 <input type="hidden" name="s_email" value="${seller.s_email }">
@@ -89,15 +97,12 @@ height: 700px;
 
 		</div>
 
-
-
-
-
-
 	</div>
 <div class="col-md-8">
 	<input class="btn btn-primary"  type="submit" value="수정하기">
 	<a class="btn btn-default" href="<%=request.getContextPath() %>/deleteSel.ad?s_num=${seller.s_num }">탈퇴하기</a>
 </div>
 </form:form>
+
 </div>
+

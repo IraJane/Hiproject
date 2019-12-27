@@ -22,14 +22,18 @@
 </script>
 
 <style type="text/css">
-table {
+
+table, th, td {
 	table-layout: fixed;
 	word-wrap: break-word;
-	/*     overflow-y: hidden; */
+	text-align: center;
 }
+
 #page {
 	text-align: center;
 }
+
+
 </style>
 
 
@@ -38,22 +42,15 @@ table {
 
 <%@include file="/WEB-INF/common/header.jsp"%>
 	<div class="container">
-
-
 		<div class="row">
-			<div class="col-md-12">
-			
-					<ul class="nav nav-tabs nav-justified">
-						<li role="presentation"><a href="main.ad" id="home" >Home</a></li>
-						<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
-						<li role="presentation" class="active"><a href="listMem.ad" id="member">Member</a></li>
-						<li role="presentation"><a href="listQa.ad" id="qa">QA</a></li>
-						<li role="presentation"><a href="listReview.ad" >Reviews</a></li>
-					</ul>
-			
-			
-			
-			
+			<div class="col">
+				<ul class="nav nav-tabs nav-justified">
+					<li role="presentation"><a href="main.ad" id="home">Home</a></li>
+					<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
+					<li role="presentation"><a href="listQa.ad" id="qa">Q & A</a></li>
+					<li role="presentation" class="active"><a href="listMem.ad" id="member">Member</a></li>
+					<li role="presentation"><a href="listReview.ad">Reviews</a></li>
+				</ul>
 			</div>
 		</div>
 		<div class="row">
@@ -70,9 +67,9 @@ table {
 			<div class="col">
 				<form action="listMem.ad" method="get">
 					<select name="whatColumn">
-						<option value="all" <c:if test="${whatColumn eq 'all' }">selected</c:if>>전체 보기</option>
-						<option value="m_email" <c:if test="${whatColumn eq 'm_email' }">selected</c:if>>이메일 검색</option>
-						<option value="m_name" <c:if test="${whatColumn eq 'm_name' }">selected</c:if>>이름 검색</option>
+						<option value="all" <c:if test="${whatColumn eq 'all' }">selected</c:if>>전체보기</option>
+						<option value="m_email" <c:if test="${whatColumn eq 'm_email' }">selected</c:if>>이메일검색</option>
+						<option value="m_name" <c:if test="${whatColumn eq 'm_name' }">selected</c:if>>이름검색</option>
 					</select> <input type="text" name="keyword"> 
 					<input type="submit" value="검색">
 				</form>
@@ -81,13 +78,10 @@ table {
 
 		<div class="row">
 			<div class="col-md-12">
-
+				<a href="insertMem.ad"><i class="material-icons">add</i></a>
 				<table class="table table-hover table-condensed">
 					<tr>
-						<td colspan="8"><a href="insertMem.ad">추가하기</a></td>
-					</tr>
-					<tr>
-						<th>번호</th>
+						<th>사용자번호</th>
 						<th>이메일</th>
 						<th>비밀번호</th>
 						<th>이름</th>
@@ -117,7 +111,7 @@ table {
 
 		</div>
 		<div class="row" id="page">
-			<div class="col">${pageInfo.pagingHtml}</div>
+			<div class="col"><h3>${pageInfo.pagingHtml}</h3></div>
 		</div>
 
 

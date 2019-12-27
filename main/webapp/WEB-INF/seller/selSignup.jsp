@@ -11,19 +11,23 @@ margin: 0;
     width: 100%;
     background: #f5f5f5;
 }
+.total-wrap{
+    width: 100%;
+    background: url(resources/img/gro.jpg) no-repeat center top;
+    height: 700px;
+    background-size: cover;
+
+}
+.total-wrap::after { content: ''; dispaly: table; clear: both }
+.qqq::after { content: ''; dispaly: table; clear: both }
+form::after { content: ''; dispaly: table; clear: both }
 h3{
     text-align: center;
     font-size: 30px;
 }
 .signup-container{
-    width: 40%;
-
+width: 100%;
     height: 500px;
-    margin: 100px auto;
-    background: #f1f1f1;
-    box-shadow: 1px 1px 5px 2px #9e9e9e;
-    border-radius: 10px;
-    overflow: hidden;
 
 
 }
@@ -43,9 +47,10 @@ h3{
 	margin: 65px 0;
 }
 .rightbar {
-	    width: 95%;
-
+width: 95%;
     margin: auto;
+    background: #eaeaea61;
+    border-radius: 5px;
 }
 
 .rightbar h3{
@@ -81,7 +86,7 @@ border: none;
 
 </style>
 <%@include file="./../common/selHeader.jsp" %> 
-    
+ <div class="total-wrap">   
     
 <div class="signup-container">
 
@@ -93,11 +98,14 @@ border: none;
 	
 	</div>
  -->
-
+<div class="aaa" style="width: 40%;margin:auto;">
 <form:form commandName="sel" action="selSignup.sel" method="post">
 
+	<br>
+	<br>
+	<br>
 	<div class="rightbar">
-	<h3>회원가입</h3>
+	<h3 class="qqq">회원가입</h3>
 	<div class="rightbar-input">
 			<p>
 				이메일<br>
@@ -117,6 +125,7 @@ border: none;
 				사업자번호<br>
 				<input type="text" name="s_comnumber" value="${sel.s_comnumber }" placeholder="사업자번호"><form:errors path="s_comnumber"/></p>
 			<p class="signupPtag"><input class="signupbtn" type="submit" value="회원가입"></p>
+			<br><br>
 
 	</div>
 	</div>
@@ -127,14 +136,16 @@ border: none;
 
 
 </form:form>
-    
+   </div> 
     
 
     
     
 </div>
+</div>
     
     
     
-    
+   
+<%@include file="../common/selFooter.jsp"%> 
     

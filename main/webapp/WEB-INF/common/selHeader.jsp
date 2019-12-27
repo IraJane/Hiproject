@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+   
     
 <script>
 function change(){
@@ -10,6 +10,17 @@ function change(){
 
 </script>
 <style>
+
+.hhmainLogo{
+/* 	background: no-repeat center top; */
+    background-size: contain;
+    width: 7%;
+    height: 80%;
+    margin: 6px 0;
+}
+
+
+
 
 .hmainbtn {
 	font-size: 30px;
@@ -63,7 +74,7 @@ float: right;
 </style>
 
 <header class="hmain-menu">
-	<a onclick="change()" class="hmainbtn hoa">main</a>
+	<a onclick="change()" class="hmainbtn hoa "><img class="hhmainLogo" src="resources/img/logo4.png"></a>
 <%
 	if (session.getAttribute("selloginfo") == null) {
 %>

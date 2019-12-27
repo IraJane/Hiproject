@@ -26,7 +26,7 @@ function logout() {
 	
 }
 .mainLogo{
-    background: url(resources/img/logo3.png) no-repeat center top;
+    background: url(resources/img/logo4.png) no-repeat center top;
     background-size: contain;
     width: 10%;
     height: 75%;
@@ -86,20 +86,40 @@ color:white;
 	float: right;
     margin: 10px;
 }
+.drop-atag {
+	    color: white;
+    width: 100%;
+    padding: 12px;
+    font-size: 19px;
+    color:white;
+}
 .drop-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+	display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 190px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: center;
+    margin: 13px 0 0 0;
 }
 .drop-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  font-size:13px;
+  text-align:center;
+  
+
 }
+.hmain-infotag{
+	    margin: auto;
+    width: 100%;
+    color: #464646;
+    
+}
+
 .drop-content a:hover {background-color: #f1f1f1}
 .drop:hover .drop-content {
   display: block;
@@ -125,10 +145,10 @@ color:white;
 			<a href="#" onclick="logout()" class="hmain-login ha" >로그아웃</a>
 			<span></span>
 			<div class="drop">
-				<span style="color:white">"${sessionScope.loginfo.m_name }"</span>
+				<a style="color:white;" class="drop-atag">${sessionScope.loginfo.m_name }님 반갑습니다</a>
 				<div class="drop-content">
-					<a class="hmain-login ha" href="info.mem">내 정보</a> 
-					<a class="hmain-login ha" href="memberReservationForm.der">내 예약 현황</a>
+					<a class="hmain-login ha hmain-infotag" href="info.mem" style="color: #464646;">내 정보</a> 
+					<a class="hmain-login ha hmain-infotag" href="memberReservationForm.der" style="color: #464646;">내 예약</a>
 				</div>
 			</div>
 			

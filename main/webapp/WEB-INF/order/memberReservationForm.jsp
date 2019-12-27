@@ -307,7 +307,12 @@ color: black;
 	
 	<tr>
 		<td>
-			예약 일자 : ${mo.o_checkin } ~ ${mo.o_checkout  }
+			<fmt:parseDate  value="${mo.o_checkin}" pattern="yyyy-MM-dd HH:mm:ss" var="dd"/>
+			<fmt:formatDate value="${dd}" pattern="yyyy-MM-dd" var="thistoday"/>
+			<fmt:parseDate  value="${mo.o_checkout}" pattern="yyyy-MM-dd HH:mm:ss" var="dd2"/>
+			<fmt:formatDate value="${dd2}" pattern="yyyy-MM-dd" var="thistoday2"/>
+			
+			예약 일자 : ${thistoday } ~ ${thistoday2  }
 		
 		</td>
 	</tr>

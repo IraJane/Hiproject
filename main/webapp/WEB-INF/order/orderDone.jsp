@@ -51,7 +51,7 @@ a:link, a:visited {
 	<h1 class="done-box">결제 완료</h1>
 	<p>저희 AAA를 이용해 주셔서 감사합니다.</p>
 	<p>예약 내역은 예약현황을 이용해주세요</p>
-	<p>어쩌구 저쩌구</p>
+	<p></p>
 
 	<div style="margin: 60px;">
 		<a href="main.jsp">메인으로</a>

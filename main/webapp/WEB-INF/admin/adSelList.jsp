@@ -21,14 +21,20 @@
 	
 </script>
 <style>
-table {
+table, th, td {
 	table-layout: fixed;
 	word-wrap: break-word;
-	/*     overflow-y: hidden; */
+	text-align: center;
 }
+
 #page {
 	text-align: center;
 }
+
+.col page-header {
+	background: 
+}
+
 </style>
 </head>
 <body>
@@ -37,20 +43,19 @@ table {
 
 	<!-- <div class="container-fluid"> -->
 	<div class="container">
-	
-	
+		
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col">
 				<ul class="nav nav-tabs nav-justified">
-					<li role="presentation"><a href="main.ad" id="home" >Home</a></li>
+					<li role="presentation"><a href="main.ad"
+						id="home">Home</a></li>
 					<li role="presentation" class="active"><a href="listSel.ad" id="seller">Seller</a></li>
+					<li role="presentation"><a href="listQa.ad" id="qa">Q & A</a></li>
 					<li role="presentation"><a href="listMem.ad" id="member">Member</a></li>
-					<li role="presentation"><a href="listQa.ad" id="qa">QA</a></li>
-					<li role="presentation"><a href="listReview.ad" >Reviews</a></li>
+					<li role="presentation"><a href="listReview.ad">Reviews</a></li>
 				</ul>
 			</div>
 		</div>
-		
 		
 		<div class="row">
 			<div class="col page-header">
@@ -67,11 +72,11 @@ table {
 				<form action="listSel.ad" method="get">
 					<select name="whatColumn">
 						<option value="all"
-							<c:if test="${whatColumn eq 'all' }">selected</c:if>>전체 보기</option>
+							<c:if test="${whatColumn eq 'all' }">selected</c:if>>전체보기</option>
 						<option value="s_email"
-							<c:if test="${whatColumn eq 's_email' }">selected</c:if>>아이디 검색</option>
+							<c:if test="${whatColumn eq 's_email' }">selected</c:if>>아이디검색</option>
 						<option value="s_phone"
-							<c:if test="${whatColumn eq 's_phone' }">selected</c:if>>연락처 검색</option>
+							<c:if test="${whatColumn eq 's_phone' }">selected</c:if>>연락처검색</option>
 						<option value="s_comnumber"
 							<c:if test="${whatColumn eq 's_comnumber' }">selected</c:if>>사업자등록번호검색</option>
 					</select> <input type="text" name="keyword"> 
@@ -82,12 +87,11 @@ table {
 
 		<div class="row">
 			<div class="col-md-12">
+				<a href="insertSel.ad"><i class="material-icons">add</i></a>
+					
 				<table class="table table-hover table-condensed">
 					<tr>
-						<td colspan="8"><a href="insertSel.ad">추가하기</a></td>
-					</tr>
-					<tr>
-						<th>번호</th>
+						<th>판매자번호</th>
 						<th>아이디</th>
 						<th>비밀번호</th>
 						<th>이름</th>
@@ -115,7 +119,7 @@ table {
 			</div>
 		</div>
 		<div class="row" id="page">
-			<div class="col">${pageInfo.pagingHtml }</div>
+			<div class="col"><h3>${pageInfo.pagingHtml}</h3></div>
 		</div>
 
 

@@ -15,6 +15,18 @@ body {
 margin: 0;
 background:#e0e0e0a1;
 }
+
+.background-wrapper{
+    border: none;
+    height: 700px;
+    background: url(resources/img/gro.jpg) no-repeat center;
+	background-size: cover;
+    margin: 0;
+    padding: 0;
+
+}
+.background-wrapper::after { content: ''; dispaly: table; clear: both }
+
 input {
     padding: 10px;
     margin: 10px 0;
@@ -28,8 +40,8 @@ float:left;
 
 .title-wrapper {
 
-	margin: 80px auto;
-    background: white;
+    margin: auto;
+    background: #d0d0d0b8;
     padding: 10px;
     box-shadow: 2px 2px 11px 2px grey;
     width: 30%;
@@ -42,7 +54,7 @@ float:left;
 }
 .submitbtn {
 	border:none;
-	background:#980000;
+	background:#212e89;
 	color:white;
 	font-size:20px;
 	
@@ -55,9 +67,13 @@ float:left;
 
 
 </style>
+<%@include file="../common/selHeader.jsp"%>
+<div class="background-wrapper">
 
+<br><br><br>
 <div class="title-wrapper">
-<div onclick="toSelMain()">호텔로고들어가는자리</div>
+
+<!-- <div onclick="toSelMain()"><img src="resources/img/logo4.png"></div> -->
 <h3>로그인</h3>
 <a> 로그인하여 서비스를 이용하실 수 있습니다.</a>
 <div class="form-wrapper">
@@ -72,3 +88,6 @@ float:left;
 
 </div>
 </div>
+</div>
+
+<%@include file="../common/selFooter.jsp"%>

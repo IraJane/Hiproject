@@ -6,59 +6,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>도움이 필요하세요?</title>
 
 <style>
-body {
-	background-color: rgba(255, 255, 255, .99);
-}
+
 label {
 	color: gray;
 }
+
 .loginlink {
 	text-decoration: underline;
 	font-weight: bold;
 }
-.container {
-	width: 90%;
-}
-h1 {
+
+h5 {
 	text-align: center;
-	margin-bottom: 200px;
 }
-h4 {
-	text-align: center;
-	margin: 20px;
-}
+
 span {
 	float: right;
 	display: block;
 	text-align: right;
 }
+
 #faq>dt {
 	border-bottom: 1px solid #CCC;
 }
+
 #faq>dd {
 	display: none;
 	padding: 10px;
 }
+
 form {
 	width: 100%;
 	margin: 0 auto;
 }
+
 .err {
 	float: left;
 	color: red;
 }
-<!--
--->
+
 img {
 	display: block;
 	width: 32px;
 	height: 32px;
 	border: 0
 }
+
 ul {
 	list-style: none;
 	border: 1px solid #CCC;
@@ -68,6 +64,7 @@ ul {
 	padding: 0;
 	heigth: 150px;
 }
+
 li {
 	list-style: none;
 	border: 1px solid #CCC;
@@ -78,18 +75,37 @@ li {
 	color: #CCC;
 	text-align: center;
 }
+
 hr {
 	float: clear;
 }
+
+.wrapper_title {
+	text-align: center;
+	margin-top: 15px;
+}
+
+#submitbtn:hover {
+	background: #000e98;
+}
+
+/* .wrapper_top {
+	color:  #CCC;
+}
+a, a:hover, a:visited{
+	color:  #000;
+	text-decoration: none;
+} */
 </style>
 
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
 <script src="<c:url value="/js/jquery-3.3.1.min.js" />"></script>
 <script src="<c:url value="/js/bootstrap.min.js" />"></script>
 <script type="text/javascript" src="resources/js/jquery.js"></script>
-
 
 <script type="text/javascript">
 	
@@ -154,58 +170,67 @@ hr {
 </script>
 </head>
 <body>
-
 	<%@include file="/WEB-INF/common/header.jsp"%>
-	<% 
+	<%
 		if (session.getAttribute("loginfo") != null) {
 			Member loginfo = (Member) session.getAttribute("loginfo");
 			int m_num = loginfo.getM_num();
 			pageContext.setAttribute("m_num", m_num);
 		}
-	%> 
+	%>
 
 	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1>도움이 필요하세요?</h1>
-				<hr>
-				<!-- <div class="top-menu"> 		
+		<div class="wrapper_title">
+			<div class="row">
+				<div class="col">
+					<h2>도움이 필요하세요?
+					<span style="float:right"><i class="material-icons">headset_mic</i></span></h2>
+					<hr>
+				</div>
+			</div>
+		</div>
+		
+		<!-- <div class="wrapper_top">	
+			<div class="row">
+				<div class="col"> 		
 					<ul class="tab"> 
 						<li class="item"><a href="#" class="item-a active">예약관리</a></li>
  						<li class="item"><a href="#" class="item-a active">결제</a></li>
 						<li class="item"><a href="#" class="item-a active">기타</a></li> 		
 					</ul>
-				</div> -->
+				</div>
 			</div>
-		</div>
+		</div> -->
+		
+		<div class="wrapper_mid">
 		<div class="row">
 			<div class="col">
 				<dl id="faq">
 					<dt>
-						<h4>
+						<h5>
 							내가 한 예약관리는 어떻게 하나요?<span>▼</span>
-						</h4>
+						</h5>
 					</dt>
 					<dd>예약관리는 로그인하신 후 내정보보기-[예약확인]에서 가능합니다.</dd>
 					<dt>
-						<h4>
+						<h5>
 							숙소에 주차 시설이 있는지 알 수 있나요? 더 자세한 조건으로 검색하고 싶어요.<span>▼</span>
-						</h4>
+						</h5>
 					</dt>
 					<dd>‘필터’기능을 이용하면 해당 부대시설을 보유한 숙소를 조회하실 수 있습니다. 추가적으로 주차가능,
 						조식포함, 반려동물, 와이파이, 취사가능 의 조건도 선택 가능하며, 지역별, 가격순, 만족도 순의 순서로 정렬과
 						투숙인원 기준의 조건 기능도 선택하여 검색하실 수 있습니다.</dd>
 					<dt>
-						<h4>
+						<h5>
 							사용가능한 결제 수단에는 무엇이 있나요? <span>▼</span>
-						</h4>
+						</h5>
 					</dt>
 					<dd>숙소 예약에 가장 많이 사용되는 결제 방법은 신용카드이며, 이는 대부분 예약 확정용으로 사용됩니다.
 						예약한 숙소에서 사용 가능한 결제 수단은 숙소로 직접 전화하여 확인하실 수 있습니다.</dd>
 					<dt>
-						<h4>
+						<h5>
 							회원 탈퇴는 어떻게 하나요?<span>▼</span>
-						</h4>
+						</h5>
 					</dt>
 					<dd>로그인 후 [내정보수정]에서 가능합니다. 탈퇴 요청 시 즉시 처리가 완료되며 예약내역 등 기타 혜택은
 						모두 소멸되어 동일한 계정으로 재가입 하더라도 복구 되지 않습니다.</dd>
@@ -213,38 +238,37 @@ hr {
 				</dl>
 			</div>
 		</div>
-
+		</div>
+		
+		<div class="wrapper_bottom">
 		<c:if test="${empty loginfo}">
 			<div class="row">
 				<div class="col">
-					<h4>원하는 답을 못 찾으셨나요? ;(</h4>
-					<h4>개인별 맞춤 서비스를 받으시려면 <a class="loginlink" onclick="login()" href="#">로그인</a>을
+					<h5>원하는 답을 못 찾으셨나요? ;(</h5>
+					<h5>
+						개인별 맞춤 서비스를 받으시려면 <a class="loginlink" onclick="login()" href="#">로그인</a>을
 						해주세요.
-					</h4>
+					</h5>
 				</div>
 			</div>
 		</c:if>
 		<c:if test="${!empty loginfo}">
 			<div class="row">
 				<div class="col">
-					<h4>원하는 답을 못 찾으셨나요? ;(</h4>
-					<h4>1:1문의를 보내주세요.</h4>
-					<h4>빠른 시일 내 계정에 연동된 이메일로 답변해드리겠습니다.</h4>
+					<h5>원하는 답을 못 찾으셨나요? ;(</h5>
+					<h5>1:1문의를 보내주세요.</h5>
+					<h5>빠른 시일 내 계정에 연동된 이메일로 답변해드리겠습니다.</h5>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<div class="form">
-
-
+					<div class="qaform">
 						<form:form commandName="qa" method="POST" action="insertQa.ad">
-
 							<label for="m_email">이메일</label>
 							<input class="form-control" id="m_email" type="text"
 								placeholder="${sessionScope.loginfo.m_email}" readonly>
 							<input type="hidden" name="m_num" value="${m_num}" />
 							<br>
-
 							<label for="q_title">문의 분류</label>
 							<br>
 							<select class="form-control" id="q_title" name="q_title">
@@ -254,18 +278,21 @@ hr {
 								<option value="기타">기타 문의</option>
 							</select>
 							<form:errors class="err" path="q_title" />
-							<br>
 
+							<br>
 							<label for="q_comment">문의 내용</label>
 							<textarea class="form-control"
 								placeholder="상세하게 적어주실수록 좋습니다! (최대 2000Byte)" id="q_comment"
 								name="q_comment" style="margin: 0px 0px 0px 0px; height: 100px"
 								onKeyUp="javascript:fnChkByte(this,'2000')">${qa.q_comment}</textarea>
-							<p><span>/2000Byte</span><span id="byteInfo">0</span></p>
+							<p>
+								<span>/2000Byte</span><span id="byteInfo">0</span>
+							</p>
 							<form:errors class="err" path="q_comment" />
+
 							<br>
 							<br>
-							<button type="submit" class="btn btn-primary btn-block">보내기</button>
+							<input type="submit" id="submitbtn" class="btn btn-outline-primary btn-block" value="보내기">
 						</form:form>
 					</div>
 				</div>
@@ -276,6 +303,7 @@ hr {
 				</div>
 			</div>
 		</c:if>
+		</div>
 	</div>
 </body>
 </html>

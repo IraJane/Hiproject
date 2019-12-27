@@ -21,20 +21,30 @@
 	
 </script>
 <style type="text/css">
-table {
+
+table, th, td {
 	table-layout: fixed;
 	word-wrap: break-word;
-	/*     overflow-y: hidden; */
+	text-align: center;
 }
+
 .material-icons.red {
 	color: #FF0000;
 }
+
 .material-icons.green {
 	color: #04B404;
 }
+
+.material-icons{
+	color: grey;
+}
+
 #page {
 	text-align: center;
 }
+
+
 </style>
 </head>
 
@@ -44,16 +54,16 @@ table {
 	<div class="container">
 		<!-- <div class="container-fluid"> -->
 		<div class="row">
-			<div class="col-md-12" >
+			<div class="col">
 				<ul class="nav nav-tabs nav-justified">
-					<li role="presentation"><a href="main.ad" id="home">Home</a></li>
+					<li role="presentation" ><a href="main.ad"
+						id="home">Home</a></li>
 					<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
+					<li role="presentation" class="active"><a href="listQa.ad" id="qa">Q & A</a></li>
 					<li role="presentation"><a href="listMem.ad" id="member">Member</a></li>
-					<li role="presentation" class="active"><a href="listQa.ad" id="qa">QA</a></li>
 					<li role="presentation"><a href="listReview.ad">Reviews</a></li>
 				</ul>
 			</div>
-			
 		</div>
 
 
@@ -63,7 +73,7 @@ table {
 					QA관리 페이지<small>QA manager</small>
 				</h1>
 				<a href="<%=request.getContextPath()%>/main.ad">관리자 메인 페이지로 돌아가기</a>
-				<p>기본적으로 QA등록일 기준으로 정렬됩니다</p>
+				<p>기본적으로 QA등록일 기준으로 정렬됩니다.</p>
 			</div>
 		</div>
 
@@ -72,15 +82,15 @@ table {
 				<form action="listQa.ad" method="get">
 					<select name="whatColumn">
 						<option value="all"
-							<c:if test="${whatColumn eq 'all' }">selected</c:if>>전체 보기</option>
+							<c:if test="${whatColumn eq 'all' }">selected</c:if>>전체보기</option>
 						<option value="q_checked"
-							<c:if test="${whatColumn eq 'q_checked' }">selected</c:if>>미해결 검색</option>
+							<c:if test="${whatColumn eq 'q_checked' }">selected</c:if>>미해결검색</option>
 						<option value="q_num"
-							<c:if test="${whatColumn eq 'q_num' }">selected</c:if>>사건번호 검색</option>
+							<c:if test="${whatColumn eq 'q_num' }">selected</c:if>>QA번호검색</option>
 						<option value="q_title"
-							<c:if test="${whatColumn eq 'q_title' }">selected</c:if>>분류 검색</option>
+							<c:if test="${whatColumn eq 'q_title' }">selected</c:if>>분류검색</option>
 						<option value="q_comment"
-							<c:if test="${whatColumn eq 'q_comment' }">selected</c:if>>내용 검색</option>
+							<c:if test="${whatColumn eq 'q_comment' }">selected</c:if>>내용검색</option>
 					</select> 
 					<input type="text" name="keyword" value=${keyword }> 
 					<input type="submit" value="검색">
@@ -96,12 +106,12 @@ table {
 			<div class="col-md-12">
 				<table class="table table-hover table-condensed">
 					<tr>
-						<th class="col-md-1">번호</th>
+						<th class="col-md-1">QA번호</th>
 						<th class="col-md-2">이메일</th>
 						<th class="col-md-1">분류</th>
 						<th class="col-md-4">문의내용</th>
 						<th class="col-md-2">등록일</th>
-						<th class="col-md-1">상태</th>
+						<th class="col-md-1">답변상태</th>
 						<th class="col-md-1">삭제</th>
 					</tr>
 
@@ -137,7 +147,7 @@ table {
 			</div>
 		</div>
 		<div class="row" id="page">
-			<div class="col" >${pageInfo.pagingHtml}</div>
+			<div class="col"><h3>${pageInfo.pagingHtml}</h3></div>
 		</div>
 
 	</div>

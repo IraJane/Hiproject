@@ -123,9 +123,6 @@ h4{
 				<td colspan="2">전화번호: ${list.h_phone }</td>
 			</tr>
 			<tr>
-				<td colspan="2">소개글:${list.h_comment }</td>
-			</tr>
-			<tr>
 
 				<td colspan="2" class="updatedeletebtn">
 				<a href="updateHotel.ho?h_num=${list.h_num }">수정하기</a>&nbsp;&nbsp;
@@ -155,16 +152,22 @@ h4{
 						</tr>
 	
 						<tr>
-							<td>예약 일자: ${mainOrder.o_checkin } ~ ${mainOrder.o_checkout }</td>
+							
+							
+
+							<fmt:parseDate  value="${mainOrder.o_checkin}" pattern="yyyy-MM-dd HH:mm:ss" var="dd"/>
+							<fmt:formatDate value="${dd}" pattern="yyyy-MM-dd" var="thistoday"/>
+							<fmt:parseDate  value="${mainOrder.o_checkout}" pattern="yyyy-MM-dd HH:mm:ss" var="dd2"/>
+							<fmt:formatDate value="${dd2}" pattern="yyyy-MM-dd" var="thistoday2"/>
+
+							<td>예약 일자: ${thistoday } ~ ${thistoday2 }</td>
 							<td>인원: ${mainOrder.o_totalpeople }</td>
 						</tr>
 						<tr>
 							<td>방 종류: ${room.r_type } </td>
 							<td>${orderDetail.o_count }개</td>
 						</tr>
-						<tr>
-							<td colspan="2">결제 금액: </td>
-						</tr>
+					
 						<tr>
 							<td colspan="2">요구사항: ${mainOrder.o_comment  }</td>
 						</tr>

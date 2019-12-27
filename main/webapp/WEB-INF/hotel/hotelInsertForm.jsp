@@ -9,23 +9,22 @@
 <title>Insert title here</title>
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-<script src="resources/hotelInsert/js/jquery-3.3.1.min.js"></script> 
+<script src="resources/js/jquery-3.3.1.min.js"></script> 
 <!-- Font-->
-<link rel="stylesheet" type="text/css" href="resources/hotelInsert/css/opensans-font.css">
-<link rel="stylesheet" type="text/css" href="resources/hotelInsert/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/opensans-font.css">
+<link rel="stylesheet" type="text/css" href="resources/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <!-- Main Style Css -->
-<link rel="stylesheet" href="resources/hotelInsert/css/style.css"/>
+<link rel="stylesheet" href="resources/css/style.css"/>
 <script>
 	
 	$(function(){
-		var session="${selLoginfo}";
+		var session="${selloginfo}";
 		if(session=="" || session==null){
 			alert("로그인이 필요합니다");
 			location.href="selMain.sel";
 		}
 	});
-
 </script>
 
 </head>
@@ -633,7 +632,7 @@
 	</div>
 	<%@include file="../common/selFooter.jsp"%>
 <!-- <script src="resources/hotelInsert/js/jquery-3.3.1.min.js"></script> -->
-<script src="resources/hotelInsert/js/jquery.steps.js"></script>
-<script src="resources/hotelInsert/js/main.js"></script>
+<script src="resources/js/jquery.steps.js"></script>
+<script src="resources/js/main.js"></script>
 </body>
 </html>
