@@ -1,0 +1,246 @@
+@charset "UTF-8";
+body {
+	margin: 0;
+	
+}
+
+h3 {
+margin: 40px;
+    font-size: 35px;
+	
+}
+
+
+
+.background {
+	
+    width: auto;
+    height: 620px;
+    background: url(../resources/img/gro.jpg) no-repeat center;
+    background-size: cover;
+    
+}
+
+.background table{
+	    width: 30%;
+    margin: auto;
+	    background: #ffffff7a;
+	    padding:10px;
+}
+.background table tbody{
+	    width: 30%;
+    margin: auto;
+    text-align: center;
+        background: #ffffff7a;
+	
+}
+
+.background-btns{
+	    font-size: 17px;
+    text-decoration: none;
+    color: white;
+    background: blue;
+    border-radius: 5px;
+    padding: 5px;
+	
+}
+
+
+.view-text {
+	width: 15%;
+    height: 25px;
+    overflow: hidden;
+	
+}
+
+
+.changer {
+	width:50px;
+	font-size: 20px;
+}
+
+.underground {
+	background:white;
+	width:100%;
+	height:auto;
+	
+}
+.underground-undertext{
+	width: 95%;
+
+	margin:15px auto;
+}
+
+.underground-title{
+	    font-size: 28px;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.underground-ul{
+    width: 40%;
+    padding: 0;
+    display: inline-block;
+    margin: auto 50px;
+    list-style: none;
+    position: relative;
+	
+}
+
+.underground-ul b{
+	    font-size: 20px;
+}
+
+
+.ul-wrapper{
+	width: 80%;
+margin:auto;
+}
+
+
+
+
+
+
+
+
+.underground-faq{
+	    text-align: center;
+    margin: 30px 0;
+    font-size: 13px;
+}
+.underground-faq span{
+	color:blue;
+}
+
+
+
+
+
+.bottom{
+	    margin: 15px auto;
+    width: 100%;
+    text-align: center;
+    background: #000e98;
+    height: 120px;
+    font-size: 30px;
+    padding: 5px;
+        color: white;
+}
+
+.bottom a{
+	border: 3px solid white;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+        padding: 3px;
+}
+
+
+
+.under-inserthotelbth {
+	    width: 100%;
+    margin: 15px auto;
+    padding: 10px;
+    background: #000b58;
+    height: 160px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+.under-inserthotelAtag{
+	border: 3px solid white;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
+
+	
+}
+
+.under-inserthotelAtag:hover, .under-inserthotelAtag:active, .under-inserthotelAtag:link, .under-inserthotelAtag:visited{
+	text-decoration: none;	
+	color: white;
+}
+
+
+
+
+
+
+
+
+
+
+/************ icons *********/
+.icons1 {
+	    background: #ffd3d3;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 10px -5px;
+	
+	
+}
+.icons2 {
+	    background: #ff936a;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 10px -5px;
+	
+	
+}
+.icons3 {
+	    background: #8cbfff;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 10px -5px;
+	
+	
+}
+.icons4 {
+	    background: #12a70080;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 10px -5px;
+	
+	
+}
+
+
+
+
+
+.clearfix::after{
+	content: ' ';
+	display:block;
+	clear:both;
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+

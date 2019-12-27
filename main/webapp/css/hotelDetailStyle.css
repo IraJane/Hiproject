@@ -1,0 +1,522 @@
+@charset "UTF-8";
+
+
+
+.myModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
+.pop_bt{
+	float:right;
+}
+
+
+
+
+
+body {
+	margin:0;
+}
+.total-container{
+	margin:30px 300px;
+}
+
+h1{
+	display: inline-block;
+}
+	.hoteltype{
+		font-weight: lighter;
+    background: #bfbfbf;
+    color: white;
+    margin: 0;
+    border-radius: 5px;
+	}
+	#imageArea{
+		background-color: #4587ffb0;
+		width: 95%;
+		
+		margin:20px;
+		
+	}
+	
+	hr{
+		width: 95%;
+		margin:20px;
+		
+	}
+	.hotelimage{
+		margin:auto;
+		padding:15px;
+	}
+
+	#hoteloptions{
+		width: 95%;
+		margin:20px;
+		
+	}
+	#hoteladdress{
+		margin:20px;
+		
+	}#hotelname{
+		margin:20px;
+		
+	}
+.rightbar{
+	width: 77%;
+	height:auto;
+	border: 2px solid #b7b7b7;
+    margin: 0 22%;
+	border-radius:5px;
+}
+	
+/*****************left bar*********************/
+.left-bar {
+    width: 14%;
+    height: auto;
+    border-radius: 10px;
+    float: left;
+    position: fixed;
+}
+
+.calc {
+	border: 2px solid #ff6b09;
+    background: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;	
+}
+
+.mainsubmitbtn{
+    border: none;
+    background: #040cf1;
+    margin: 9px 70%;
+    border-radius: 5px;
+    font-size: 25px;
+    padding: 5px;
+    color: white;
+}
+.mainsubmitbtn:hover {
+	background: #e47b31;
+}
+.leftbar input {
+	padding: 5px;
+}
+.leftSearch-wrap {
+	
+background: #ffe0b1;
+    border-radius: 5px;
+    margin: 15px;
+	
+}
+
+.leftsearch-form {
+	text-align: center;
+	padding: 10;
+}
+h4 {
+    font-size: 22px;
+    margin: 0px;
+    background: #febb02;
+    padding: 9px;
+    border-radius: 5px;
+}
+
+.register-wrap {
+	margin: 20px;
+}
+
+/******register  부터 **********************************************/
+.register-check {
+	border: 1px solid #ababab;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.register-check td {
+    border-right: 1px solid #d4d4d4;
+    width: 26.33333%;
+}
+.register-check-last {
+	border-right: none !important;
+	
+}
+
+.infochangebtn{
+	    border: none;
+    background: none;
+    color: blue;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+.infoAllbtn{
+	width: 50%;
+    margin: 30px;
+    border: none;
+    background: blue;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+
+}
+
+/******register table   부터 **********************************************/
+table {
+    width: 100%;
+}
+
+
+
+.rtype {
+	width: 25%;
+    
+}
+.rperson {
+	width: 10%;
+	
+}
+
+.rprice, .rselect{
+	width:20%;
+	
+}
+.rtotal{
+	width: 25%;
+}
+.rtr {
+	background: #2b76ffe0;
+    color: white;
+}
+.someitems {
+	display:block;
+	font-size:10px;
+	color:green;
+}
+
+
+.totalreservate {
+	position: relative;
+    background: #90bcff96;
+    padding: 10px;
+    margin: 10px;
+}
+
+.reservatebtn {
+	    border: none;
+    background: #0000ca;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.material-icons{
+	font-size:15px;
+}
+
+
+/************************right bar 의 comment     wrapper   **********************************/
+.hotelComment-table{
+	 width: 98%;
+    margin: auto;
+}
+
+.hotelComment-table tbody{
+	    width: 100%;
+}
+.hotelComment-table tr{
+	    display: flex;
+}
+.leftTd {
+	flex-basis: 70%;
+}
+.rightTd {
+	flex-basis: 27%;
+}
+.hotelComment-area{
+    color: #ff6a00;
+    font-weight: 900;
+    width:68%;
+   
+}
+
+.commentboxxx{
+	word-break: break-word;
+    width: 100%;
+    /* border: 1px solid red; */
+    white-space: pre-line;
+    font-size: 15px;
+	
+}
+
+#hotelcomment{
+		/* background-color: #4587ffb0; */
+	display:inline-block;
+	width:60%;
+	padding: 10px;
+	margin:20px;
+		
+}
+.rightbox-hotel-wrapper{
+	width:100%;
+	
+
+}
+.rightbox-comments{
+    width: 30%;
+    display: inline-block;
+	
+}
+.rightbox-commentbox {
+	background: #a2cbffa1;
+    width: 80%;
+    margin: auto;
+    border: 1px solid #9d9dff;
+    padding: 10px;
+}
+.rightbox-commentbox h4 {
+	    background: none;
+}
+.rightbox-commentp{
+	    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.rightbox-btn {
+	    background: #0000c7;
+    border: none;
+    width: 100%;
+    padding: 3px;
+    margin: 5px auto;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+}
+.rightbar-selectbox{
+    list-style: none;
+    width: 100%;
+
+    margin: auto;
+        padding: 0;
+    text-align: center;
+    background: #d2deff;
+    border-bottom: 1px solid #0000a9;
+}
+.rightbar-selectbox li{
+    display: inline-block;
+        width: 24%;
+}
+
+/*********************상단부 select******/
+
+
+.rightbar-selectbtn{
+	border: none;
+    background: #d2deff;
+    width: 100%;
+    /* margin: 0; */
+    font-size: 20px;
+    border-left: 1px solid white;
+}
+
+
+
+
+
+/************************detail    wrapper   **********************************/
+.hoteloption-list{
+	width:95%;
+	margin:auto;
+
+}
+
+.detail-wrapper{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin: 0 20px;
+}
+.detail-famous-wrapper {
+	display: inline-flex;
+	width: 100%;
+}
+.famous-wrapper {
+    width: 32.3333333333%;
+    list-style:none;
+    
+}
+
+.famous-wrapper-title{
+	font-size: 23px;
+}
+
+
+
+/***************하우스 룰****************/
+.houserule-wrapper{
+    width: 95%;
+    margin: auto;
+
+
+}
+.houserule-title{
+	font-size:20px;
+	margin:0;
+}
+.houserule-subtitle{
+	font-size:15px;
+	margin:0;
+}
+.houserule-box{
+	background: #abd5ffa8;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+.houserule-titles{
+	width:20%;
+	padding: 10px;
+}
+.houserule-details{
+	width: 80%;
+	padding: 10px;
+}
+.houserule-checkin{
+    border: 1px solid gray;
+    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #e0e0e0;
+        color: white;
+}
+.houserule-checkin-checkin{
+	width: 40%;
+    float: right;
+    background: #003179d1;
+}
+.houserule-checkin-checkout{
+	width: 40%;
+   
+    background: #003179d1;
+}
+.houserule-cardimg{
+	
+   
+    /* border: 1px solid red; */
+    height: 20px;
+    width: 50px;
+    display:inline-block;
+}
+.visa{
+	background: url(./resources/img/visa.png) no-repeat top;
+	 background-size: contain;
+}
+.master{
+	background: url(./resources/img/master.png) no-repeat top;
+	 background-size: contain;
+	 height: 25px;
+}
+
+
+/****search 부분 ******/
+.adultselect {
+    width: 80%;
+    border: none;
+    padding: 5px;
+    background: white;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 10px;
+}
+.crselect{
+	width: 39%;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.searchinputSpan {
+	font-size: 12px;
+}
+
+.inputbox {
+ padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+
+/******    *리뷰 **************/
+.review-wrapper{
+	    width: 95%;
+    background: #c8e3ff;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+
+
+
+
+
+/*********** 달력 **********/
+.ui-datepicker .ui-datepicker-header{
+	
+	
+
+    border: 1px solid #56c1ff;
+    background: #cce1ff;
+
+}
+.ui-datepicker-title{
+    color: #0066bd;
+	
+}
+
+.ui-datepicker-calendar th span{
+	color: #0066bd;
+	font-size: 15px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	border: none;
+    background: none;
+    text-align: center;
+    color: #007eff;
+	
+}
+
+.ui-state-default:hover, .ui-state-active:hover{
+	    background: #ccccccbf;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+	border:none;
+	background:none;
+	
+}
+
+
+
+
+
+
+
+	
