@@ -1,30 +1,28 @@
 package admin.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import admin.model.QaDao;
+import admin.model.AdminDao;
 import member.model.Member;
 
-@Controller
-public class AdminMainController {
-
-	private final String command = "/main.ad";
-	private final String getPage = "adMain";
-	private final String errPage = "redirect:/main.jsp";
-
-	@Autowired
-	QaDao qDao;
-
-	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction(Model model, HttpSession session, HttpServletRequest request) {
+@Controller("adminReviewDeleteController")
+public class ReviewDeleteController {
 	
+	private final String command = "/deleteReview.ad";
+	private final String gotoPage = "redirect:/listReview.ad";
+	private final String errPage = "redirect:/main.jsp";
+	
+	@Autowired
+	private AdminDao adDao;
+
+	@RequestMapping(value=command, method=RequestMethod.GET)
+	public String doAction(@RequestParam("c_num") int c_num, HttpSession session) {
 		//ADMIN CHECK 
 		if ((Member) session.getAttribute("loginfo") == null) {
 			return errPage;
@@ -36,8 +34,12 @@ public class AdminMainController {
 		}
 		//ADMIN CHECK END
 		
-		int newQ = qDao.getCountNew();
-		model.addAttribute("newQ", newQ);
-		return getPage;
+		
+		System.out.println("c_num:" + c_num);
+		
+		int cnt = adDao.deleteReview(c_num);
+		System.out.println("리뷰삭제:"+cnt);
+		return gotoPage;
+		
 	}
 }

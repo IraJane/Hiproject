@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class MemberListController {
 
 	private final String command = "listMem.ad";
 	private final String getPage = "adMemList";
+	private final String errPage = "redirect:/main.jsp";
+	
 
 	@Autowired
 	private AdminDao adDao;
@@ -32,8 +35,23 @@ public class MemberListController {
 			@RequestParam(value = "pageSize", required = false) String pageSize, 
 			@RequestParam(value = "whatColumn", required = false) String whatColumn,
 			@RequestParam(value = "keyword", required = false) String keyword,
-			HttpServletRequest request) {	
-
+			HttpServletRequest request, HttpSession session) {	
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//ADMIN CHECK 
+		if ((Member) session.getAttribute("loginfo") == null) {
+			mav.setViewName(errPage);
+			return mav;
+		}
+		Member loginfo = (Member) session.getAttribute("loginfo");
+		String adCheck = loginfo.getM_email();
+		if (!adCheck.equals("admin@admin.com")) {
+			mav.setViewName(errPage);
+			return mav;
+		}
+		//ADMIN CHECK END
+		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%" + keyword + "%");
@@ -43,7 +61,7 @@ public class MemberListController {
 		Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, whatColumn, keyword, null);
 		List<Member> memList = adDao.getMemList(pageInfo, map);
 
-		ModelAndView mav = new ModelAndView();
+		
 
 		mav.addObject("pageInfo", pageInfo);
 		mav.addObject("whatColumn", whatColumn);

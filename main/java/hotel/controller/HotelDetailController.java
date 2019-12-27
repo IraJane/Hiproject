@@ -1,8 +1,13 @@
 package hotel.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +20,7 @@ import hotel.model.HotelDao;
 import hotel.model.Room;
 import hotel.model.RoomDao;
 import hotel.model.Search;
+import member.model.Member;
 import member.model.ReviewComposite;
 import member.model.ReviewCompositeDao;
 import order.model.MainOrderDao;
@@ -44,7 +50,7 @@ public class HotelDetailController {
 	
 	@RequestMapping(command)
 	public String hotelDetail(@RequestParam("h_num") int h_num,Search search,
-			Model model) {
+			Model model,HttpSession session) throws ParseException {
 		
 		System.out.println(h_num);
 		System.out.println("area:"+search.getArea()+","+"checkin:"+search.getCheckin()+","+"checkout:"+search.getCheckout()+","+"adult:"+search.getAdult()+","
@@ -64,18 +70,31 @@ public class HotelDetailController {
 		
 		List<Room> rooms=roomDao.getRoomList(hotel);
 		hotel.setRooms(rooms);
-		hotel.setImages(hotel.getH_image().split(";"));
+		if(hotel.getH_image()!=null) {
+			hotel.setImages(hotel.getH_image().split(";"));
+		}
+		if(hotel.getH_address1().indexOf("(")!=-1) {
+			String address=hotel.getH_address1().substring(0,hotel.getH_address1().indexOf("(")-1);
+			hotel.setH_address1(address);
+		}
+		if(hotel.getH_facilities().length()>2) {
+			String facil=hotel.getH_facilities().substring(3);  
+			hotel.setH_facilities(facil);	
+		}
+
 		
 		
-		String address=hotel.getH_address1().substring(0,hotel.getH_address1().indexOf("(")-1);
-		hotel.setH_address1(address);
+		Member login = (Member) session.getAttribute("loginfo");
 		
-		
+		System.out.println(login);
 		String checkin = search.getCheckin();
 		String checkout = search.getCheckout();
 		
 		List<OrderDetail> detailList = odetailDao.getDateLists(checkin, checkout);
 		System.out.println(detailList);
+		
+		
+		
 		
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		for(int i = 0; i < rooms.size();i++) {
@@ -106,7 +125,7 @@ public class HotelDetailController {
 		}
 		}
 		
-		System.out.println(map);
+		System.out.println("map:"+map);
 		
 		
 		

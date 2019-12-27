@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,7 @@ public class MemberReservationController {
 	
 	private final String command = "/reservationInfo.ad";
 	private final String getPage ="adMemberReservationForm";
-
+	private final String errPage = "redirect:/main.jsp";
 	
 	@Autowired
 	HotelDao hotelDao;
@@ -44,7 +46,17 @@ public class MemberReservationController {
 	
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String doAction(@RequestParam("m_num") int m_num,Model model) {
+	public String doAction(@RequestParam("m_num") int m_num,Model model, HttpSession session) {
+		//ADMIN CHECK 
+		if ((Member) session.getAttribute("loginfo") == null) {
+			return errPage;
+		}
+		Member loginfo = (Member) session.getAttribute("loginfo");
+		String adCheck = loginfo.getM_email();
+		if (!adCheck.equals("admin@admin.com")) {
+			return errPage;
+		}
+		//ADMIN CHECK END
 		
 		Member login = adDao.getOneMember(m_num);
 		

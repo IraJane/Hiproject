@@ -2,15 +2,15 @@ package admin.model;
 
 import java.util.Date;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
+
 
 public class Qa {
 	private int q_num;
 	private int m_num;	
-	@Length(min=1,message="분류를 선택해주세요.")
+	@NotBlank(message="분류를 선택해주세요.")
 	private String q_title;
-	@NotEmpty(message="문의내용을 입력해주세요.")
+	@NotBlank(message="내용을 입력해주세요.")
 	private String q_comment;
 	private Date q_regdate;	// sysdate: 문의등록일자
 	private int q_checked;	//0:미답변, 1:답변
